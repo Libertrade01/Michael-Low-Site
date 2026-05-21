@@ -1,0 +1,186 @@
+---
+import Layout from '../components/Layout.astro';
+import { about } from '../config/site';
+
+const traits = about.traits;
+
+const layouts = [
+  {
+    id: 'cards',
+    name: '1 — Card grid (current)',
+    desc: 'Four bordered cards in a 2×2. Reads dashboard / SaaS feature grid.',
+    live: false,
+  },
+  {
+    id: 'list',
+    name: '2 — Divided list',
+    desc: 'No cards. Thin horizontal rules only. Calm, editorial.',
+  },
+  {
+    id: 'stack',
+    name: '3 — Open stack',
+    desc: 'Generous vertical space. Label + sentence. Nothing boxed.',
+  },
+  {
+    id: 'accent',
+    name: '4 — Accent bar',
+    desc: 'Left cream line per item. Structured without feeling like widgets.',
+  },
+  {
+    id: 'inline',
+    name: '5 — Inline pairs',
+    desc: 'Label and detail on one line (wraps on mobile). Very minimal.',
+  },
+  {
+    id: 'mono-block',
+    name: '6 — Mono block',
+    desc: 'Terminal-adjacent. Matches nav + status. Compact operator list.',
+    live: true,
+  },
+];
+---
+
+<Layout title="About traits lab — Michael Low" description="Compare clean layouts for How I show up.">
+  <header class="border-b border-border py-12">
+    <div class="container-main">
+      <p class="section-label">Preview board</p>
+      <h1 class="mt-4 font-sans text-4xl font-medium tracking-tight text-off-white md:text-5xl">
+        How I show up — layout options
+      </h1>
+      <p class="mt-4 max-w-2xl text-muted">
+        Same four traits. Different containers. Pick the cleanest — nothing here changes the live About page until
+        you choose.
+      </p>
+      <a href="/about" class="link-arrow mt-6">← Live About page</a>
+    </div>
+  </header>
+
+  <section class="section-padding">
+    <div class="container-main space-y-20">
+      {
+        layouts.map((layout) => (
+          <div class="max-w-2xl">
+            <div class="mb-8">
+              <p class="font-mono text-[10px] uppercase tracking-widest text-amber-accent">{layout.name}</p>
+              <p class="mt-2 text-sm text-muted">{layout.desc}</p>
+              {layout.live && <p class="mt-2 font-mono text-[10px] text-muted-dim">★ live on /about</p>}
+              {layout.recommended && (
+                <p class="mt-2 font-mono text-[10px] text-amber-accent/90">★ recommended for clean style</p>
+              )}
+            </div>
+
+            <p class="section-label mb-6">How I show up</p>
+
+            {/* 1 — Cards */}
+            {layout.id === 'cards' && (
+              <div class="grid gap-4 sm:grid-cols-2">
+                {traits.map((t) => (
+                  <div class="card-surface p-5">
+                    <h2 class="font-sans text-sm font-medium text-off-white">{t.label}</h2>
+                    <p class="mt-2 text-sm leading-relaxed text-muted">{t.detail}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {/* 2 — Divided list */}
+            {layout.id === 'list' && (
+              <div class="divide-y divide-border border-y border-border">
+                {traits.map((t) => (
+                  <div class="py-5 first:pt-5">
+                    <p class="font-sans text-sm font-medium text-off-white">{t.label}</p>
+                    <p class="mt-1.5 text-sm leading-relaxed text-muted">{t.detail}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {/* 3 — Open stack */}
+            {layout.id === 'stack' && (
+              <div class="space-y-8">
+                {traits.map((t) => (
+                  <div>
+                    <p class="font-sans text-sm font-medium text-off-white">{t.label}</p>
+                    <p class="mt-2 text-sm leading-relaxed text-muted">{t.detail}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {/* 4 — Accent bar */}
+            {layout.id === 'accent' && (
+              <div class="space-y-6">
+                {traits.map((t) => (
+                  <div class="border-l-2 border-amber-accent/40 pl-5">
+                    <p class="font-sans text-sm font-medium text-off-white">{t.label}</p>
+                    <p class="mt-1.5 text-sm leading-relaxed text-muted">{t.detail}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {/* 5 — Inline pairs */}
+            {layout.id === 'inline' && (
+              <ul class="space-y-4">
+                {traits.map((t) => (
+                  <li class="text-sm leading-relaxed">
+                    <span class="font-medium text-off-white">{t.label}</span>
+                    <span class="text-muted"> — {t.detail}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+
+            {/* 6 — Mono block */}
+            {layout.id === 'mono-block' && (
+              <div class="space-y-3 font-mono text-sm">
+                {traits.map((t) => (
+                  <p>
+                    <span class="text-amber-accent">{t.label}</span>
+                    <span class="text-muted"> / {t.detail}</span>
+                  </p>
+                ))}
+              </div>
+            )}
+          </div>
+        ))
+      }
+
+      {/* Full section mock — list + accent side by side */}
+      <div class="border-t border-border pt-16">
+        <h2 class="font-sans text-2xl font-medium text-off-white">Side by side — top two for clean</h2>
+        <div class="mt-10 grid gap-12 lg:grid-cols-2">
+          <div class="max-w-md">
+            <p class="mb-6 font-mono text-[10px] uppercase tracking-widest text-amber-accent">2 — Divided list</p>
+            <p class="section-label mb-4">How I show up</p>
+            <div class="divide-y divide-border border-y border-border">
+              {traits.map((t) => (
+                <div class="py-4">
+                  <p class="font-sans text-sm font-medium text-off-white">{t.label}</p>
+                  <p class="mt-1 text-sm text-muted">{t.detail}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div class="max-w-md">
+            <p class="mb-6 font-mono text-[10px] uppercase tracking-widest text-amber-accent">4 — Accent bar</p>
+            <p class="section-label mb-4">How I show up</p>
+            <div class="space-y-5">
+              {traits.map((t) => (
+                <div class="border-l-2 border-amber-accent/35 pl-4">
+                  <p class="font-sans text-sm font-medium text-off-white">{t.label}</p>
+                  <p class="mt-1 text-sm text-muted">{t.detail}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+        <p class="mt-10 text-sm text-muted">
+          Reply with a number (<span class="font-mono text-off-white">2</span>,{' '}
+          <span class="font-mono text-off-white">3</span>, <span class="font-mono text-off-white">4</span>, etc.) to
+          apply on the About page.
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>

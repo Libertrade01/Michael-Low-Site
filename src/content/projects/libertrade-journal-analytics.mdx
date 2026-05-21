@@ -1,0 +1,87 @@
+---
+title: Libertrade Journal Analytics Platform
+description: Trading journal and analytics dashboard with session metrics, discipline tracking, and AI weekly Performance & Psychology reviews.
+date: 2026-05-01
+status: Built
+category: Trading Systems
+type: product
+stack: [HTML, Chart.js, Supabase, Vercel]
+featured: true
+order: 4
+role: Solo builder — product design, analytics UI, demo deployment
+outcomes:
+  - Unified dashboard for P&L, session timing, gate/readiness, and rule compliance
+  - Weekly agent analysis with Performance and Psychology deep-dives
+  - Portfolio demo deployed on Vercel with realistic mock data (no live account required)
+  - Read-only public showcase for employers and collaborators
+audience: [employer, personal]
+coverImage: /images/projects/libertrade-analytics/cover.png
+liveUrl: https://libertrade-journal-analystics-demo-eight.vercel.app/
+---
+
+import WorkflowDiagram from '../../components/WorkflowDiagram.astro';
+import ArchitectureDiagram from '../../components/ArchitectureDiagram.astro';
+import FeatureGrid from '../../components/FeatureGrid.astro';
+import DeviceMockupGrid from '../../components/DeviceMockupGrid.astro';
+import Callout from '../../components/Callout.astro';
+
+## Problem
+
+Trading review was split across too many surfaces: broker CSVs, intraday journal entries, Whoop readiness, and weekly notes in a separate knowledge base. Numbers lived in one place; psychology and discipline lived in another — so patterns were visible in hindsight but hard to act on during the week.
+
+## Goal
+
+Build a single **operator dashboard** that connects trades, session behaviour, readiness, and structured weekly synthesis — framed as a process tool, not a signal service or performance pitch.
+
+## System
+
+<WorkflowDiagram
+  steps={['Import / sync trades', 'Dashboard review', 'Journal + tags', 'Weekly agent report', 'Focus next week']}
+/>
+
+<ArchitectureDiagram
+  title="Stack"
+  nodes={[
+    { label: 'Analytics UI', detail: 'Trade Desk analytics surface' },
+    { label: 'Supabase', detail: 'Trades, days, journal, agent reports (production)' },
+    { label: 'Portfolio demo', detail: 'Mock store + static deploy' },
+    { label: 'Vercel', detail: 'Public demo URL' },
+  ]}
+/>
+
+<Callout type="info">
+  The **[live demo](https://libertrade-journal-analystics-demo-eight.vercel.app/)** uses curated sample data so visitors can explore the full UI without signing into a real account. Production runs against Supabase with Google auth.
+</Callout>
+
+## Key features
+
+<FeatureGrid
+  features={[
+    { title: 'Session analytics', description: 'P&L by time-of-day buckets, instrument mix, and expectancy-style views across a chosen range.' },
+    { title: 'Readiness strip', description: 'Today’s gate, Whoop sleep/recovery, and session P&L at a glance before you drill into trades.' },
+    { title: 'Discipline & rules', description: 'Daily rule compliance tied to trading days — trend and streak context, not just a checklist.' },
+    { title: 'Agent weekly reports', description: 'Performance and Psychology tabs with EDGE QUALITY, session distribution, and improvement focus — data-dense, actionable copy.' },
+    { title: 'Journal integration', description: 'Intraday journal entries with emotion tags linked to the same calendar as trades and lessons.' },
+  ]}
+/>
+
+## Visual proof
+
+<DeviceMockupGrid
+  mockups={[
+    { image: '/images/projects/libertrade-analytics/cover.png', alt: 'Analytics dashboard with readiness strip and performance overview', label: 'Dashboard' },
+    { image: '/images/projects/libertrade-analytics/agent-report.svg', alt: 'Weekly agent analysis Performance and Psychology', label: 'Agent analysis' },
+    { image: '/images/projects/libertrade-analytics/reports.svg', alt: 'Reports sidebar with weekly periods', label: 'Weekly reports' },
+  ]}
+/>
+
+## Result
+
+Shows end-to-end product thinking for a high-stakes personal operator workflow: dense analytics UI, review loops, and AI-assisted synthesis — shipped as something a hiring manager or collaborator can **click through in two minutes**.
+
+## What I'd improve next
+
+- Embed a short screen recording on the case study (15–30s dashboard → agent report)
+- Replace placeholder mockups with full-resolution PNGs from production
+- Light-mode screenshot set for accessibility
+- Link from weekly report themes back to filtered trade lists

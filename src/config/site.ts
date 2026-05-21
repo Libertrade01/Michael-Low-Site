@@ -25,7 +25,27 @@ export const site = {
   github: 'https://github.com/Libertrade01',
   linkedin: 'https://linkedin.com/in/michaellow',
   availability:
-    'Open to remote roles and select workflow implementation projects.',
+    'Open to remote roles and select workflow projects for small teams, creators, and operators with information-heavy work.',
+  /** Drop your photo at public/images/headshot.jpg (or .webp) — see README */
+  headshot: '/images/headshot.png',
+  headshotFallback: '/images/headshot-placeholder.svg',
+} as const;
+
+export const about = {
+  paragraphs: [
+    'I build AI workflows and systems for people who have too much input and not enough structure.',
+    'I like messy problems — half-broken processes, too many tabs, scattered notes, and the sense there must be a better way. That is usually where I come in.',
+    'I design tools, automations, dashboards, journals, research pipelines, and content systems that turn chaos into something usable on a normal Tuesday.',
+    'My work has covered trading review systems, mobile PWAs, CMS-backed websites, voice journals, and personal operating systems. I build systems the way some people build kitchens: for function, not applause.',
+  ],
+  traits: [
+    { label: 'High agency', detail: 'I explore, prototype, ship, and refine — without waiting for perfect specs.' },
+    { label: 'Practical systems', detail: 'Pipelines and operating rhythms, not one-off hacks or slide decks.' },
+    { label: 'Messy inputs', detail: 'Comfortable starting where information is scattered and processes are half-formed.' },
+    { label: 'Works in reality', detail: 'Useful implementation that survives a normal day, not AI theatre.' },
+  ],
+  personal:
+    'Outside of build time, I love to travel — new places, new routines, and seeing how people solve the same messy problems in different ways.',
 } as const;
 
 export const hero = {
@@ -49,14 +69,14 @@ export const featuredProjectSlugs = [
   'raiz-life-journal',
   'podcast-knowledge-workflow',
   'book-inmobiliaria',
-  'trading-desk',
+  'libertrade-journal-analytics',
 ] as const;
 
 export const nav = [
   { label: 'Projects', href: '/projects' },
-  { label: 'Build Log', href: '/build-log' },
-  { label: 'Work', href: '/work' },
   { label: 'About', href: '/about' },
+  { label: 'Work', href: '/work' },
+  { label: 'Build Log', href: '/build-log' },
   { label: 'Contact', href: '/contact' },
 ] as const;
 

@@ -1,4 +1,6 @@
 ---
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
 import StatusBadge from './StatusBadge.astro';
 import TechStack from './TechStack.astro';
 import type { ProjectEntry } from '../utils/content';
@@ -10,6 +12,10 @@ interface Props {
 
 const { project, index = 0 } = Astro.props;
 const { title, description, status, category, type, stack, coverImage } = project.data;
+const coverRetina = coverImage?.replace(/\.(png|jpe?g|webp)$/i, '@2x.$1');
+const hasRetinaCover =
+  Boolean(coverImage && coverRetina) &&
+  existsSync(join(process.cwd(), 'public', coverRetina!.replace(/^\//, '')));
 const num = String(index + 1).padStart(2, '0');
 ---
 
@@ -21,9 +27,16 @@ const num = String(index + 1).padStart(2, '0');
           <>
             <img
               src={coverImage}
+              {...(hasRetinaCover
+                ? {
+                    srcset: `${coverImage} 1x, ${coverRetina} 2x`,
+                    sizes: '(min-width: 768px) 50vw, 100vw',
+                  }
+                : {})}
               alt={`${title} preview`}
               class="h-full w-full object-cover transition duration-700 group-hover:scale-105"
               loading="lazy"
+              decoding="async"
             />
             <div class="absolute inset-0 bg-gradient-to-t from-charcoal-card via-charcoal-card/20 to-transparent opacity-90"></div>
           </>

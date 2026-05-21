@@ -1,4 +1,6 @@
 ---
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
 import StatusBadge from './StatusBadge.astro';
 import TechStack from './TechStack.astro';
 import type { ProjectEntry } from '../utils/content';
@@ -9,6 +11,11 @@ interface Props {
 
 const { project } = Astro.props;
 const { title, description, status, stack, role, github, liveUrl, coverImage } = project.data;
+
+const coverRetina = coverImage?.replace(/\.(png|jpe?g|webp)$/i, '@2x.$1');
+const hasRetinaCover =
+  Boolean(coverImage && coverRetina) &&
+  existsSync(join(process.cwd(), 'public', coverRetina!.replace(/^\//, '')));
 ---
 
 <header class="relative overflow-hidden border-b border-border py-16 md:py-24">
@@ -25,35 +32,74 @@ const { title, description, status, stack, role, github, liveUrl, coverImage } =
     </div>
     <h1 class="mt-6 max-w-4xl font-serif text-4xl text-off-white md:text-6xl md:leading-tight">{title}</h1>
     <p class="mt-5 max-w-2xl text-lg leading-relaxed text-muted">{description}</p>
+
+    {
+      liveUrl && (
+        <div class="mt-8">
+          <a
+            href={liveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="demo-cta group inline-flex w-full max-w-xl flex-col gap-1 rounded-xl border border-amber-accent/45 bg-amber-accent/12 px-8 py-5 shadow-[0_0_40px_rgba(var(--accent-rgb),0.12)] transition hover:border-amber-accent hover:bg-amber-accent/20 sm:w-auto"
+          >
+            <span class="flex items-center gap-3 font-mono text-sm font-medium uppercase tracking-[0.14em] text-off-white md:text-base">
+              Open live demo
+              <span class="text-amber-accent transition-transform group-hover:translate-x-1" aria-hidden="true">
+                →
+              </span>
+            </span>
+            <span class="font-mono text-[10px] uppercase tracking-wider text-muted">
+              Interactive · sample data · no account required
+            </span>
+          </a>
+        </div>
+      )
+    }
+
     <div class="mt-8">
       <TechStack stack={stack} />
     </div>
-    <div class="mt-8 flex flex-wrap gap-6">
-      {
-        liveUrl && (
-          <a href={liveUrl} target="_blank" rel="noopener noreferrer" class="link-arrow">
-            Live demo
-            <span aria-hidden="true">→</span>
-          </a>
-        )
-      }
-      {
-        github && (
+    {
+      github && (
+        <div class="mt-6">
           <a
             href={github}
             target="_blank"
             rel="noopener noreferrer"
             class="font-mono text-xs uppercase tracking-wider text-muted hover:text-amber-accent"
           >
-            GitHub →
+            View source on GitHub →
           </a>
-        )
-      }
-    </div>
+        </div>
+      )
+    }
     {
       coverImage && (
         <div class="mt-12 overflow-hidden rounded-2xl border border-border glow-amber">
-          <img src={coverImage} alt={`${title} cover`} class="w-full" />
+          {
+            hasRetinaCover ? (
+              <picture>
+                <source srcset={`${coverRetina} 2x`} type="image/png" />
+                <img
+                  src={coverImage}
+                  srcset={`${coverImage} 1x, ${coverRetina} 2x`}
+                  alt={`${title} cover`}
+                  class="h-auto w-full"
+                  loading="eager"
+                  decoding="async"
+                  sizes="(min-width: 1152px) 1152px, 100vw"
+                />
+              </picture>
+            ) : (
+              <img
+                src={coverImage}
+                alt={`${title} cover`}
+                class="h-auto w-full"
+                loading="eager"
+                decoding="async"
+              />
+            )
+          }
         </div>
       )
     }
