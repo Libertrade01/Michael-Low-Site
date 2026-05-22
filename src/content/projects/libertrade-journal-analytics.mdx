@@ -9,21 +9,16 @@ stack: [HTML, Chart.js, Supabase, Vercel]
 featured: true
 order: 4
 role: Solo builder — product design, analytics UI, demo deployment
-outcomes:
-  - Unified dashboard for P&L, session timing, gate/readiness, and rule compliance
-  - Weekly agent analysis with Performance and Psychology deep-dives
-  - Portfolio demo deployed on Vercel with realistic mock data (no live account required)
-  - Read-only public showcase for employers and collaborators
 audience: [employer, personal]
 coverImage: /images/projects/libertrade-analytics/cover.png
+coverFit: contain
+coverPosition: top
 liveUrl: https://libertrade-journal-analystics-demo-eight.vercel.app/
 ---
 
-import WorkflowDiagram from '../../components/WorkflowDiagram.astro';
-import ArchitectureDiagram from '../../components/ArchitectureDiagram.astro';
-import FeatureGrid from '../../components/FeatureGrid.astro';
-import DeviceMockupGrid from '../../components/DeviceMockupGrid.astro';
-import Callout from '../../components/Callout.astro';
+import SystemTimeline from '../../components/SystemTimeline.astro';
+import FeatureList from '../../components/FeatureList.astro';
+import ScreenshotGallery from '../../components/ScreenshotGallery.astro';
 
 ## Problem
 
@@ -35,27 +30,27 @@ Build a single **operator dashboard** that connects trades, session behaviour, r
 
 ## System
 
-<WorkflowDiagram
-  steps={['Import / sync trades', 'Dashboard review', 'Journal + tags', 'Weekly agent report', 'Focus next week']}
-/>
-
-<ArchitectureDiagram
-  title="Stack"
-  nodes={[
-    { label: 'Analytics UI', detail: 'Trade Desk analytics surface' },
-    { label: 'Supabase', detail: 'Trades, days, journal, agent reports (production)' },
-    { label: 'Portfolio demo', detail: 'Mock store + static deploy' },
-    { label: 'Vercel', detail: 'Public demo URL' },
+<SystemTimeline
+  phases={[
+    {
+      title: 'Capture',
+      steps: ['Import trades from broker', 'Sync personal journal'],
+    },
+    {
+      title: 'Review',
+      steps: ['View dashboard stats and journal tags'],
+    },
+    {
+      title: 'Synthesize',
+      steps: ['AI weekly agent report', 'Focus for next week'],
+    },
   ]}
+  footnote="The live demo uses static sample data so the full interface is explorable without signing in."
 />
-
-<Callout type="info">
-  The **[live demo](https://libertrade-journal-analystics-demo-eight.vercel.app/)** uses curated sample data so visitors can explore the full UI without signing into a real account. Production runs against Supabase with Google auth.
-</Callout>
 
 ## Key features
 
-<FeatureGrid
+<FeatureList
   features={[
     { title: 'Session analytics', description: 'P&L by time-of-day buckets, instrument mix, and expectancy-style views across a chosen range.' },
     { title: 'Readiness strip', description: 'Today’s gate, Whoop sleep/recovery, and session P&L at a glance before you drill into trades.' },
@@ -65,23 +60,19 @@ Build a single **operator dashboard** that connects trades, session behaviour, r
   ]}
 />
 
-## Visual proof
+## Snapshots
 
-<DeviceMockupGrid
-  mockups={[
-    { image: '/images/projects/libertrade-analytics/cover.png', alt: 'Analytics dashboard with readiness strip and performance overview', label: 'Dashboard' },
-    { image: '/images/projects/libertrade-analytics/agent-report.svg', alt: 'Weekly agent analysis Performance and Psychology', label: 'Agent analysis' },
-    { image: '/images/projects/libertrade-analytics/reports.svg', alt: 'Reports sidebar with weekly periods', label: 'Weekly reports' },
+<ScreenshotGallery
+  shots={[
+    {
+      image: '/images/projects/libertrade-analytics/discipline-journal.png',
+      alt: 'Discipline tracking with daily rule compliance and intraday journal entries with emotion tags',
+      label: 'Discipline & journal',
+    },
+    {
+      image: '/images/projects/libertrade-analytics/agent-weekly-review.png',
+      alt: 'AI agent weekly review with Performance tab showing edge quality, session distribution, and improvement focus',
+      label: 'Agent weekly review',
+    },
   ]}
 />
-
-## Result
-
-Shows end-to-end product thinking for a high-stakes personal operator workflow: dense analytics UI, review loops, and AI-assisted synthesis — shipped as something a hiring manager or collaborator can **click through in two minutes**.
-
-## What I'd improve next
-
-- Embed a short screen recording on the case study (15–30s dashboard → agent report)
-- Replace placeholder mockups with full-resolution PNGs from production
-- Light-mode screenshot set for accessibility
-- Link from weekly report themes back to filtered trade lists

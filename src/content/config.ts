@@ -14,6 +14,9 @@ const projectSchema = z.object({
   outcomes: z.array(z.string()).default([]),
   audience: z.array(z.enum(['smb', 'employer', 'personal'])).default([]),
   coverImage: z.string().optional(),
+  /** Card thumbnail: contain = full UI visible; cover = fill crop (best for designed SVGs). */
+  coverFit: z.enum(['cover', 'contain']).optional(),
+  coverPosition: z.enum(['center', 'top']).optional(),
   github: z.string().url().optional(),
   liveUrl: z.string().url().optional(),
   video: z.string().optional(),

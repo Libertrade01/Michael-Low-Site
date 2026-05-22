@@ -1,0 +1,30 @@
+---
+interface Shot {
+  image: string;
+  alt: string;
+  label?: string;
+}
+
+interface Props {
+  shots: Shot[];
+}
+
+const { shots } = Astro.props;
+---
+
+<div class="my-2 space-y-16 md:space-y-20">
+  {
+    shots.map((s) => (
+      <figure>
+        <div class="overflow-hidden rounded-lg border border-border/50 bg-[#111217]">
+          <img src={s.image} alt={s.alt} class="h-auto w-full" loading="lazy" decoding="async" />
+        </div>
+        {s.label && (
+          <figcaption class="mt-3 font-mono text-[10px] uppercase tracking-[0.14em] text-muted">
+            {s.label}
+          </figcaption>
+        )}
+      </figure>
+    ))
+  }
+</div>

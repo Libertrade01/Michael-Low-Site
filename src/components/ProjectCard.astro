@@ -11,17 +11,26 @@ interface Props {
 }
 
 const { project, index = 0 } = Astro.props;
-const { title, description, status, category, type, stack, coverImage } = project.data;
+const { title, description, status, category, type, stack, coverImage, coverFit, coverPosition } =
+  project.data;
 const coverRetina = coverImage?.replace(/\.(png|jpe?g|webp)$/i, '@2x.$1');
 const hasRetinaCover =
   Boolean(coverImage && coverRetina) &&
   existsSync(join(process.cwd(), 'public', coverRetina!.replace(/^\//, '')));
+const isPhotoCover = Boolean(coverImage?.match(/\.(png|jpe?g|webp)$/i));
+const fit = coverFit ?? (isPhotoCover ? 'contain' : 'cover');
+const position = coverPosition ?? (fit === 'contain' ? 'top' : 'center');
 const num = String(index + 1).padStart(2, '0');
 ---
 
 <article class="card-surface group flex flex-col overflow-hidden">
   <a href={`/projects/${project.slug}`} class="flex flex-1 flex-col">
-    <div class="relative aspect-[16/10] overflow-hidden bg-charcoal">
+    <div
+      class:list={[
+        'relative aspect-[16/10] overflow-hidden',
+        fit === 'contain' ? 'bg-[#111217]' : 'bg-charcoal',
+      ]}
+    >
       {
         coverImage ? (
           <>
@@ -34,11 +43,24 @@ const num = String(index + 1).padStart(2, '0');
                   }
                 : {})}
               alt={`${title} preview`}
-              class="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+              class:list={[
+                'h-full w-full transition duration-500',
+                fit === 'contain'
+                  ? 'object-contain object-top px-2 pb-1 pt-2 md:px-3 md:pt-3'
+                  : 'object-cover object-center group-hover:scale-[1.03]',
+                position === 'top' && fit === 'cover' && 'object-top',
+              ]}
               loading="lazy"
               decoding="async"
             />
-            <div class="absolute inset-0 bg-gradient-to-t from-charcoal-card via-charcoal-card/20 to-transparent opacity-90"></div>
+            <div
+              class:list={[
+                'pointer-events-none absolute inset-0',
+                fit === 'contain'
+                  ? 'bg-gradient-to-t from-charcoal-card/95 via-charcoal-card/15 to-transparent'
+                  : 'bg-gradient-to-t from-charcoal-card via-charcoal-card/25 to-transparent opacity-90',
+              ]}
+            />
           </>
         ) : (
           <div class="flex h-full items-center justify-center bg-gradient-to-br from-charcoal-elevated to-charcoal">
@@ -61,7 +83,7 @@ const num = String(index + 1).padStart(2, '0');
       </h3>
       <p class="mt-3 flex-1 text-sm leading-relaxed text-muted">{description}</p>
       <div class="mt-5">
-        <TechStack stack={stack} />
+        <TechStack stack={stack} variant="inline" />
       </div>
       <span class="link-arrow mt-6">
         Case study

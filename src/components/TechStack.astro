@@ -1,19 +1,29 @@
 ---
 interface Props {
   stack: string[];
+  variant?: 'inline' | 'pills';
 }
 
-const { stack } = Astro.props;
+const { stack, variant = 'inline' } = Astro.props;
 ---
 
-<div class="flex flex-wrap gap-1.5">
-  {
-    stack.map((tech) => (
-      <span
-        class="rounded-md border border-border/80 bg-charcoal/60 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wide text-muted transition hover:border-amber-accent/20 hover:text-amber-accent/80"
-      >
-        {tech}
-      </span>
-    ))
-  }
-</div>
+{
+  variant === 'pills' ? (
+    <div class="flex flex-wrap gap-1.5">
+      {stack.map((tech) => (
+        <span class="rounded-md border border-border/80 bg-charcoal/60 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wide text-muted transition hover:border-amber-accent/20 hover:text-amber-accent/80">
+          {tech}
+        </span>
+      ))}
+    </div>
+  ) : (
+    <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-muted md:text-xs">
+      {stack.map((tech, i) => (
+        <>
+          {i > 0 && <span class="mx-2 text-border select-none">·</span>}
+          <span class="text-off-white/75">{tech}</span>
+        </>
+      ))}
+    </p>
+  )
+}

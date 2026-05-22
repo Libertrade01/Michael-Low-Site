@@ -1,0 +1,31 @@
+---
+interface Feature {
+  title: string;
+  description: string;
+}
+
+interface Props {
+  features: Feature[];
+}
+
+const { features } = Astro.props;
+---
+
+<ol class="my-2 list-none space-y-8 md:space-y-10" role="list">
+  {
+    features.map((f, i) => (
+      <li class="flex gap-4 md:gap-6">
+        <span
+          class="shrink-0 pt-0.5 font-mono text-[11px] tabular-nums tracking-wide text-amber-accent/45"
+          aria-hidden="true"
+        >
+          {String(i + 1).padStart(2, '0')}
+        </span>
+        <div class="min-w-0">
+          <h3 class="text-sm font-medium text-off-white">{f.title}</h3>
+          <p class="mt-1.5 text-sm leading-relaxed text-muted">{f.description}</p>
+        </div>
+      </li>
+    ))
+  }
+</ol>
