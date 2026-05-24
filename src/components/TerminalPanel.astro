@@ -27,19 +27,28 @@ const { large = false, filename = hero.terminal.filename } = Astro.props;
     <span class:list={['ml-2 font-mono text-muted', large ? 'text-xs' : 'text-[10px]']}>{filename}</span>
   </div>
   <div class:list={['font-mono leading-relaxed', large ? 'px-6 py-8 text-base md:text-lg lg:text-xl' : 'px-4 py-4 text-[11px]']}>
-    <p class="text-muted">
-      <span class="text-emerald-500/90">→</span>
-      <span class="text-amber-accent/90"> input</span><span class="text-muted">.normalize()</span>
-      <span class="text-off-white/50"> → </span>
-      <span class="text-amber-accent/90">output</span><span class="text-muted">.structured()</span>
-      <span
-        class:list={[
-          'ml-1 inline-block animate-[blink_1s_step-end_infinite] bg-amber-bright',
-          large ? 'h-5 w-2' : 'h-3.5 w-1.5',
-        ]}
-        aria-hidden="true"
-      ></span>
-    </p>
+    <div class:list={[large ? 'space-y-3' : 'space-y-2']}>
+      <p>
+        <span class="text-amber-accent/90">messy_input</span><span class="text-muted">.collect()</span>
+      </p>
+      <p>
+        <span class="text-amber-accent/90">workflow</span><span class="text-muted">.structure()</span>
+      </p>
+      <p>
+        <span class="text-amber-accent/90">ai</span><span class="text-muted">.review()</span>
+      </p>
+      <p class:list={[large ? 'pt-1' : 'pt-0.5']}>
+        <span class="text-emerald-500/90">→</span>
+        <span class="text-amber-accent/90"> operating_system</span><span class="text-muted">.ready()</span>
+        <span
+          class:list={[
+            'ml-1 inline-block animate-[blink_1s_step-end_infinite] bg-amber-bright',
+            large ? 'h-5 w-2' : 'h-3.5 w-1.5',
+          ]}
+          aria-hidden="true"
+        ></span>
+      </p>
+    </div>
   </div>
   <div
     class="pointer-events-none absolute -inset-px rounded-[inherit] opacity-60"

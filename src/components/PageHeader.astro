@@ -3,12 +3,21 @@ interface Props {
   title: string;
   subtitle?: string;
   label?: string;
+  /** Tighter vertical padding — About page and similar hero-to-content flows */
+  compact?: boolean;
+  /** Less space between title and subtitle */
+  tightSubtitle?: boolean;
 }
 
-const { title, subtitle, label = 'Page' } = Astro.props;
+const { title, subtitle, label = 'Page', compact = false, tightSubtitle = false } = Astro.props;
 ---
 
-<header class="relative overflow-hidden border-b border-border py-20 md:py-28">
+<header
+  class:list={[
+    'relative overflow-hidden border-b border-border',
+    compact ? 'pt-14 pb-6 md:pt-20 md:pb-8' : 'py-20 md:py-28',
+  ]}
+>
   <div
     class="pointer-events-none absolute inset-0 opacity-60"
     style="background: radial-gradient(ellipse 70% 80% at 50% -30%, rgba(var(--accent-rgb),0.1), transparent);"
@@ -21,7 +30,14 @@ const { title, subtitle, label = 'Page' } = Astro.props;
       {title}
     </h1>
     {subtitle && (
-      <p class="mt-5 max-w-2xl font-mono text-sm leading-relaxed text-muted md:text-base">{subtitle}</p>
+      <p
+        class:list={[
+          'max-w-2xl font-mono text-sm leading-relaxed text-muted md:text-base',
+          tightSubtitle ? 'mt-3' : 'mt-5',
+        ]}
+      >
+        {subtitle}
+      </p>
     )}
   </div>
 </header>

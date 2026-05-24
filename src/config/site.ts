@@ -63,6 +63,14 @@ export const hero = {
     filename: 'workflow.ts',
   },
   tagline: 'Messy input in. Clean operating system out.',
+  /** Homepage pill — single-line bar variant */
+  statusPill: 'Open to remote roles & Select workflow projects' as const,
+  /** Brand-lab chips variant only */
+  statusChips: [
+    'Open to remote roles',
+    'Select workflow projects',
+    'AI systems · dashboards · automation',
+  ] as const,
 } as const;
 
 export const featuredProjectSlugs = [

@@ -1,0 +1,90 @@
+---
+import Layout from '../components/Layout.astro';
+import HeroStatusLabColumn from '../components/lab/HeroStatusLabColumn.astro';
+import HeroStatusOption2 from '../components/lab/HeroStatusOption2.astro';
+import HeroStatusOption3 from '../components/lab/HeroStatusOption3.astro';
+import StatusLine from '../components/StatusLine.astro';
+import TerminalPanel from '../components/TerminalPanel.astro';
+import { hero } from '../config/site';
+---
+
+<Layout
+  title="Hero status placement — Michael Low"
+  description="Compare status placement options for the homepage hero."
+>
+  <header class="border-b border-border py-12">
+    <div class="container-main">
+      <p class="section-label">Preview board</p>
+      <h1 class="mt-4 font-serif text-4xl text-off-white md:text-5xl">Hero status placement</h1>
+      <p class="mt-4 max-w-2xl text-muted">
+        Same headline and terminal code on each mockup. Only the status placement changes. Compare
+        with the live homepage, then pick Option 2 or 3 (or keep the current left pill).
+      </p>
+      <div class="mt-6 flex flex-wrap gap-4">
+        <a href="/" class="font-mono text-xs uppercase tracking-wider text-amber-accent hover:underline">
+          ← Homepage
+        </a>
+        <a
+          href="/system-layout-lab"
+          class="font-mono text-xs uppercase tracking-wider text-muted hover:text-off-white"
+        >
+          System layout lab
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <section class="border-b border-border py-16 md:py-20">
+    <div class="container-main">
+      <p class="font-mono text-[10px] uppercase tracking-[0.16em] text-amber-accent">Current (reference)</p>
+      <h2 class="mt-2 font-serif text-2xl text-off-white">Left pill — live today</h2>
+      <p class="mt-2 max-w-2xl text-sm text-muted">
+        Status under the headline on the left. Competes with the terminal for attention.
+      </p>
+      <div
+        class="mt-10 overflow-hidden rounded-2xl border border-border/80 bg-charcoal/40 p-6 md:p-10"
+      >
+        <HeroStatusLabColumn>
+          <StatusLine variant="bar" slot="left-footer" />
+          <TerminalPanel large filename={hero.terminal.filename} />
+        </HeroStatusLabColumn>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-b border-border py-16 md:py-20">
+    <div class="container-main">
+      <p class="font-mono text-[10px] uppercase tracking-[0.16em] text-amber-accent">Option 2</p>
+      <h2 class="mt-2 font-serif text-2xl text-off-white">Caption under the terminal</h2>
+      <p class="mt-2 max-w-2xl text-sm text-muted">
+        Left column is headline only. Status is a quiet line under <code class="text-off-white/80">workflow.ts</code>
+        — dot, “Status:”, and copy. No pill border.
+      </p>
+      <div
+        class="mt-10 overflow-hidden rounded-2xl border border-amber-accent/20 bg-charcoal/40 p-6 md:p-10"
+      >
+        <HeroStatusLabColumn>
+          <HeroStatusOption2 />
+        </HeroStatusLabColumn>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding">
+    <div class="container-main">
+      <p class="font-mono text-[10px] uppercase tracking-[0.16em] text-amber-accent">Option 3</p>
+      <h2 class="mt-2 font-serif text-2xl text-off-white">Status inside the terminal chrome</h2>
+      <p class="mt-2 max-w-2xl text-sm text-muted">
+        Availability sits in the title bar (right side), next to the filename. One visual object on
+        the right; code block stays clean.
+      </p>
+      <div
+        class="mt-10 overflow-hidden rounded-2xl border border-amber-accent/20 bg-charcoal/40 p-6 md:p-10"
+      >
+        <HeroStatusLabColumn>
+          <HeroStatusOption3 />
+        </HeroStatusLabColumn>
+      </div>
+    </div>
+  </section>
+</Layout>

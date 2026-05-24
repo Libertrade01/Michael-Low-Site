@@ -10,7 +10,8 @@ interface Props {
 }
 
 const { project } = Astro.props;
-const { title, description, status, stack, role, github, liveUrl, coverImage } = project.data;
+const { title, description, descriptionExtra, status, stack, role, github, liveUrl, coverImage } =
+  project.data;
 
 const coverRetina = coverImage?.replace(/\.(png|jpe?g|webp)$/i, '@2x.$1');
 const hasRetinaCover =
@@ -18,7 +19,7 @@ const hasRetinaCover =
   existsSync(join(process.cwd(), 'public', coverRetina!.replace(/^\//, '')));
 ---
 
-<header class="relative overflow-hidden border-b border-border py-16 md:py-24">
+<header class="relative overflow-hidden border-b border-border pt-16 pb-8 md:pt-24 md:pb-10">
   <div
     class="pointer-events-none absolute inset-0"
     style="background: radial-gradient(ellipse 80% 60% at 50% -20%, rgba(var(--accent-rgb),0.12), transparent);"
@@ -31,7 +32,9 @@ const hasRetinaCover =
       <span class="font-mono text-[10px] uppercase tracking-widest text-muted">{role}</span>
     </div>
     <h1 class="mt-6 max-w-4xl font-serif text-4xl text-off-white md:text-6xl md:leading-tight">{title}</h1>
-    <p class="mt-5 max-w-2xl text-lg leading-relaxed text-muted">{description}</p>
+    <p class="mt-5 max-w-5xl text-base leading-relaxed text-muted sm:text-lg">
+      {description}{descriptionExtra ? ` ${descriptionExtra}` : ''}
+    </p>
 
     {
       liveUrl && (

@@ -3,6 +3,8 @@ import { defineCollection, z } from 'astro:content';
 const projectSchema = z.object({
   title: z.string(),
   description: z.string(),
+  /** Optional second hero paragraph below description (case study pages). */
+  descriptionExtra: z.string().optional(),
   date: z.coerce.date(),
   status: z.enum(['Built', 'Prototype', 'In Progress', 'Concept']),
   category: z.string(),

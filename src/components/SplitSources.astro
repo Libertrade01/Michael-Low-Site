@@ -1,0 +1,17 @@
+---
+interface Props {
+  sources: string[];
+}
+
+const { sources } = Astro.props;
+---
+
+<div class="my-7 border-l border-amber-accent/25 pl-5 md:my-8 md:pl-6">
+  <ul class="list-none space-y-3 md:space-y-3.5" role="list">
+    {
+      sources.map((line) => (
+        <li class="text-sm leading-relaxed text-muted md:text-[15px]">{line}</li>
+      ))
+    }
+  </ul>
+</div>

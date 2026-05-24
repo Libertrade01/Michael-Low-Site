@@ -1,0 +1,25 @@
+---
+import type { SystemPhase } from './system-phases';
+
+interface Props {
+  phases: SystemPhase[];
+}
+
+const { phases } = Astro.props;
+---
+
+<div class="my-2 space-y-5">
+  {
+    phases.map((phase, i) => (
+      <div class="border-l-2 border-amber-accent/35 pl-5 md:pl-6">
+        <p class="font-mono text-[10px] uppercase tracking-widest text-amber-accent/80">
+          Chapter {i + 1}
+        </p>
+        <h3 class="mt-1.5 text-[15px] font-medium tracking-tight text-off-white md:text-base">
+          {phase.title}
+        </h3>
+        <p class="mt-2 max-w-2xl text-sm leading-relaxed text-muted">{phase.description}</p>
+      </div>
+    ))
+  }
+</div>

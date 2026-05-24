@@ -1,0 +1,50 @@
+---
+import { hero } from '../../config/site';
+import StatusDot from '../StatusDot.astro';
+
+const { terminal } = hero;
+---
+
+<div
+  class="relative w-full overflow-hidden rounded-3xl border border-border bg-charcoal glow-amber"
+>
+  <div class="flex items-center gap-2 border-b border-border bg-charcoal-light/80 px-4 py-3">
+    <span class="h-2.5 w-2.5 shrink-0 rounded-full bg-white/10"></span>
+    <span class="h-2.5 w-2.5 shrink-0 rounded-full bg-white/10"></span>
+    <span class="h-2.5 w-2.5 shrink-0 rounded-full bg-white/10"></span>
+    <span class="ml-1 shrink-0 font-mono text-xs text-muted">{terminal.filename}</span>
+    <span
+      class="ml-auto flex min-w-0 max-w-[58%] items-center justify-end gap-1.5 font-mono text-[9px] leading-none md:text-[10px]"
+      title={`Status ${hero.statusPill}`}
+    >
+      <StatusDot color="blue" />
+      <span class="shrink-0 text-muted-dim">Status</span>
+      <span class="truncate text-off-white/75">{hero.statusPill}</span>
+    </span>
+  </div>
+  <div class="space-y-3 px-6 py-8 font-mono text-base leading-relaxed md:text-lg lg:text-xl">
+    <p>
+      <span class="text-amber-accent/90">messy_input</span><span class="text-muted">.collect()</span>
+    </p>
+    <p>
+      <span class="text-amber-accent/90">workflow</span><span class="text-muted">.structure()</span>
+    </p>
+    <p>
+      <span class="text-amber-accent/90">ai</span><span class="text-muted">.review()</span>
+    </p>
+    <p class="pt-1">
+      <span class="text-emerald-500/90">→</span>
+      <span class="text-amber-accent/90"> operating_system</span><span class="text-muted">.ready()</span>
+      <span
+        class="ml-1 inline-block h-5 w-2 animate-[blink_1s_step-end_infinite] bg-amber-bright"
+        aria-hidden="true"
+      ></span>
+    </p>
+  </div>
+  <div
+    class="pointer-events-none absolute -inset-px rounded-[inherit] opacity-60"
+    style="background: radial-gradient(ellipse at 50% 100%, rgba(var(--accent-rgb),0.12), transparent 65%);"
+    aria-hidden="true"
+  >
+  </div>
+</div>

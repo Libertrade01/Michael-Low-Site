@@ -1,8 +1,7 @@
 ---
-import { hero, site } from '../config/site';
+import { hero } from '../config/site';
 import MessyWord from './MessyWord.astro';
-import StatusLine from './StatusLine.astro';
-import TerminalPanel from './TerminalPanel.astro';
+import HeroTerminalBlock from './HeroTerminalBlock.astro';
 
 const { title, punchline } = hero;
 ---
@@ -29,28 +28,45 @@ const { title, punchline } = hero;
           </span>
         </h1>
 
-        <div class="animate-fade-up-delay-3 mt-10">
-          <StatusLine variant="bar" />
-        </div>
-
-        <div class="animate-fade-up-delay-3 mt-10 flex flex-wrap gap-4">
-          <a href="/projects" class="btn-primary">
-            View Projects
-            <span aria-hidden="true">→</span>
-          </a>
-          <a href="/contact" class="btn-secondary">Contact</a>
-        </div>
       </div>
 
-      <!-- Terminal — hero feature -->
+      <!-- Terminal + status caption (option 2) -->
       <div class="animate-fade-up-delay-2 relative w-full">
-        <TerminalPanel large filename={hero.terminal.filename} />
-        <p class="mt-6 text-center font-mono text-xs uppercase tracking-[0.2em] text-muted-dim lg:text-left">
-          Messy input in · Clean operating system out
-        </p>
+        <HeroTerminalBlock />
       </div>
     </div>
   </div>
+
+  <a
+    href="#portfolio"
+    class="animate-fade-up-delay-4 absolute bottom-8 left-1/2 z-20 flex -translate-x-1/2 flex-col items-center gap-0 rounded-sm text-muted-dim transition-colors hover:text-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-accent/40 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal animate-scroll-hint"
+    aria-label="Scroll to projects"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 20 20"
+      fill="currentColor"
+      class="h-6 w-6"
+      aria-hidden="true"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
+        clip-rule="evenodd"></path>
+    </svg>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 20 20"
+      fill="currentColor"
+      class="-mt-1 h-6 w-6"
+      aria-hidden="true"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
+        clip-rule="evenodd"></path>
+    </svg>
+  </a>
 
   <div class="pointer-events-none absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-charcoal to-transparent"></div>
 </section>

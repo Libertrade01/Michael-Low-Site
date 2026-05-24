@@ -1,0 +1,42 @@
+---
+import type { SystemPhase } from './system-phases';
+
+interface Props {
+  phases: SystemPhase[];
+}
+
+const { phases } = Astro.props;
+---
+
+<div class="my-2">
+  <div class="card-surface overflow-hidden p-1">
+    <div class="flex flex-col divide-y divide-border md:flex-row md:divide-x md:divide-y-0">
+      {
+        phases.map((phase, i) => (
+          <div class="relative flex-1 px-4 py-4 md:px-5 md:py-5">
+            <div class="flex items-center gap-2">
+              <span class="font-mono text-[10px] uppercase tracking-widest text-amber-accent">
+                {phase.title}
+              </span>
+              {i < phases.length - 1 && (
+                <span
+                  class="ml-auto hidden font-mono text-amber-accent/40 md:inline"
+                  aria-hidden="true"
+                >
+                  →
+                </span>
+              )}
+            </div>
+            <p class="mt-2 text-sm leading-relaxed text-muted">{phase.description}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+  <div class="mt-3 hidden h-1 overflow-hidden rounded-full bg-border md:block" aria-hidden="true">
+    <div
+      class="h-full rounded-full"
+      style="width: 100%; background: linear-gradient(90deg, rgba(var(--accent-rgb),0.15), rgba(var(--accent-rgb),0.45), rgba(var(--accent-rgb),0.15));"
+    />
+  </div>
+</div>

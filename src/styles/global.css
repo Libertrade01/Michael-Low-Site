@@ -314,6 +314,10 @@ html[data-accent='violet'] {
   .animate-float {
     animation: float 6s ease-in-out infinite;
   }
+
+  .animate-scroll-hint {
+    animation: scrollHint 2.5s ease-in-out infinite;
+  }
 }
 
 @keyframes fadeUp {
@@ -344,6 +348,18 @@ html[data-accent='violet'] {
   }
   50% {
     transform: translateY(-8px);
+  }
+}
+
+@keyframes scrollHint {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.45;
+  }
+  50% {
+    transform: translateY(4px);
+    opacity: 0.75;
   }
 }
 
