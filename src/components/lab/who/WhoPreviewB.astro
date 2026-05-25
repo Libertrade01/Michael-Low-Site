@@ -1,0 +1,33 @@
+---
+import WhoPainList from '../../WhoPainList.astro';
+import WhoHelpManifestPreview from './WhoHelpManifestPreview.astro';
+import WhoWaysCta from './WhoWaysCta.astro';
+import {
+  homeWhoIntro,
+  homeWhoTitle,
+  homeHelpIntro,
+  homeHelpLabel,
+  homeHelpTitle,
+} from '../../../config/site';
+---
+
+<section class="who-lab-preview-b" aria-label="Ways to work together — combined">
+  <div class="help-ways-section-label">
+    <span class="section-label section-label--large">{homeHelpLabel}</span>
+    <div class="h-px flex-1 max-w-[120px] bg-gradient-to-r from-amber-accent/40 to-transparent"></div>
+  </div>
+
+  <div class="help-who-block">
+    <h2 class="help-who-block__title">{homeWhoTitle}</h2>
+    <p class="help-who-block__intro section-subtitle-strong">{homeWhoIntro}</p>
+    <WhoPainList />
+  </div>
+
+  <div class="help-offerings-head">
+    <h2 class="help-offerings-head__title">{homeHelpTitle}</h2>
+    <p class="help-offerings-head__intro section-subtitle-strong">{homeHelpIntro}</p>
+  </div>
+
+  <WhoHelpManifestPreview maxItems={3} />
+  <WhoWaysCta />
+</section>

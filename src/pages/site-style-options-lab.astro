@@ -1,0 +1,142 @@
+---
+import Layout from '../components/Layout.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+---
+
+<Layout
+  title="Site style options — Michael Low"
+  description="Visual comparison of three design directions for a friendlier AI services site."
+>
+  <section class="border-b border-border py-12 md:py-16">
+    <div class="container-main">
+      <SectionHeader
+        label="Preview board"
+        title="A/B/C style options for the rest of the site"
+        subtitle="These are visual mockups only. They do not change the live homepage or work page."
+      />
+      <div class="flex flex-wrap gap-4 text-xs">
+        <a href="/" class="link-arrow">← Homepage</a>
+        <a href="/work" class="link-arrow">Work page</a>
+        <a href="/contact" class="link-arrow">Contact page</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-b border-border py-14 md:py-16">
+    <div class="container-main">
+      <p class="font-mono text-[10px] uppercase tracking-[0.16em] text-amber-accent">Option A - Warm operator (recommended)</p>
+      <h2 class="mt-2 font-serif text-2xl text-off-white">Dark premium, friendlier service feel</h2>
+      <p class="mt-2 max-w-2xl text-sm text-muted">
+        Keep the dark identity and terminal motif, but soften cards, use plain-language copy, and guide visitors with clear next steps.
+      </p>
+
+      <div class="mt-8 rounded-3xl border border-amber-accent/25 bg-charcoal-card/45 p-6 md:p-10">
+        <div class="grid gap-8 lg:grid-cols-[1.2fr_1fr]">
+          <div>
+            <p class="section-label">What I can help with</p>
+            <h3 class="mt-4 font-sans text-3xl font-medium tracking-tight text-off-white md:text-4xl">
+              AI support for normal day-to-day work
+            </h3>
+            <p class="mt-4 max-w-xl text-base leading-relaxed text-muted">
+              If your team is drowning in scattered notes and repeated admin, I help you simplify the workflow and automate only what matters.
+            </p>
+            <div class="mt-6 flex flex-wrap items-center gap-4">
+              <a href="/contact" class="btn-primary">Book a call</a>
+              <a href="/work" class="link-arrow">See how I work <span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+          <div class="rounded-2xl border border-border/70 bg-charcoal/70 p-5 font-mono text-sm text-off-white/85">
+            <p><span class="text-amber-accent/90">inputs</span><span class="text-muted">.organise()</span></p>
+            <p class="mt-2"><span class="text-amber-accent/90">repeat_tasks</span><span class="text-muted">.automate()</span></p>
+            <p class="mt-2"><span class="text-emerald-400/90">→</span><span class="text-off-white/90"> team_workflow</span><span class="text-muted">.running()</span></p>
+          </div>
+        </div>
+
+        <div class="mt-8 grid gap-4 md:grid-cols-2">
+          <div class="rounded-xl border border-border bg-charcoal/55 p-5">
+            <p class="font-serif text-xl text-off-white">Too much manual work</p>
+            <p class="mt-2 text-sm text-muted">Automate repetitive admin without breaking your current process.</p>
+          </div>
+          <div class="rounded-xl border border-border bg-charcoal/55 p-5">
+            <p class="font-serif text-xl text-off-white">Scattered docs and notes</p>
+            <p class="mt-2 text-sm text-muted">Turn messy information into a simple system your team can follow.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-b border-border py-14 md:py-16">
+    <div class="container-main">
+      <p class="font-mono text-[10px] uppercase tracking-[0.16em] text-amber-accent">Option B - Dual tone</p>
+      <h2 class="mt-2 font-serif text-2xl text-off-white">Home stays dark, inner pages feel lighter</h2>
+      <p class="mt-2 max-w-2xl text-sm text-muted">
+        Keep your homepage brand look, then move Work/Contact to neutral backgrounds and clearer service-page sections.
+      </p>
+
+      <div class="mt-8 overflow-hidden rounded-3xl border border-border">
+        <div class="bg-charcoal-card/70 p-6 md:p-8">
+          <p class="section-label">Homepage hero vibe (unchanged)</p>
+          <h3 class="mt-3 font-sans text-3xl font-medium tracking-tight text-off-white md:text-4xl">Make AI useful, not overwhelming.</h3>
+          <p class="mt-3 max-w-2xl text-sm text-muted">Dark aesthetic and premium first impression.</p>
+        </div>
+        <div class="border-t border-border bg-[#f2efe8] px-6 py-8 text-[#1a1d24] md:px-8 md:py-10">
+          <p class="font-mono text-[11px] uppercase tracking-[0.14em] text-[#6b7280]">Work page preview</p>
+          <h4 class="mt-3 text-3xl font-semibold tracking-tight">What I can help with</h4>
+          <p class="mt-3 max-w-2xl text-base leading-relaxed text-[#4b5563]">
+            Clear, non-technical language for people who want help but do not know where to start.
+          </p>
+          <div class="mt-6 grid gap-4 md:grid-cols-3">
+            <div class="rounded-xl border border-[#d6d3cd] bg-white p-4">
+              <p class="font-medium">Organise information</p>
+              <p class="mt-2 text-sm text-[#6b7280]">Notes, docs, and research in one usable place.</p>
+            </div>
+            <div class="rounded-xl border border-[#d6d3cd] bg-white p-4">
+              <p class="font-medium">Automate repeat tasks</p>
+              <p class="mt-2 text-sm text-[#6b7280]">Cut manual admin that slows the team down.</p>
+            </div>
+            <div class="rounded-xl border border-[#d6d3cd] bg-white p-4">
+              <p class="font-medium">Implement practical AI</p>
+              <p class="mt-2 text-sm text-[#6b7280]">Simple systems that fit current workflows.</p>
+            </div>
+          </div>
+          <div class="mt-6">
+            <a href="/contact" class="inline-flex items-center gap-2 rounded-md bg-[#1f2937] px-5 py-2.5 text-sm font-medium text-white">
+              Book a call
+              <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding">
+    <div class="container-main">
+      <p class="font-mono text-[10px] uppercase tracking-[0.16em] text-amber-accent">Option C - Editorial story</p>
+      <h2 class="mt-2 font-serif text-2xl text-off-white">Narrative-first with fewer boxes</h2>
+      <p class="mt-2 max-w-2xl text-sm text-muted">
+        More storytelling and less dashboard feeling. Great for authority and trust, but slightly less direct for quick conversion.
+      </p>
+
+      <article class="mt-8 rounded-3xl border border-border bg-charcoal/35 px-6 py-10 md:px-12">
+        <p class="section-label">How I help</p>
+        <h3 class="mt-4 max-w-3xl font-serif text-4xl leading-tight text-off-white md:text-5xl">
+          You do not need a full AI transformation. You need a few systems that remove friction this week.
+        </h3>
+        <p class="mt-6 max-w-3xl text-lg leading-relaxed text-muted">
+          Most teams I work with already know where they feel the pain: repeated admin, scattered knowledge, and too many tools.
+          My role is to map the real workflow, simplify it, and implement practical AI support where it saves real time.
+        </p>
+        <p class="mt-6 max-w-3xl text-lg leading-relaxed text-muted">
+          We usually start with one workflow, prove it works, and then decide whether to expand.
+          No complicated setup. No AI theatre. Just systems your team will actually use.
+        </p>
+        <div class="mt-8 flex flex-wrap items-center gap-5">
+          <a href="/contact" class="btn-primary">Book a call</a>
+          <a href="/work" class="link-arrow">Read the process <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+    </div>
+  </section>
+</Layout>

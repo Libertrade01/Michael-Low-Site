@@ -1,0 +1,14 @@
+---
+import { homeWhoPains } from '../config/site';
+---
+
+<ul class="who-pain-list" role="list">
+  {
+    homeWhoPains.map((pain) => (
+      <li class="who-pain-list__item">
+        <span class="who-pain-list__prefix" aria-hidden="true">-</span>
+        <span class="who-pain-list__text">{pain}</span>
+      </li>
+    ))
+  }
+</ul>

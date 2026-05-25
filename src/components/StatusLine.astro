@@ -3,11 +3,27 @@ import { hero, site } from '../config/site';
 import StatusDot from './StatusDot.astro';
 
 interface Props {
-  variant?: 'inline' | 'card' | 'bold' | 'bar' | 'chips';
+  variant?: 'inline' | 'card' | 'bold' | 'bar' | 'chips' | 'caption';
 }
 
 const { variant = 'card' } = Astro.props;
 ---
+
+{
+  variant === 'caption' && (
+    <p
+      class="flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1 font-mono text-xs leading-snug md:text-sm"
+      role="status"
+      aria-label={`${hero.statusLabel} ${hero.statusPill}`}
+    >
+      <span class="inline-flex shrink-0 items-center gap-2">
+        <StatusDot color="blue" />
+        <span class="text-muted">{hero.statusLabel}</span>
+      </span>
+      <span class="text-off-white/90">{hero.statusPill}</span>
+    </p>
+  )
+}
 
 {
   variant === 'inline' && (
@@ -46,13 +62,13 @@ const { variant = 'card' } = Astro.props;
     <div
       class="inline-flex max-w-full items-center gap-2 rounded-full border border-amber-accent/22 bg-charcoal-card/90 px-4 py-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-sm"
       role="status"
-      aria-label={`Status ${hero.statusPill}`}
+      aria-label={`${hero.statusLabel} ${hero.statusPill}`}
     >
       <StatusDot color="blue" />
-      <span class="shrink-0 font-mono text-[11px] font-medium tracking-[0.04em] text-muted-dim">
-        Status
+      <span class="shrink-0 font-mono text-xs font-medium tracking-[0.04em] text-muted">
+        {hero.statusLabel}
       </span>
-      <span class="min-w-0 font-mono text-[11px] leading-none text-off-white/88 md:text-xs">
+      <span class="min-w-0 font-mono text-xs leading-none text-off-white md:text-sm">
         {hero.statusPill}
       </span>
     </div>

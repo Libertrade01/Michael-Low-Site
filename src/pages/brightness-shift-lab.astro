@@ -1,0 +1,173 @@
+---
+import Layout from '../components/Layout.astro';
+import { hero } from '../config/site';
+---
+
+<Layout
+  title="Brightness shift lab — Michael Low"
+  description="Major visual direction shifts including brighter homepage options."
+>
+  <section class="border-b border-border py-12 md:py-16">
+    <div class="container-main">
+      <p class="section-label">Preview board</p>
+      <h1 class="mt-4 font-sans text-4xl font-medium tracking-tight text-off-white md:text-5xl">
+        Big visual shifts (not subtle tweaks)
+      </h1>
+      <p class="mt-4 max-w-3xl text-base leading-relaxed text-muted">
+        These are intentionally different from the live site. Use this to choose whether you want
+        dark-premium, balanced, or much brighter pages.
+      </p>
+      <div class="mt-6 flex flex-wrap gap-4 text-xs">
+        <a href="/" class="link-arrow">← Live homepage</a>
+        <a href="/inner-pages-friendly-lab" class="link-arrow">Inner pages lab</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-b border-border py-14 md:py-16">
+    <div class="container-main">
+      <p class="font-mono text-[10px] uppercase tracking-[0.16em] text-amber-accent">Direction 1</p>
+      <h2 class="mt-2 font-serif text-2xl text-off-white">Balanced contrast (recommended)</h2>
+      <p class="mt-2 max-w-2xl text-sm text-muted">
+        Keep a dark hero, but lift readability and warmth site-wide with brighter section surfaces.
+      </p>
+
+      <div class="mt-8 overflow-hidden rounded-3xl border border-border">
+        <div class="bg-charcoal px-6 py-10 md:px-10">
+          <div class="grid gap-8 lg:grid-cols-2 lg:items-center">
+            <div>
+              <p class="section-label">{hero.role}</p>
+              <h3 class="mt-5 font-sans text-4xl font-medium tracking-tight text-off-white md:text-5xl">
+                {hero.title}
+              </h3>
+              <p class="mt-5 max-w-xl text-base leading-relaxed text-off-white/75">{hero.intro}</p>
+              <div class="mt-6 flex flex-wrap items-center gap-4">
+                <a href="/contact" class="btn-primary">Book a call</a>
+                <a href="/work" class="link-arrow">See how I work <span aria-hidden="true">→</span></a>
+              </div>
+            </div>
+            <div class="rounded-2xl border border-border bg-charcoal-card/60 p-5 font-mono text-sm">
+              <p class="text-off-white/80"><span class="text-amber-accent">inputs</span>.organise()</p>
+              <p class="mt-2 text-off-white/80"><span class="text-amber-accent">repeat_tasks</span>.automate()</p>
+              <p class="mt-2 text-off-white/85"><span class="text-emerald-400">→</span> clean_system.ready()</p>
+            </div>
+          </div>
+        </div>
+        <div class="border-t border-border bg-[#161a22] px-6 py-8 md:px-10">
+          <div class="grid gap-4 md:grid-cols-3">
+            <div class="rounded-xl border border-white/10 bg-[#1c222d] p-4">
+              <p class="font-medium text-off-white">Clearer sections</p>
+              <p class="mt-2 text-sm text-[#b3bdcd]">Easier scanning with brighter card surfaces.</p>
+            </div>
+            <div class="rounded-xl border border-white/10 bg-[#1c222d] p-4">
+              <p class="font-medium text-off-white">Softer text hierarchy</p>
+              <p class="mt-2 text-sm text-[#b3bdcd]">Less monochrome + better body contrast.</p>
+            </div>
+            <div class="rounded-xl border border-white/10 bg-[#1c222d] p-4">
+              <p class="font-medium text-off-white">Still premium</p>
+              <p class="mt-2 text-sm text-[#b3bdcd]">Keeps your identity without feeling heavy.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-b border-border py-14 md:py-16">
+    <div class="container-main">
+      <p class="font-mono text-[10px] uppercase tracking-[0.16em] text-amber-accent">Direction 2</p>
+      <h2 class="mt-2 font-serif text-2xl text-off-white">Soft-light service brand</h2>
+      <p class="mt-2 max-w-2xl text-sm text-muted">
+        Brighter homepage and inner pages. More inviting for non-technical visitors, less “developer” feel.
+      </p>
+
+      <div class="mt-8 overflow-hidden rounded-3xl border border-[#d8d6cf]">
+        <div class="bg-[#f6f4ef] px-6 py-10 text-[#171a21] md:px-10">
+          <div class="grid gap-8 lg:grid-cols-2 lg:items-center">
+            <div>
+              <p class="font-mono text-[11px] uppercase tracking-[0.14em] text-[#6a7283]">{hero.role}</p>
+              <h3 class="mt-4 text-4xl font-semibold tracking-tight md:text-5xl">
+                Make AI useful, not overwhelming.
+              </h3>
+              <p class="mt-4 max-w-xl text-base leading-relaxed text-[#4f596c]">
+                I help small teams organise scattered information, automate repeated tasks, and build practical systems they can actually run.
+              </p>
+              <div class="mt-6 flex flex-wrap items-center gap-4">
+                <a
+                  href="/contact"
+                  class="inline-flex items-center gap-2 rounded-md bg-[#1f2937] px-5 py-2.5 text-sm font-medium text-white"
+                >
+                  Book a call
+                </a>
+                <a href="/work" class="inline-flex items-center gap-2 text-sm font-medium text-[#374151] hover:text-[#111827]">
+                  See how I work <span aria-hidden="true">→</span>
+                </a>
+              </div>
+            </div>
+            <div class="rounded-2xl border border-[#d8d6cf] bg-white p-5 font-mono text-sm text-[#1f2937]">
+              <p>inputs.organise()</p>
+              <p class="mt-2">repeat_tasks.automate()</p>
+              <p class="mt-2">system.build()</p>
+              <p class="mt-2 text-emerald-700">→ clean_system.ready()</p>
+            </div>
+          </div>
+        </div>
+        <div class="border-t border-[#d8d6cf] bg-white px-6 py-8 md:px-10">
+          <p class="max-w-2xl text-sm text-[#4b5563]">
+            This direction feels like a modern service studio site: cleaner, brighter, more approachable for first-time AI buyers.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding">
+    <div class="container-main">
+      <p class="font-mono text-[10px] uppercase tracking-[0.16em] text-amber-accent">Direction 3</p>
+      <h2 class="mt-2 font-serif text-2xl text-off-white">Hybrid split: dark hero + bright inner pages</h2>
+      <p class="mt-2 max-w-2xl text-sm text-muted">
+        Hero keeps your current mood. Everything after feels brighter and easier to read.
+      </p>
+
+      <div class="mt-8 overflow-hidden rounded-3xl border border-border">
+        <div class="bg-charcoal px-6 py-10 md:px-10">
+          <h3 class="font-sans text-4xl font-medium tracking-tight text-off-white md:text-5xl">
+            Homepage stays dark
+          </h3>
+          <p class="mt-4 max-w-2xl text-base text-off-white/75">
+            Keep the exact hero personality you already like.
+          </p>
+        </div>
+        <div class="border-t border-border bg-[#f8f7f3] px-6 py-10 text-[#1f2937] md:px-10">
+          <h4 class="text-3xl font-semibold tracking-tight">Inner pages get brighter</h4>
+          <div class="mt-6 grid gap-4 md:grid-cols-2">
+            <div class="rounded-xl border border-[#dedcd5] bg-white p-5">
+              <p class="font-medium">Work page</p>
+              <p class="mt-2 text-sm text-[#6b7280]">Problem-first blocks, clear pricing/process language, higher contrast text.</p>
+            </div>
+            <div class="rounded-xl border border-[#dedcd5] bg-white p-5">
+              <p class="font-medium">Contact page</p>
+              <p class="mt-2 text-sm text-[#6b7280]">Simple intake options and stronger reassurance copy.</p>
+            </div>
+          </div>
+          <div class="mt-7 flex flex-wrap items-center gap-4">
+            <a
+              href="/work"
+              class="inline-flex items-center gap-2 rounded-md bg-[#1f2937] px-5 py-2.5 text-sm font-medium text-white"
+            >
+              Preview this direction
+            </a>
+            <span class="text-sm text-[#6b7280]">Best if you want trust + readability.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-10 rounded-2xl border border-amber-accent/25 bg-charcoal-card/45 p-6">
+        <p class="font-mono text-[10px] uppercase tracking-[0.16em] text-amber-accent">Recommendation</p>
+        <p class="mt-3 text-base leading-relaxed text-off-white/90">
+          If the site feels too dark right now, pick <strong>Direction 3</strong> first. It keeps your hero brand signal but makes the pages where people decide to hire you much friendlier.
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>

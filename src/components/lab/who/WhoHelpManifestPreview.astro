@@ -1,0 +1,25 @@
+---
+import { homeHelpAreas } from '../../../config/site';
+
+interface Props {
+  maxItems?: number;
+}
+
+const { maxItems = 3 } = Astro.props;
+const areas = homeHelpAreas.slice(0, maxItems);
+const pad = (i: number) => String(i + 1).padStart(2, '0');
+---
+
+<ul class="help-manifest-list" role="list">
+  {
+    areas.map((area, i) => (
+      <li class="help-manifest-list__item">
+        <div class="help-manifest-list__head">
+          <span class="help-manifest-list__index font-mono">[{pad(i)}]</span>
+          <h3 class="help-manifest-list__title">{area.title}</h3>
+        </div>
+        <p class="help-manifest-list__desc">{area.description}</p>
+      </li>
+    ))
+  }
+</ul>

@@ -1,0 +1,143 @@
+---
+import Layout from '../components/Layout.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+---
+
+<Layout
+  title="Inner pages friendly preview — Michael Low"
+  description="Preview of a warmer, more readable style system for inner pages while keeping the homepage hero vibe."
+>
+  <section class="border-b border-border py-12 md:py-16">
+    <div class="container-main">
+      <SectionHeader
+        label="Preview board"
+        title="Friendlier inner pages (homepage unchanged)"
+        subtitle="This is a visual sandbox for Work, Contact, About, and Projects. Your live pages are untouched."
+      />
+      <div class="flex flex-wrap gap-4 text-xs">
+        <a href="/" class="link-arrow">← Homepage</a>
+        <a href="/site-style-options-lab" class="link-arrow">Style options lab</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-b border-border bg-charcoal-light/20 py-14 md:py-16">
+    <div class="container-main">
+      <p class="font-mono text-[10px] uppercase tracking-[0.16em] text-amber-accent">Style system</p>
+      <h2 class="mt-2 font-serif text-2xl text-off-white">Applied to all inner pages</h2>
+      <div class="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+        <div class="rounded-xl border border-border bg-charcoal-card/70 p-4">
+          <p class="font-medium text-off-white">Softer surfaces</p>
+          <p class="mt-2 text-sm text-muted">More card/elevated backgrounds, less flat pure-black fields.</p>
+        </div>
+        <div class="rounded-xl border border-border bg-charcoal-card/70 p-4">
+          <p class="font-medium text-off-white">Higher readability</p>
+          <p class="mt-2 text-sm text-muted">Less mono for body copy, larger text, and more line spacing.</p>
+        </div>
+        <div class="rounded-xl border border-border bg-charcoal-card/70 p-4">
+          <p class="font-medium text-off-white">Clear structure</p>
+          <p class="mt-2 text-sm text-muted">Alternating sections and stronger subhead hierarchy.</p>
+        </div>
+        <div class="rounded-xl border border-border bg-charcoal-card/70 p-4">
+          <p class="font-medium text-off-white">Friendly CTA rhythm</p>
+          <p class="mt-2 text-sm text-muted">One primary action per section, sentence-case supporting links.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-b border-border py-14 md:py-16">
+    <div class="container-main">
+      <p class="font-mono text-[10px] uppercase tracking-[0.16em] text-amber-accent">Work page preview</p>
+      <h2 class="mt-2 font-serif text-2xl text-off-white">Simpler, guided, problem-first layout</h2>
+      <div class="mt-8 rounded-3xl border border-border bg-charcoal-card/45 p-6 md:p-10">
+        <h3 class="font-sans text-3xl font-medium tracking-tight text-off-white md:text-4xl">What I can help with</h3>
+        <p class="mt-4 max-w-3xl text-base leading-relaxed text-muted">
+          If AI feels confusing or overwhelming, I help you choose what to automate and what to keep simple.
+        </p>
+        <div class="mt-8 grid gap-4 md:grid-cols-2">
+          <div class="rounded-xl border border-border bg-charcoal/55 p-5">
+            <p class="text-lg font-medium text-off-white">Too much manual work</p>
+            <p class="mt-2 text-sm text-muted">We automate repeat tasks first and keep the process easy to run.</p>
+          </div>
+          <div class="rounded-xl border border-border bg-charcoal/55 p-5">
+            <p class="text-lg font-medium text-off-white">Scattered notes and docs</p>
+            <p class="mt-2 text-sm text-muted">We create one clean system for capture, review, and reuse.</p>
+          </div>
+        </div>
+        <div class="mt-7 flex flex-wrap items-center gap-4">
+          <a href="/contact" class="btn-primary">Book a call</a>
+          <a href="/work" class="link-arrow">See full work page <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-b border-border bg-charcoal-light/20 py-14 md:py-16">
+    <div class="container-main">
+      <p class="font-mono text-[10px] uppercase tracking-[0.16em] text-amber-accent">Contact page preview</p>
+      <h2 class="mt-2 font-serif text-2xl text-off-white">Lower friction, clearer first step</h2>
+      <div class="mt-8 rounded-3xl border border-border bg-charcoal-card/45 p-6 md:p-10">
+        <div class="grid gap-5 md:grid-cols-2">
+          <div class="rounded-xl border border-border bg-charcoal/60 p-5">
+            <p class="font-medium text-off-white">Start here</p>
+            <p class="mt-2 text-sm text-muted">Tell me your current workflow pain and what you want to improve.</p>
+            <a href="/contact" class="btn-primary mt-5">Book a call</a>
+          </div>
+          <div class="rounded-xl border border-border bg-charcoal/60 p-5">
+            <p class="font-medium text-off-white">Prefer email first?</p>
+            <p class="mt-2 text-sm text-muted">Share your use case and team size at hello@michaellow.dev</p>
+            <a href="/contact" class="link-arrow mt-5">Open contact page <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-b border-border py-14 md:py-16">
+    <div class="container-main">
+      <p class="font-mono text-[10px] uppercase tracking-[0.16em] text-amber-accent">About page preview</p>
+      <h2 class="mt-2 font-serif text-2xl text-off-white">More human story, less technical blocks</h2>
+      <article class="mt-8 rounded-3xl border border-border bg-charcoal-card/45 p-6 md:p-10">
+        <h3 class="font-sans text-3xl font-medium tracking-tight text-off-white md:text-4xl">
+          I build practical systems for messy real-world work
+        </h3>
+        <p class="mt-5 max-w-3xl text-base leading-relaxed text-muted">
+          I work with small teams and operators who are overwhelmed by scattered information and repeated tasks.
+          We focus on simple systems that save time and make daily work clearer.
+        </p>
+        <p class="mt-4 max-w-3xl text-base leading-relaxed text-muted">
+          My process is straightforward: map the current workflow, reduce friction, automate where it helps, and
+          document so the system stays usable.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section-padding">
+    <div class="container-main">
+      <p class="font-mono text-[10px] uppercase tracking-[0.16em] text-amber-accent">Projects pages preview</p>
+      <h2 class="mt-2 font-serif text-2xl text-off-white">Case studies that are easier to skim</h2>
+      <div class="mt-8 grid gap-4 lg:grid-cols-3">
+        <div class="rounded-xl border border-border bg-charcoal-card/55 p-5">
+          <p class="text-sm text-muted">Problem</p>
+          <p class="mt-2 font-medium text-off-white">What was messy before</p>
+          <p class="mt-2 text-sm text-muted">Too many disconnected tools and manual steps.</p>
+        </div>
+        <div class="rounded-xl border border-border bg-charcoal-card/55 p-5">
+          <p class="text-sm text-muted">System</p>
+          <p class="mt-2 font-medium text-off-white">What I implemented</p>
+          <p class="mt-2 text-sm text-muted">A practical workflow with clear capture, review, and output loops.</p>
+        </div>
+        <div class="rounded-xl border border-border bg-charcoal-card/55 p-5">
+          <p class="text-sm text-muted">Outcome</p>
+          <p class="mt-2 font-medium text-off-white">What changed in practice</p>
+          <p class="mt-2 text-sm text-muted">Less admin, faster decisions, and repeatable weekly rhythm.</p>
+        </div>
+      </div>
+      <p class="mt-8 text-sm text-muted">
+        If this direction feels right, I can apply it first to <code>/work</code> and <code>/contact</code>, then roll it to <code>/about</code> and <code>/projects</code>.
+      </p>
+    </div>
+  </section>
+</Layout>

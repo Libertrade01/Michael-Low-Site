@@ -1,0 +1,32 @@
+---
+import { hero } from '../../config/site';
+import HeroActionBlock from '../HeroActionBlock.astro';
+import TerminalPanel from '../TerminalPanel.astro';
+
+interface Props {
+  layout: 'separate' | 'panel' | 'quiet' | 'unified';
+}
+
+const { layout } = Astro.props;
+---
+
+<div
+  class="overflow-hidden rounded-2xl border border-border/80 bg-charcoal p-6 md:p-10"
+  style="background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(var(--accent-rgb),0.04), transparent);"
+>
+  <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-12">
+    <div class="max-w-xl">
+      <p class="section-label">{hero.role}</p>
+      <h3 class="mt-6 font-sans text-3xl font-medium leading-[1.08] tracking-tight text-off-white md:text-4xl">
+        {hero.title}
+      </h3>
+      <p class="mt-5 text-base leading-relaxed text-muted md:text-lg">{hero.intro}</p>
+      <div class="mt-10 md:mt-12">
+        <HeroActionBlock layout={layout} />
+      </div>
+    </div>
+    <div class="w-full">
+      <TerminalPanel large filename={hero.terminal.filename} />
+    </div>
+  </div>
+</div>

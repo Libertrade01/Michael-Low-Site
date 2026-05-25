@@ -1,0 +1,19 @@
+---
+import { homeHelpAreas } from '../../../config/site';
+
+const pad = (i: number) => String(i + 1).padStart(2, '0');
+---
+
+<ul class="help-lab-e" role="list">
+  {
+    homeHelpAreas.map((area, i) => (
+      <li class:list={['help-lab-e__block', i % 2 === 1 && 'help-lab-e__block--alt']}>
+        <h3 class="help-lab-e__title">
+          <span class="help-lab-e__prefix font-mono">{pad(i)} —</span>
+          {area.title}
+        </h3>
+        <p class="help-lab-e__desc">{area.description}</p>
+      </li>
+    ))
+  }
+</ul>

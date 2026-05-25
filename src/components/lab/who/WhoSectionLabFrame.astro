@@ -1,0 +1,20 @@
+---
+interface Props {
+  option: string;
+  title: string;
+  note: string;
+}
+
+const { option, title, note } = Astro.props;
+---
+
+<article class="who-lab-frame">
+  <header class="who-lab-frame__meta">
+    <p class="who-lab-frame__label">{option}</p>
+    <h2 class="who-lab-frame__title">{title}</h2>
+    <p class="who-lab-frame__note">{note}</p>
+  </header>
+  <div class="who-lab-frame__preview">
+    <slot />
+  </div>
+</article>

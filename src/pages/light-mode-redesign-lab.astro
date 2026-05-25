@@ -1,0 +1,198 @@
+---
+import Layout from '../components/Layout.astro';
+
+const palette = {
+  page: '#FEFEFA',
+  surface: '#FFFFFF',
+  surfaceSoft: '#F7F4EE',
+  text: '#1F2430',
+  textMuted: '#616B7C',
+  border: '#DDD7CC',
+  accent: '#9A7B4F',
+  accentDark: '#6E5331',
+};
+---
+
+<Layout
+  title="Light mode redesign lab — Michael Low"
+  description="Preview of a full-site light mode redesign with off-white background."
+>
+  <section class="border-b border-border py-12 md:py-16">
+    <div class="container-main">
+      <p class="section-label">Preview board</p>
+      <h1 class="mt-4 font-sans text-4xl font-medium tracking-tight text-off-white md:text-5xl">
+        Full light-mode redesign preview
+      </h1>
+      <p class="mt-4 max-w-3xl text-base leading-relaxed text-muted">
+        This is a visual prototype only. The live site is unchanged. These examples show what every
+        page would need to look like with an off-white base.
+      </p>
+      <div class="mt-6 flex flex-wrap gap-4 text-xs">
+        <a href="/" class="link-arrow">← Live site</a>
+        <a href="/brightness-shift-lab" class="link-arrow">Brightness lab</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding">
+    <div class="container-main">
+      <p class="font-mono text-[10px] uppercase tracking-[0.16em] text-amber-accent">Base palette</p>
+      <div class="mt-5 grid gap-3 md:grid-cols-3 lg:grid-cols-7">
+        <div class="rounded-lg border p-3 text-xs" style={`background:${palette.page}; border-color:${palette.border}; color:${palette.text};`}>
+          <p class="font-medium">Page</p>
+          <p class="mt-1 font-mono">{palette.page}</p>
+        </div>
+        <div class="rounded-lg border p-3 text-xs" style={`background:${palette.surface}; border-color:${palette.border}; color:${palette.text};`}>
+          <p class="font-medium">Surface</p>
+          <p class="mt-1 font-mono">{palette.surface}</p>
+        </div>
+        <div class="rounded-lg border p-3 text-xs" style={`background:${palette.surfaceSoft}; border-color:${palette.border}; color:${palette.text};`}>
+          <p class="font-medium">Soft Surface</p>
+          <p class="mt-1 font-mono">{palette.surfaceSoft}</p>
+        </div>
+        <div class="rounded-lg border p-3 text-xs" style={`background:${palette.text}; border-color:${palette.text}; color:#fff;`}>
+          <p class="font-medium">Primary Text</p>
+          <p class="mt-1 font-mono">{palette.text}</p>
+        </div>
+        <div class="rounded-lg border p-3 text-xs" style={`background:${palette.textMuted}; border-color:${palette.textMuted}; color:#fff;`}>
+          <p class="font-medium">Muted Text</p>
+          <p class="mt-1 font-mono">{palette.textMuted}</p>
+        </div>
+        <div class="rounded-lg border p-3 text-xs" style={`background:${palette.accent}; border-color:${palette.accent}; color:#fff;`}>
+          <p class="font-medium">Accent</p>
+          <p class="mt-1 font-mono">{palette.accent}</p>
+        </div>
+        <div class="rounded-lg border p-3 text-xs" style={`background:${palette.accentDark}; border-color:${palette.accentDark}; color:#fff;`}>
+          <p class="font-medium">Accent Dark</p>
+          <p class="mt-1 font-mono">{palette.accentDark}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-t border-border py-14 md:py-16">
+    <div class="container-main">
+      <p class="font-mono text-[10px] uppercase tracking-[0.16em] text-amber-accent">Homepage in light mode</p>
+      <div class="mt-6 overflow-hidden rounded-3xl border shadow-[0_10px_35px_rgba(0,0,0,0.08)]" style={`background:${palette.page}; border-color:${palette.border};`}>
+        <div class="border-b px-6 py-4 text-sm" style={`border-color:${palette.border}; color:${palette.textMuted};`}>
+          Michael Low · Projects · About · Work · Build Log · Contact
+        </div>
+        <div class="grid gap-10 px-6 py-10 lg:grid-cols-2 lg:items-center lg:px-10" style={`color:${palette.text};`}>
+          <div>
+            <p class="font-mono text-[11px] uppercase tracking-[0.14em]" style={`color:${palette.textMuted};`}>Practical AI implementation</p>
+            <h2 class="mt-4 text-4xl font-semibold tracking-tight md:text-5xl">Make AI useful, not overwhelming.</h2>
+            <p class="mt-4 max-w-xl text-base leading-relaxed" style={`color:${palette.textMuted};`}>
+              I help small teams organise scattered information, automate repeated tasks, and build practical systems that fit how they already operate.
+            </p>
+            <div class="mt-7 flex flex-wrap items-center gap-4">
+              <a class="inline-flex items-center gap-2 rounded-md px-5 py-2.5 text-sm font-medium text-white" style={`background:${palette.accentDark};`} href="/contact">Book a call</a>
+              <a class="inline-flex items-center gap-2 text-sm font-medium" style={`color:${palette.text};`} href="/work">
+                See how I work <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </div>
+          <div class="rounded-2xl border p-5 font-mono text-sm" style={`background:${palette.surface}; border-color:${palette.border}; color:${palette.text};`}>
+            <p>inputs.organise()</p>
+            <p class="mt-2">repeat_tasks.automate()</p>
+            <p class="mt-2">system.build()</p>
+            <p class="mt-2" style={`color:${palette.accentDark};`}>→ clean_system.ready()</p>
+          </div>
+        </div>
+        <div class="border-t px-6 py-8 lg:px-10" style={`background:${palette.surface}; border-color:${palette.border};`}>
+          <h3 class="text-2xl font-semibold tracking-tight" style={`color:${palette.text};`}>What I help with</h3>
+          <div class="mt-5 grid gap-4 md:grid-cols-2">
+            <div class="rounded-xl border p-4" style={`background:${palette.page}; border-color:${palette.border};`}>
+              <p class="font-medium" style={`color:${palette.text};`}>Manual admin loops</p>
+              <p class="mt-2 text-sm" style={`color:${palette.textMuted};`}>Automate repeated tasks without disrupting your operations.</p>
+            </div>
+            <div class="rounded-xl border p-4" style={`background:${palette.page}; border-color:${palette.border};`}>
+              <p class="font-medium" style={`color:${palette.text};`}>Scattered knowledge</p>
+              <p class="mt-2 text-sm" style={`color:${palette.textMuted};`}>Structure notes, docs, and research into one usable system.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-t border-border py-14 md:py-16">
+    <div class="container-main">
+      <p class="font-mono text-[10px] uppercase tracking-[0.16em] text-amber-accent">Work + Contact page shifts</p>
+      <div class="mt-6 grid gap-6 lg:grid-cols-2">
+        <div class="overflow-hidden rounded-2xl border shadow-[0_8px_24px_rgba(0,0,0,0.08)]" style={`background:${palette.page}; border-color:${palette.border};`}>
+          <div class="border-b px-6 py-5" style={`border-color:${palette.border};`}>
+            <p class="font-mono text-[11px] uppercase tracking-[0.14em]" style={`color:${palette.textMuted};`}>Work page</p>
+            <h3 class="mt-2 text-3xl font-semibold tracking-tight" style={`color:${palette.text};`}>What I can help with</h3>
+          </div>
+          <div class="space-y-4 px-6 py-6">
+            <div class="rounded-xl border p-4" style={`background:${palette.surface}; border-color:${palette.border};`}>
+              <p class="font-medium" style={`color:${palette.text};`}>You are a good fit if...</p>
+              <ul class="mt-2 space-y-1 text-sm" style={`color:${palette.textMuted};`}>
+                <li>- Your team repeats manual processes weekly</li>
+                <li>- Notes and workflows live across too many tools</li>
+                <li>- You want practical AI, not experiments</li>
+              </ul>
+            </div>
+            <a class="inline-flex items-center gap-2 rounded-md px-5 py-2.5 text-sm font-medium text-white" style={`background:${palette.accentDark};`} href="/contact">
+              Book a call
+            </a>
+          </div>
+        </div>
+        <div class="overflow-hidden rounded-2xl border shadow-[0_8px_24px_rgba(0,0,0,0.08)]" style={`background:${palette.page}; border-color:${palette.border};`}>
+          <div class="border-b px-6 py-5" style={`border-color:${palette.border};`}>
+            <p class="font-mono text-[11px] uppercase tracking-[0.14em]" style={`color:${palette.textMuted};`}>Contact page</p>
+            <h3 class="mt-2 text-3xl font-semibold tracking-tight" style={`color:${palette.text};`}>Start a workflow conversation</h3>
+          </div>
+          <div class="space-y-4 px-6 py-6">
+            <div class="rounded-xl border p-4" style={`background:${palette.surface}; border-color:${palette.border};`}>
+              <p class="text-sm leading-relaxed" style={`color:${palette.textMuted};`}>
+                Share what feels messy today, what you want to improve, and how your team currently works.
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-3">
+              <a class="inline-flex items-center gap-2 rounded-md px-5 py-2.5 text-sm font-medium text-white" style={`background:${palette.accentDark};`} href="/contact">
+                Book a call
+              </a>
+              <a class="inline-flex items-center gap-2 text-sm font-medium" style={`color:${palette.text};`} href="/contact">
+                Email first <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding">
+    <div class="container-main">
+      <p class="font-mono text-[10px] uppercase tracking-[0.16em] text-amber-accent">About + Projects shifts</p>
+      <div class="mt-6 grid gap-6 lg:grid-cols-2">
+        <article class="rounded-2xl border p-6 shadow-[0_8px_24px_rgba(0,0,0,0.08)]" style={`background:${palette.page}; border-color:${palette.border};`}>
+          <p class="font-mono text-[11px] uppercase tracking-[0.14em]" style={`color:${palette.textMuted};`}>About page</p>
+          <h3 class="mt-3 text-3xl font-semibold tracking-tight" style={`color:${palette.text};`}>More human, less technical framing</h3>
+          <p class="mt-4 text-base leading-relaxed" style={`color:${palette.textMuted};`}>
+            The story section becomes easier to read with brighter backgrounds, larger text, and fewer dense technical labels.
+          </p>
+        </article>
+        <article class="rounded-2xl border p-6 shadow-[0_8px_24px_rgba(0,0,0,0.08)]" style={`background:${palette.page}; border-color:${palette.border};`}>
+          <p class="font-mono text-[11px] uppercase tracking-[0.14em]" style={`color:${palette.textMuted};`}>Projects pages</p>
+          <h3 class="mt-3 text-3xl font-semibold tracking-tight" style={`color:${palette.text};`}>Cleaner case study hierarchy</h3>
+          <p class="mt-4 text-base leading-relaxed" style={`color:${palette.textMuted};`}>
+            Move to structured Problem → System → Outcome cards on lighter surfaces for faster scanning by non-technical readers.
+          </p>
+        </article>
+      </div>
+
+      <div class="mt-8 rounded-2xl border p-6" style={`background:${palette.surface}; border-color:${palette.border};`}>
+        <p class="font-mono text-[10px] uppercase tracking-[0.16em]" style={`color:${palette.textMuted};`}>What would change globally</p>
+        <ul class="mt-3 space-y-2 text-sm" style={`color:${palette.textMuted};`}>
+          <li>- Page backgrounds switch from dark gradients to off-white foundation.</li>
+          <li>- Body copy uses darker neutral text for contrast and readability.</li>
+          <li>- Cards get subtle borders and soft shadows instead of glow-heavy surfaces.</li>
+          <li>- Accent color becomes a focused CTA color instead of broad UI tinting.</li>
+          <li>- Mono font reserved for tiny labels, not paragraph content.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</Layout>

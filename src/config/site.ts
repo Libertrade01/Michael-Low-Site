@@ -1,32 +1,22 @@
 /**
  * Accent color theme — change this one value to restyle the site.
- *
- * Options:
- * - gold   — warm, editorial, premium operator
- * - cyan   — terminal / systems dashboard
- * - silver — silver / ice, minimal (default)
- * - warm   — warm neutral cream (see design-lab)
- * - champagne — muted champagne (see design-lab)
- * - blue   — clean tech, confident SaaS
- * - violet — modern AI, subtle creative
  */
-export const accentTheme = 'warm' as const;
+export const accentTheme = 'linen' as const;
 
-export type AccentTheme = 'gold' | 'cyan' | 'silver' | 'warm' | 'champagne' | 'blue' | 'violet';
+export type AccentTheme = 'gold' | 'cyan' | 'silver' | 'warm' | 'champagne' | 'blue' | 'violet' | 'linen';
 
 export const site = {
   name: 'Michael Low',
-  title: 'Michael Low — AI Workflow Builder & Systems Operator',
+  title: 'Michael Low — Practical AI implementation',
   description:
-    'I build practical AI workflows and operating systems for small teams, creators, and information-heavy work.',
+    'Practical AI systems for messy business workflows. I help small teams turn scattered notes, manual tasks, and repeated admin into systems they can actually use.',
   tagline: 'Messy input in. Clean operating system out.',
   url: 'https://michaellow.dev',
   email: 'hello@michaellow.dev',
   github: 'https://github.com/Libertrade01',
   linkedin: 'https://linkedin.com/in/michaellow',
   availability:
-    'Open to remote roles and select workflow projects for small teams, creators, and operators with information-heavy work.',
-  /** Drop your photo at public/images/headshot.jpg (or .webp) — see README */
+    'Available for selected AI workflow projects, implementation support, and embedded remote roles with small teams.',
   headshot: '/images/headshot.png',
   headshotFallback: '/images/headshot-placeholder.svg',
 } as const;
@@ -36,7 +26,7 @@ export const about = {
     'I build AI workflows and systems for people who have too much input and not enough structure.',
     'I like messy problems — half-broken processes, too many tabs, scattered notes, and the sense there must be a better way. That is usually where I come in.',
     'I design tools, automations, dashboards, journals, research pipelines, and content systems that turn chaos into something usable on a normal Tuesday.',
-    'My work has covered trading review systems, mobile PWAs, CMS-backed websites, voice journals, and personal operating systems. I build systems the way some people build kitchens: for function, not applause.',
+    'My work has covered mobile PWAs, CMS-backed websites, content pipelines, voice journals, and internal operating systems. I build systems the way some people build kitchens: for function, not applause.',
   ],
   traits: [
     { label: 'High agency', detail: 'I explore, prototype, ship, and refine — without waiting for perfect specs.' },
@@ -49,28 +39,142 @@ export const about = {
 } as const;
 
 export const hero = {
-  role: 'AI Workflow Builder & Systems Operator',
-  /** Line 1 — clean sans */
-  title: 'Practical AI systems',
-  /** Line 2 — only `messyWord` wobbles. Alt: before: 'built from ', after: ' inputs.' */
+  role: 'Practical AI implementation',
+  title: 'Make AI useful, not overwhelming.',
+  intro:
+    'I help small teams organise scattered information, automate repeated tasks and build practical systems that fit how they already operate.',
   punchline: {
     before: 'Built from ',
     messyWord: 'messy',
     after: ' inputs.',
   },
-  /** Terminal window title — personal / punchy options in comment */
   terminal: {
     filename: 'workflow.ts',
+    lines: [
+      { subject: 'inputs', method: 'organise' },
+      { subject: 'repeat_tasks', method: 'automate' },
+      { subject: 'systems', method: 'build' },
+      { subject: 'clean_system', method: 'ready', arrow: true },
+    ],
   },
   tagline: 'Messy input in. Clean operating system out.',
-  /** Homepage pill — single-line bar variant */
-  statusPill: 'Open to remote roles & Select workflow projects' as const,
-  /** Brand-lab chips variant only */
+  statusLabel: 'Available:',
+  statusPill: 'For selected workflow builds' as const,
   statusChips: [
-    'Open to remote roles',
+    'For selected workflow builds',
     'Select workflow projects',
     'AI systems · dashboards · automation',
   ] as const,
+  cta: {
+    label: 'What I can help with',
+    href: '/#help',
+  },
+} as const;
+
+/** Homepage — help section header */
+export const homeHelpLabel = 'WAYS TO WORK TOGETHER' as const;
+export const homeHelpTitle = 'Not sure what you need?' as const;
+export const homeHelpIntro =
+  'Most projects start with an audit or a focused build sprint. From there, we can turn the workflow into a system your team can actually run.' as const;
+
+export const homeHelpCta = {
+  label: 'Start your workflow audit',
+  href: '/contact',
+} as const;
+
+export const homeHelpAreas = [
+  {
+    title: 'AI Workflow Audit',
+    description:
+      'Map your current process, identify where AI and automation actually help, and leave with a clear implementation plan.',
+  },
+  {
+    title: 'Workflow Build Sprint',
+    description:
+      'Design and build a working version of one workflow: content, research, admin, reporting, or review.',
+  },
+  {
+    title: 'Knowledge Base / SOP System',
+    description:
+      'Turn scattered docs, notes, and processes into something searchable, usable, and maintainable.',
+  },
+  {
+    title: 'Small Internal Tool',
+    description:
+      'A lightweight dashboard, portal, form, or app for a workflow that normal software does not quite fit.',
+  },
+  {
+    title: 'Embedded AI Implementation Support',
+    description:
+      'Ongoing help inside a small team to build, test, document, and improve practical AI systems.',
+  },
+] as const;
+
+/** Homepage — who this is for (preview lab + future placement) */
+export const homeWhoLabel = 'WHO THIS IS FOR' as const;
+export const homeWhoTitle = 'Who this is for' as const;
+export const homeWhoIntro =
+  'Small teams, creators, founders, and solo professionals who are buried in information-heavy work.' as const;
+export const homeWhoPains = [
+  'Too many tools that do not connect',
+  'Too many tabs, docs, and half-finished systems',
+  'Repeated manual work eating up attention',
+  'Scattered knowledge that is hard to reuse',
+  'No clear process for capturing, reviewing, or handing off information',
+] as const;
+
+export const workPage = {
+  intro: 'I help small teams turn messy work into practical AI-assisted systems.',
+  whoBestFor: {
+    lead: 'Small teams, creators, founders, and solo professionals who are buried in information-heavy work.',
+    bullets: [
+      'Too many tools',
+      'Too many tabs',
+      'Repeated manual processes',
+      'Scattered notes and documents',
+      'No clean system for capturing, reviewing, or reusing information',
+    ],
+    close: 'I help turn that into a workflow your team can actually run.',
+  },
+  bestFitIf: [
+    'You have repeated manual work',
+    'Your notes, content, and research are scattered',
+    'You know AI could help, but do not know what to implement',
+    'You need someone who can design, build, document, and hand off the system',
+  ],
+  offerings: [
+    {
+      title: 'AI Workflow Audit',
+      description:
+        'Map your current process, identify where AI and automation actually help, and leave with a clear implementation plan.',
+    },
+    {
+      title: 'Workflow Build Sprint',
+      description:
+        'Design and build a working version of one workflow: content, research, admin, reporting, or review.',
+    },
+    {
+      title: 'Knowledge Base / SOP System',
+      description:
+        'Turn scattered docs, notes, and processes into something searchable, usable, and maintainable.',
+    },
+    {
+      title: 'Small Internal Tool',
+      description:
+        'A lightweight dashboard, portal, form, or app for a workflow that normal software does not quite fit.',
+    },
+    {
+      title: 'Embedded AI Implementation Support',
+      description:
+        'Ongoing help inside a small team to build, test, document, and improve practical AI systems.',
+    },
+  ],
+  whatYouGet: [
+    'Working system',
+    'Documentation',
+    'Training / Loom walkthrough',
+    'Clear next steps',
+  ],
 } as const;
 
 export const featuredProjectSlugs = [
@@ -97,8 +201,8 @@ export const workflowPattern = {
       output: 'Transcript → summary → knowledge base entry',
     },
     {
-      input: 'Trade session notes',
-      output: 'Review → pattern → next-session protocol',
+      input: 'Meeting notes',
+      output: 'Capture → summary → action items in one place',
     },
     {
       input: 'Newsletter feed',
@@ -106,38 +210,10 @@ export const workflowPattern = {
     },
     {
       input: 'Raw script draft',
-      output: 'Voice-ready ElevenLabs output',
+      output: 'Voice-ready output',
     },
   ],
 } as const;
-
-export const services = [
-  {
-    title: 'AI Workflow Setup',
-    description:
-      'Turn scattered tools and manual steps into a documented, repeatable pipeline.',
-  },
-  {
-    title: 'Content & Research Pipelines',
-    description:
-      'Podcast, newsletter, and transcript workflows that produce structured, reusable output.',
-  },
-  {
-    title: 'Knowledge Base & SOP Systems',
-    description:
-      'Internal documentation, review loops, and operating protocols your team can actually use.',
-  },
-  {
-    title: 'Small Web Apps & Tools',
-    description:
-      'Focused PWAs, dashboards, and operator tools — shipped, not slideware.',
-  },
-  {
-    title: 'Trading & Review Operations',
-    description:
-      'Session review systems, journals, and process frameworks for disciplined execution.',
-  },
-] as const;
 
 export const engagementProcess = [
   { step: 'Discovery', detail: 'Understand the messy input, constraints, and desired output.' },

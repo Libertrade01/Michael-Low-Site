@@ -1,20 +1,8 @@
 ---
 import { hero } from '../config/site';
-import StatusDot from './StatusDot.astro';
 import TerminalPanel from './TerminalPanel.astro';
 ---
 
 <div class="w-full">
-  <TerminalPanel large filename={hero.terminal.filename} />
-  <p
-    class="mt-4 flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1 font-mono text-[11px] leading-snug md:text-xs"
-    role="status"
-    aria-label={`Status: ${hero.statusPill}`}
-  >
-    <span class="inline-flex shrink-0 items-center gap-2">
-      <StatusDot color="blue" subtle />
-      <span class="text-muted-dim">Status</span>
-    </span>
-    <span class="text-off-white/80">{hero.statusPill}</span>
-  </p>
+  <TerminalPanel variant="hero" filename={hero.terminal.filename} />
 </div>

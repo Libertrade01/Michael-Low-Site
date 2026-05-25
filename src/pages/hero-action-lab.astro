@@ -1,0 +1,100 @@
+---
+import Layout from '../components/Layout.astro';
+import HeroActionLabPreview from '../components/lab/HeroActionLabPreview.astro';
+---
+
+<Layout
+  title="Hero action block — Michael Low"
+  description="Compare integrated status + CTA layouts for the homepage hero."
+>
+  <header class="border-b border-border py-12">
+    <div class="container-main">
+      <p class="section-label">Preview board</p>
+      <h1 class="mt-4 font-serif text-4xl text-off-white md:text-5xl">Status + CTA integration</h1>
+      <p class="mt-4 max-w-2xl text-muted">
+        Full hero mockups — same headline, terminal, and spacing. Only the status + button area
+        changes. Open in your browser at <span class="text-off-white/90">/hero-action-lab</span>
+        (not the .astro source file).
+      </p>
+      <div class="mt-6 flex flex-wrap gap-4">
+        <a href="/" class="font-mono text-xs uppercase tracking-wider text-amber-accent hover:underline">
+          ← Homepage
+        </a>
+        <a
+          href="/hero-cta-lab"
+          class="font-mono text-xs uppercase tracking-wider text-muted hover:text-off-white"
+        >
+          CTA lab
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <section class="border-b border-border py-14 md:py-16">
+    <div class="container-main">
+      <p class="font-mono text-[10px] uppercase tracking-[0.16em] text-amber-accent">Current (live)</p>
+      <h2 class="mt-2 font-serif text-2xl text-off-white">Separate pill + inline CTAs</h2>
+      <p class="mt-2 max-w-2xl text-sm text-muted">
+        Status pill and buttons feel like two blocks. Works, but visually busy.
+      </p>
+      <div class="mt-8">
+        <HeroActionLabPreview layout="separate" />
+      </div>
+    </div>
+  </section>
+
+  <section class="border-b border-border bg-charcoal-light/20 py-14 md:py-16">
+    <div class="container-main">
+      <p class="font-mono text-[10px] uppercase tracking-[0.16em] text-amber-accent">Option 1 — recommended</p>
+      <h2 class="mt-2 font-serif text-2xl text-off-white">Quiet status line + CTAs</h2>
+      <p class="mt-2 max-w-2xl text-sm text-muted">
+        Drop the pill border. One soft status line, then buttons. Cleaner hierarchy, same info.
+      </p>
+      <div class="mt-8">
+        <HeroActionLabPreview layout="quiet" />
+      </div>
+    </div>
+  </section>
+
+  <section class="border-b border-border py-14 md:py-16">
+    <div class="container-main">
+      <p class="font-mono text-[10px] uppercase tracking-[0.16em] text-amber-accent">Option 2</p>
+      <h2 class="mt-2 font-serif text-2xl text-off-white">Action panel</h2>
+      <p class="mt-2 max-w-2xl text-sm text-muted">
+        Status and CTAs inside one card with a divider. Feels like a single “next steps” module.
+      </p>
+      <div class="mt-8">
+        <HeroActionLabPreview layout="panel" />
+      </div>
+    </div>
+  </section>
+
+  <section class="border-b border-border py-14 md:py-16">
+    <div class="container-main">
+      <p class="font-mono text-[10px] uppercase tracking-[0.16em] text-amber-accent">Option 3</p>
+      <h2 class="mt-2 font-serif text-2xl text-off-white">Unified chip</h2>
+      <p class="mt-2 max-w-2xl text-sm text-muted">
+        One rounded container wraps status and buttons. Most integrated — good for inline layout.
+      </p>
+      <div class="mt-8">
+        <HeroActionLabPreview layout="unified" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding">
+    <div class="container-main max-w-2xl">
+      <p class="font-mono text-[10px] uppercase tracking-[0.16em] text-amber-accent">Pick one</p>
+      <h2 class="mt-2 font-serif text-2xl text-off-white">Recommendation</h2>
+      <ul class="mt-4 space-y-3 text-sm leading-relaxed text-muted">
+        <li><strong class="font-medium text-off-white/90">Option 1 (quiet)</strong> — cleanest overall</li>
+        <li><strong class="font-medium text-off-white/90">Option 3 (unified)</strong> — status + Book a call feel like one object</li>
+        <li><strong class="font-medium text-off-white/90">Option 2 (panel)</strong> — stronger “module” on dark backgrounds</li>
+      </ul>
+      <p class="mt-6 text-sm text-muted">
+        Scroll chevrons on the live homepage can stay — buttons convert, chevrons invite explorers
+        down to “What I help with”.
+      </p>
+    </div>
+  </section>
+</Layout>

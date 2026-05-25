@@ -1,0 +1,38 @@
+---
+import { hero } from '../../config/site';
+import StatusLine from '../StatusLine.astro';
+
+interface Props {
+  label: string;
+  title: string;
+  note?: string;
+  highlight?: boolean;
+}
+
+const { label, title, note, highlight = false } = Astro.props;
+---
+
+<div
+  class:list={[
+    'overflow-hidden rounded-2xl border p-6 md:p-8',
+    highlight ? 'border-amber-accent/35 bg-charcoal/50' : 'border-border/80 bg-charcoal/30',
+  ]}
+>
+  <p class="font-mono text-[10px] uppercase tracking-[0.16em] text-amber-accent">{label}</p>
+  <h2 class="mt-2 font-serif text-xl text-off-white md:text-2xl">{title}</h2>
+  {note && <p class="mt-2 max-w-2xl text-sm text-muted">{note}</p>}
+
+  <div class="mt-8 max-w-xl">
+    <p class="section-label">{hero.role}</p>
+    <h3 class="mt-6 font-sans text-2xl font-medium leading-tight tracking-tight text-off-white md:text-3xl">
+      {hero.title}
+    </h3>
+    <p class="mt-4 text-base leading-relaxed text-muted">{hero.intro}</p>
+    <div class="mt-6">
+      <StatusLine variant="bar" />
+    </div>
+    <div class="mt-6">
+      <slot />
+    </div>
+  </div>
+</div>

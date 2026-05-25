@@ -1,0 +1,97 @@
+---
+import Layout from '../components/Layout.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import HelpSectionLabFrame from '../components/lab/help/HelpSectionLabFrame.astro';
+import HelpSectionLabHeader from '../components/lab/help/HelpSectionLabHeader.astro';
+import HelpVariantA from '../components/lab/help/HelpVariantA.astro';
+import HelpVariantB from '../components/lab/help/HelpVariantB.astro';
+import HelpVariantC from '../components/lab/help/HelpVariantC.astro';
+import HelpVariantD from '../components/lab/help/HelpVariantD.astro';
+import HelpVariantE from '../components/lab/help/HelpVariantE.astro';
+---
+
+<Layout
+  title="What I help with — layout lab — Michael Low"
+  description="Compare five alternative layouts for the homepage help section."
+>
+  <header class="help-lab-page-header border-b border-border py-12 md:py-14">
+    <div class="container-main">
+      <SectionHeader
+        label="Preview board"
+        title="What I help with — layout options"
+        subtitle="Five sharp alternatives to the current 2×2 card grid. Live homepage is unchanged — pick a direction here first."
+      />
+      <div class="mt-6 flex flex-wrap gap-4">
+        <a href="/" class="link-arrow">← Homepage</a>
+        <a href="/#help" class="link-arrow">Live help section</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="help-lab-page">
+    <section class="help-lab-page__section border-b border-border py-14 md:py-16">
+      <div class="container-main">
+        <HelpSectionLabFrame
+          option="Option A — Manifest list"
+          title="Manifest list"
+          note="Best for terminal-adjacent editorial tone — dense, monospace-indexed rows with no card chrome."
+        >
+          <HelpSectionLabHeader />
+          <HelpVariantA />
+        </HelpSectionLabFrame>
+      </div>
+    </section>
+
+    <section class="help-lab-page__section border-b border-border py-14 md:py-16">
+      <div class="container-main">
+        <HelpSectionLabFrame
+          option="Option B — Spec table"
+          title="Spec table"
+          note="Best for system-documentation feel — narrow index column, wide content, horizontal rules."
+        >
+          <HelpSectionLabHeader />
+          <HelpVariantB />
+        </HelpSectionLabFrame>
+      </div>
+    </section>
+
+    <section class="help-lab-page__section border-b border-border py-14 md:py-16">
+      <div class="container-main">
+        <HelpSectionLabFrame
+          option="Option C — Module strips"
+          title="Module strips"
+          note="Best for a sharper card evolution — flat white strips with accent bar, tighter than current modules."
+        >
+          <HelpSectionLabHeader />
+          <HelpVariantC />
+        </HelpSectionLabFrame>
+      </div>
+    </section>
+
+    <section class="help-lab-page__section border-b border-border py-14 md:py-16">
+      <div class="container-main">
+        <HelpSectionLabFrame
+          option="Option D — Compact grid, no chrome"
+          title="Compact grid, no chrome"
+          note="Best for maximum sleekness — typography-only 2×2 with hairline cell borders, zero shadows."
+        >
+          <HelpSectionLabHeader />
+          <HelpVariantD />
+        </HelpSectionLabFrame>
+      </div>
+    </section>
+
+    <section class="help-lab-page__section py-14 md:py-16">
+      <div class="container-main">
+        <HelpSectionLabFrame
+          option="Option E — Stacked headline blocks"
+          title="Stacked headline blocks"
+          note="Best for editorial breathing room — alternating linen/white bands, headline-first hierarchy."
+        >
+          <HelpSectionLabHeader />
+          <HelpVariantE />
+        </HelpSectionLabFrame>
+      </div>
+    </section>
+  </div>
+</Layout>

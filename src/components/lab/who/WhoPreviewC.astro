@@ -1,0 +1,45 @@
+---
+import SectionHeader from '../../SectionHeader.astro';
+import WhoPainList from './WhoPainList.astro';
+import WhoHelpManifestPreview from './WhoHelpManifestPreview.astro';
+import WhoWaysCta from './WhoWaysCta.astro';
+import {
+  homeWhoIntro,
+  homeWhoLabel,
+  homeWhoTitle,
+  homeHelpIntro,
+  homeHelpLabel,
+  homeHelpTitle,
+} from '../../../config/site';
+---
+
+<div class="who-lab-preview-c">
+  <div class="who-lab-preview-c__top">
+    <SectionHeader
+      compact
+      large
+      label={homeWhoLabel}
+      title={homeWhoTitle}
+      subtitle={homeWhoIntro}
+      subtitleClass="section-subtitle-strong"
+    />
+    <div class="who-lab-preview-c__pains">
+      <WhoPainList />
+    </div>
+  </div>
+
+  <div class="who-lab-preview-c__rule" aria-hidden="true"></div>
+
+  <div class="who-lab-preview-c__bottom">
+    <SectionHeader
+      compact
+      large
+      label={homeHelpLabel}
+      title={homeHelpTitle}
+      subtitle={homeHelpIntro}
+      subtitleClass="section-subtitle-strong"
+    />
+    <WhoHelpManifestPreview maxItems={2} />
+    <WhoWaysCta />
+  </div>
+</div>

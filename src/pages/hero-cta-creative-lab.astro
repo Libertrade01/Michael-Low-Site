@@ -1,0 +1,349 @@
+---
+import Layout from '../components/Layout.astro';
+---
+
+<Layout
+  title="Creative hero CTAs — Michael Low"
+  description="Compare link-first and terminal-style hero call-to-action alternatives without the generic Book a call button."
+>
+  <header class="border-b border-border py-12">
+    <div class="container-main">
+      <p class="section-label">Preview board</p>
+      <h1 class="mt-4 font-serif text-4xl text-off-white md:text-5xl">Creative hero CTAs</h1>
+      <p class="mt-4 max-w-2xl text-muted">
+        Live homepage still uses <span class="text-off-white/90">btn-primary “Book a call”</span> +
+        <span class="text-off-white/90">link-arrow “See how I work”</span>. These mockups drop or
+        soften the filled button — contact stays in the nav until you pick a direction.
+      </p>
+      <div class="mt-6 flex flex-wrap gap-4">
+        <a href="/" class="font-mono text-xs uppercase tracking-wider text-amber-accent hover:underline">
+          ← Homepage
+        </a>
+        <a
+          href="/hero-cta-lab"
+          class="font-mono text-xs uppercase tracking-wider text-muted hover:text-off-white"
+        >
+          Layout CTA lab
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <section class="border-b border-border py-14 md:py-16">
+    <div class="container-main">
+      <h2 class="font-serif text-2xl text-off-white">Contact copy (if you keep a primary)</h2>
+      <p class="mt-2 max-w-2xl text-sm text-muted">
+        Softer than “Book a call” — use in nav, footer, or a single outline pill later. No full
+        mockups here; text only for discussion.
+      </p>
+      <ul class="mt-6 space-y-2 font-mono text-sm text-off-white/85">
+        <li>Start a conversation →</li>
+        <li>Talk through your workflow →</li>
+        <li>See if we're a fit →</li>
+      </ul>
+      <p class="mt-6 text-xs text-muted-dim">
+        Current live primary: <code class="text-off-white/70">Book a call</code> → /contact
+      </p>
+    </div>
+  </section>
+
+  <section class="section-padding">
+    <div class="container-main space-y-10">
+      <div>
+        <h2 class="font-serif text-2xl text-off-white">CTA row options</h2>
+        <p class="mt-2 max-w-2xl text-sm text-muted">
+          Each frame shows only the hero action row, centered. “See how I work” kept with arrow where
+          noted; “How I can help” points to <code class="text-off-white/80">/work#help</code> when
+          paired.
+        </p>
+      </div>
+
+      <div class="cta-creative-frame" data-highlight>
+        <p class="font-mono text-[10px] uppercase tracking-[0.16em] text-amber-accent">Option A</p>
+        <h3 class="mt-2 font-serif text-xl text-off-white md:text-2xl">Dual arrow links (equal weight)</h3>
+        <p class="mt-2 max-w-2xl text-sm text-muted">
+          Both link-arrow. No filled button — feels editorial, not SaaS. Good if nav already has
+          contact.
+        </p>
+        <div class="cta-preview-stage">
+          <div class="flex flex-wrap items-center justify-center gap-6 sm:gap-8">
+            <a href="/work" class="link-arrow">
+              See how I work
+              <span aria-hidden="true">→</span>
+            </a>
+            <a href="/work#help" class="link-arrow">
+              How I can help
+              <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta-creative-frame">
+        <p class="font-mono text-[10px] uppercase tracking-[0.16em] text-amber-accent">Option B — recommended</p>
+        <h3 class="mt-2 font-serif text-xl text-off-white md:text-2xl">Dual links (primary + secondary)</h3>
+        <p class="mt-2 max-w-2xl text-sm text-muted">
+          “See how I work” leads visually; second stays link-arrow but muted. Keeps your favorite
+          line without two competing mono pills.
+        </p>
+        <div class="cta-preview-stage">
+          <div class="flex flex-wrap items-center justify-center gap-5 sm:gap-6">
+            <a href="/work" class="cta-link-primary">
+              See how I work
+              <span aria-hidden="true" class="text-amber-accent">→</span>
+            </a>
+            <span class="hidden text-muted-dim sm:inline" aria-hidden="true">|</span>
+            <a href="/work#help" class="link-arrow cta-link-muted">
+              How I can help
+              <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta-creative-frame">
+        <p class="font-mono text-[10px] uppercase tracking-[0.16em] text-amber-accent">Option C</p>
+        <h3 class="mt-2 font-serif text-xl text-off-white md:text-2xl">Single hero link only</h3>
+        <p class="mt-2 max-w-2xl text-sm text-muted">
+          One clear path — proof first. Contact only via nav / scroll. Minimal and confident.
+        </p>
+        <div class="cta-preview-stage">
+          <a href="/work" class="link-arrow">
+            See how I work
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="cta-creative-frame">
+        <p class="font-mono text-[10px] uppercase tracking-[0.16em] text-amber-accent">Option D</p>
+        <h3 class="mt-2 font-serif text-xl text-off-white md:text-2xl">Editorial with dot separator</h3>
+        <p class="mt-2 max-w-2xl text-sm text-muted">
+          Inline monospace row with a subtle middle dot — compact, magazine-like.
+        </p>
+        <div class="cta-preview-stage">
+          <p class="cta-editorial-row font-mono text-xs uppercase tracking-wider">
+            <a href="/work" class="cta-editorial-link">
+              See how I work <span aria-hidden="true">→</span>
+            </a>
+            <span class="cta-editorial-dot" aria-hidden="true">·</span>
+            <a href="/work#help" class="cta-editorial-link cta-editorial-link--muted">
+              How I can help <span aria-hidden="true">→</span>
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <div class="cta-creative-frame">
+        <p class="font-mono text-[10px] uppercase tracking-[0.16em] text-amber-accent">Option E</p>
+        <h3 class="mt-2 font-serif text-xl text-off-white md:text-2xl">Terminal motif</h3>
+        <p class="mt-2 max-w-2xl text-sm text-muted">
+          Matches workflow.ts terminal — playful but on-brand. Best if hero already shows code.
+        </p>
+        <div class="cta-preview-stage">
+          <div class="cta-terminal-stack font-mono text-sm sm:text-base">
+            <a href="/work" class="cta-terminal-link">
+              <span class="terminal-arrow">→ </span>
+              <span class="terminal-subject">see_how_i_work</span><span class="terminal-method">()</span>
+            </a>
+            <a href="/work#help" class="cta-terminal-link">
+              <span class="terminal-arrow">→ </span>
+              <span class="terminal-subject">how_i_can_help</span><span class="terminal-method">()</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta-creative-frame">
+        <p class="font-mono text-[10px] uppercase tracking-[0.16em] text-amber-accent">Option F</p>
+        <h3 class="mt-2 font-serif text-xl text-off-white md:text-2xl">Soft outline pill + arrow link</h3>
+        <p class="mt-2 max-w-2xl text-sm text-muted">
+          Outline pill for “How I can help” — less generic than solid btn-primary; arrow link keeps
+          “See how I work” as you like it.
+        </p>
+        <div class="cta-preview-stage">
+          <div class="flex flex-wrap items-center justify-center gap-5 sm:gap-6">
+            <a href="/work#help" class="btn-outline-pill">How I can help</a>
+            <a href="/work" class="link-arrow">
+              See how I work
+              <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="rounded-xl border border-amber-accent/20 bg-charcoal-light/40 p-6 md:p-8">
+        <p class="font-mono text-[10px] uppercase tracking-[0.16em] text-amber-accent">Live reference</p>
+        <p class="mt-2 text-sm text-muted">Current homepage pair (unchanged on site):</p>
+        <div class="cta-preview-stage mt-6 border border-dashed border-border/60 bg-charcoal/20">
+          <div class="flex flex-wrap items-center justify-center gap-5 sm:gap-6">
+            <a href="/contact" class="btn-primary px-8 py-4 text-base">Book a call</a>
+            <a href="/work" class="link-arrow">
+              See how I work
+              <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .cta-creative-frame {
+    overflow: hidden;
+    border-radius: 1rem;
+    border: 1px solid color-mix(in srgb, var(--color-border) 80%, transparent);
+    background: color-mix(in srgb, var(--color-charcoal) 30%, transparent);
+    padding: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .cta-creative-frame {
+      padding: 2rem;
+    }
+  }
+
+  .cta-creative-frame[data-highlight] {
+    border-color: color-mix(in srgb, var(--color-amber-accent) 35%, transparent);
+    background: color-mix(in srgb, var(--color-charcoal) 50%, transparent);
+  }
+
+  .cta-preview-stage {
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 5.5rem;
+    padding: 1.25rem 1rem;
+    border-radius: 0.75rem;
+    border: 1px dashed color-mix(in srgb, var(--color-border) 55%, transparent);
+    background: color-mix(in srgb, var(--color-charcoal-light) 25%, transparent);
+  }
+
+  .cta-link-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-off-white);
+    transition: color 0.2s ease, gap 0.3s ease;
+  }
+
+  .cta-link-primary:hover {
+    color: var(--color-off-white);
+    gap: 0.625rem;
+  }
+
+  .cta-link-muted {
+    color: color-mix(in srgb, var(--color-muted) 92%, var(--color-amber-accent));
+  }
+
+  .cta-link-muted:hover {
+    color: var(--color-amber-accent);
+  }
+
+  .cta-editorial-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem 0.75rem;
+    margin: 0;
+  }
+
+  .cta-editorial-link {
+    color: var(--color-amber-accent);
+    transition: color 0.2s ease;
+  }
+
+  .cta-editorial-link:hover {
+    color: var(--color-off-white);
+  }
+
+  .cta-editorial-link--muted {
+    color: color-mix(in srgb, var(--color-muted) 85%, var(--color-amber-accent));
+  }
+
+  .cta-editorial-dot {
+    color: var(--color-muted-dim);
+    user-select: none;
+  }
+
+  .cta-terminal-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.65rem;
+    text-align: left;
+  }
+
+  @media (min-width: 640px) {
+    .cta-terminal-stack {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.25rem 2rem;
+    }
+  }
+
+  .cta-terminal-link {
+    display: inline-flex;
+    align-items: baseline;
+    padding: 0.15rem 0.25rem;
+    border-radius: 0.25rem;
+    transition: background 0.2s ease;
+  }
+
+  .cta-terminal-link:hover {
+    background: color-mix(in srgb, var(--color-charcoal-elevated) 60%, transparent);
+  }
+
+  .btn-outline-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.65rem 1.35rem;
+    border-radius: 9999px;
+    border: 1px solid color-mix(in srgb, var(--color-border) 90%, var(--color-amber-accent));
+    background: transparent;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-off-white);
+    transition:
+      border-color 0.25s ease,
+      background 0.25s ease,
+      transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .btn-outline-pill:hover {
+    border-color: color-mix(in srgb, var(--color-amber-accent) 45%, var(--color-border));
+    background: color-mix(in srgb, var(--color-charcoal-card) 50%, transparent);
+    transform: translateY(-1px);
+  }
+
+  html[data-accent='linen'] .btn-outline-pill {
+    border-color: color-mix(in srgb, #27435d 35%, var(--color-border));
+    color: #1f344a;
+    background: color-mix(in srgb, #f8fafc 40%, transparent);
+  }
+
+  html[data-accent='linen'] .btn-outline-pill:hover {
+    border-color: #27435d;
+    background: #f8fafc;
+    color: #1f344a;
+  }
+
+  html[data-accent='linen'] .cta-link-primary {
+    color: #1f344a;
+  }
+
+  html[data-accent='linen'] .cta-editorial-link {
+    color: #27435d;
+  }
+
+  html[data-accent='linen'] .cta-editorial-link:hover {
+    color: #1f344a;
+  }
+</style>

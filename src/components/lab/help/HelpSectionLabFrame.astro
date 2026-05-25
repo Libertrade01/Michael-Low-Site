@@ -1,0 +1,20 @@
+---
+interface Props {
+  option: string;
+  title: string;
+  note: string;
+}
+
+const { option, title, note } = Astro.props;
+---
+
+<article class="help-lab-frame">
+  <header class="help-lab-frame__meta">
+    <p class="help-lab-frame__label">{option}</p>
+    <h2 class="help-lab-frame__title">{title}</h2>
+    <p class="help-lab-frame__note">{note}</p>
+  </header>
+  <div class="help-lab-frame__preview">
+    <slot />
+  </div>
+</article>

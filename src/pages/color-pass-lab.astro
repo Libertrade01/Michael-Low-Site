@@ -1,0 +1,646 @@
+---
+import Layout from '../components/Layout.astro';
+import {
+  hero,
+  homeHelpAreas,
+  homeHelpCta,
+  homeHelpLabel,
+  homeWhoIntro,
+  homeWhoLabel,
+  homeWhoPains,
+  homeWhoTitle,
+} from '../config/site';
+
+const previewPains = homeWhoPains.slice(0, 2);
+const previewOffering = homeHelpAreas[0];
+
+const passes = [
+  {
+    id: 'navy-only',
+    label: 'Pass 1',
+    title: 'Navy-only (baseline)',
+    note: 'Navy CTAs, section labels, divider lines, and link hovers — color is obvious but restrained.',
+    className: 'color-pass-lab-pass--navy',
+  },
+  {
+    id: 'navy-teal',
+    label: 'Pass 2',
+    title: 'Navy + teal micro',
+    note: 'Teal only on `-` markers, [01] pills, and status chips — everything else stays navy.',
+    className: 'color-pass-lab-pass--teal',
+  },
+  {
+    id: 'warm-sand',
+    label: 'Pass 3',
+    title: 'Warm sand bands',
+    note: 'Visible warm section bands (#f0ebe3 / #ebe6dc) with navy accents on CTAs and labels.',
+    className: 'color-pass-lab-pass--sand',
+  },
+  {
+    id: 'ink-panels',
+    label: 'Pass 4',
+    title: 'Deep ink panels',
+    note: 'Alternating white and soft charcoal (#eef0f3) panels for stronger block contrast.',
+    className: 'color-pass-lab-pass--panels',
+  },
+  {
+    id: 'hero-wash',
+    label: 'Pass 5',
+    title: 'Accent wash hero',
+    note: 'Subtle navy gradient wash behind the hero only — color present without rainbow.',
+    className: 'color-pass-lab-pass--wash',
+  },
+  {
+    id: 'editorial',
+    label: 'Pass 6',
+    title: 'Editorial accent line system',
+    note: 'Bold 3px left accent bars, pill section badges, designed-system feel.',
+    className: 'color-pass-lab-pass--editorial',
+  },
+] as const;
+---
+
+<Layout
+  title="Color pass lab — Michael Low"
+  description="Six prominent color accent passes for the homepage — visual lab only, does not change the live site."
+>
+  <section class="color-pass-lab-shell color-pass-lab-top">
+    <div class="container-main color-pass-lab-content">
+      <aside class="color-pass-lab-sticky-note" role="note">
+        Open in browser: <a href="/color-pass-lab">/color-pass-lab</a> (not the .astro file)
+      </aside>
+
+      <p class="color-pass-lab-kicker">Preview board</p>
+      <h1 class="color-pass-lab-title">Color pass lab — pick your level</h1>
+      <p class="color-pass-lab-intro">
+        Six framed homepage slices with progressively more visible color. Scoped to this page only — the live
+        homepage is unchanged.
+      </p>
+      <nav class="color-pass-lab-links" aria-label="Lab navigation">
+        <a href="/">← Homepage</a>
+        <a href="/light-palettes-lab">Light palettes lab</a>
+        <a href="/light-mode-redesign-lab">Light redesign lab</a>
+      </nav>
+    </div>
+  </section>
+
+  {
+    passes.map((pass) => (
+      <section class="color-pass-lab-shell">
+        <div class="container-main color-pass-lab-content">
+          <p class="color-pass-lab-kicker">{pass.label}</p>
+          <h2 class="color-pass-lab-pass-title">{pass.title}</h2>
+          <p class="color-pass-lab-note">{pass.note}</p>
+
+          <article class={`color-pass-lab-pass ${pass.className}`}>
+            <header class="color-pass-lab-block color-pass-lab-pass-head">
+              <p class="color-pass-lab-section-label">{hero.role}</p>
+              <h3 class="color-pass-lab-headline">{hero.title}</h3>
+              <p class="color-pass-lab-headline-copy">{hero.intro}</p>
+            </header>
+
+            <section class="color-pass-lab-block color-pass-lab-who">
+              <p class="color-pass-lab-section-label">{homeWhoLabel}</p>
+              <h4 class="color-pass-lab-block-title">{homeWhoTitle}</h4>
+              <p class="color-pass-lab-block-copy">{homeWhoIntro}</p>
+              <ul class="color-pass-lab-pain-list" role="list">
+                {previewPains.map((pain) => (
+                  <li class="color-pass-lab-pain-item">
+                    <span class="color-pass-lab-pain-prefix" aria-hidden="true">-</span>
+                    <span>{pain}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+
+            <section class="color-pass-lab-block color-pass-lab-ways">
+              <p class="color-pass-lab-section-label">{homeHelpLabel}</p>
+              <div class="color-pass-lab-offering">
+                <div class="color-pass-lab-offering-head">
+                  <span class="color-pass-lab-index">[01]</span>
+                  <h4 class="color-pass-lab-offering-title">{previewOffering.title}</h4>
+                </div>
+                <p class="color-pass-lab-offering-copy">{previewOffering.description}</p>
+              </div>
+            </section>
+
+            <div class="color-pass-lab-block color-pass-lab-cta-row">
+              <a href={homeHelpCta.href} class="color-pass-lab-cta-primary">Book a call</a>
+              <a href="/work" class="color-pass-lab-cta-secondary">See how I work</a>
+              <span class="color-pass-lab-status">1 workflow at a time</span>
+            </div>
+
+            <div class="color-pass-lab-block color-pass-lab-link-row">
+              <a href={homeHelpCta.href} class="color-pass-lab-text-cta">
+                {homeHelpCta.label}
+                <span aria-hidden="true">→</span>
+              </a>
+            </div>
+
+            <section class="color-pass-lab-block color-pass-lab-project">
+              <span class="color-pass-lab-project-chip">Featured</span>
+              <p class="color-pass-lab-project-label">Project snapshot</p>
+              <h4 class="color-pass-lab-project-title">Libertrade journal analytics</h4>
+              <p class="color-pass-lab-project-copy">
+                Placeholder card for one featured case study with process, tooling, and outcome highlights.
+              </p>
+            </section>
+          </article>
+        </div>
+      </section>
+    ))
+  }
+</Layout>
+
+<style>
+  .color-pass-lab-shell {
+    border-bottom: 1px solid rgb(205 211 221 / 0.6);
+    padding: 3.5rem 0;
+  }
+
+  .color-pass-lab-top {
+    padding-top: 3rem;
+  }
+
+  .color-pass-lab-content {
+    color: #1d2531;
+  }
+
+  .color-pass-lab-sticky-note {
+    margin-bottom: 1.4rem;
+    padding: 0.72rem 1rem;
+    border: 1px solid #d4dce8;
+    border-left: 4px solid #1a3556;
+    border-radius: 0.55rem;
+    background: #f4f7fb;
+    font-size: 0.84rem;
+    color: #334155;
+    line-height: 1.45;
+  }
+
+  .color-pass-lab-sticky-note a {
+    color: #1a3556;
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid rgb(26 53 86 / 0.35);
+  }
+
+  .color-pass-lab-sticky-note a:hover {
+    border-bottom-color: #1a3556;
+  }
+
+  .color-pass-lab-kicker {
+    font-size: 0.67rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #4c5a72;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  }
+
+  .color-pass-lab-title {
+    margin-top: 0.8rem;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    color: #1a2433;
+  }
+
+  .color-pass-lab-intro {
+    margin-top: 0.9rem;
+    max-width: 52rem;
+    color: #445168;
+    line-height: 1.6;
+  }
+
+  .color-pass-lab-links {
+    margin-top: 1.3rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.8rem;
+  }
+
+  .color-pass-lab-links a {
+    color: #23344a;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+  }
+
+  .color-pass-lab-links a:hover {
+    border-bottom-color: currentColor;
+  }
+
+  .color-pass-lab-pass-title {
+    margin-top: 0.65rem;
+    font-size: clamp(1.55rem, 3vw, 2rem);
+    color: #1b2634;
+    letter-spacing: -0.01em;
+  }
+
+  .color-pass-lab-note {
+    margin-top: 0.6rem;
+    max-width: 56rem;
+    color: #4b586f;
+    line-height: 1.55;
+  }
+
+  /* ── Shared pass frame ── */
+  .color-pass-lab-pass {
+    --c-page: #f5f3ed;
+    --c-surface: #fffcf7;
+    --c-panel: #ffffff;
+    --c-band: transparent;
+    --c-ink: #1e2936;
+    --c-muted: #4f5f75;
+    --c-divider: #b8c4d4;
+    --c-accent: #142d4d;
+    --c-accent-soft: rgb(20 45 77 / 0.1);
+    --c-highlight: #142d4d;
+    --c-label-bg: transparent;
+    --c-label-ink: #4f5f75;
+    --c-accent-bar: transparent;
+    --c-hero-wash: none;
+
+    margin-top: 1.35rem;
+    border: 1px solid var(--c-divider);
+    border-radius: 1.4rem;
+    overflow: hidden;
+    background: var(--c-page);
+    color: var(--c-ink);
+    box-shadow: 0 10px 32px rgb(16 29 46 / 0.1);
+  }
+
+  .color-pass-lab-block {
+    position: relative;
+    padding: 1.15rem 1.4rem;
+    border-bottom: 2px solid var(--c-divider);
+    background: var(--c-panel);
+  }
+
+  .color-pass-lab-block::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 3px;
+    background: var(--c-accent-bar);
+  }
+
+  .color-pass-lab-pass-head {
+    background: var(--c-surface);
+    background-image: var(--c-hero-wash);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+
+  .color-pass-lab-section-label {
+    display: inline-block;
+    margin: 0;
+    padding: 0.22rem 0.55rem;
+    font-size: 0.64rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--c-label-ink);
+    background: var(--c-label-bg);
+    border-radius: 999rem;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  }
+
+  .color-pass-lab-headline {
+    margin: 0.55rem 0 0;
+    font-size: clamp(1.45rem, 3vw, 2rem);
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+  }
+
+  .color-pass-lab-headline-copy,
+  .color-pass-lab-block-copy,
+  .color-pass-lab-offering-copy,
+  .color-pass-lab-project-copy {
+    margin-top: 0.58rem;
+    color: var(--c-muted);
+    line-height: 1.55;
+    max-width: 48rem;
+  }
+
+  .color-pass-lab-block-title {
+    margin: 0.55rem 0 0;
+    font-size: 1.12rem;
+    letter-spacing: -0.01em;
+  }
+
+  .color-pass-lab-pain-list {
+    margin: 0.72rem 0 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 0.42rem;
+  }
+
+  .color-pass-lab-pain-item {
+    display: flex;
+    align-items: baseline;
+    gap: 0.45rem;
+    font-size: 0.92rem;
+    color: var(--c-ink);
+  }
+
+  .color-pass-lab-pain-prefix {
+    color: var(--c-highlight);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+    font-weight: 600;
+  }
+
+  .color-pass-lab-offering-head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.55rem;
+    margin-top: 0.55rem;
+  }
+
+  .color-pass-lab-index {
+    flex-shrink: 0;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    color: var(--c-highlight);
+    background: color-mix(in srgb, var(--c-highlight) 12%, white);
+    border: 1px solid color-mix(in srgb, var(--c-highlight) 28%, white);
+    padding: 0.18rem 0.42rem;
+    border-radius: 0.35rem;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  }
+
+  .color-pass-lab-offering-title {
+    margin: 0;
+    font-size: 1.02rem;
+    letter-spacing: -0.01em;
+  }
+
+  .color-pass-lab-cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--c-band, var(--c-panel));
+  }
+
+  .color-pass-lab-cta-primary {
+    background: var(--c-accent);
+    color: #f8fafc;
+    text-decoration: none;
+    padding: 0.62rem 1rem;
+    border-radius: 0.48rem;
+    font-size: 0.88rem;
+    letter-spacing: 0.01em;
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.14);
+  }
+
+  .color-pass-lab-cta-secondary {
+    color: var(--c-accent);
+    text-decoration: none;
+    font-size: 0.88rem;
+    border-bottom: 2px solid transparent;
+  }
+
+  .color-pass-lab-cta-secondary:hover {
+    border-bottom-color: var(--c-accent);
+  }
+
+  .color-pass-lab-status {
+    margin-left: auto;
+    border: 1px solid color-mix(in srgb, var(--c-highlight) 40%, white);
+    color: color-mix(in srgb, var(--c-highlight) 80%, var(--c-ink));
+    background: color-mix(in srgb, var(--c-highlight) 14%, white);
+    padding: 0.34rem 0.62rem;
+    border-radius: 999rem;
+    font-size: 0.74rem;
+  }
+
+  .color-pass-lab-link-row {
+    padding-top: 0.85rem;
+    padding-bottom: 0.85rem;
+    background: var(--c-band, var(--c-panel));
+  }
+
+  .color-pass-lab-text-cta {
+    color: var(--c-accent);
+    text-decoration: none;
+    font-size: 0.92rem;
+    font-weight: 600;
+    border-bottom: 2px solid color-mix(in srgb, var(--c-accent) 35%, transparent);
+  }
+
+  .color-pass-lab-text-cta:hover {
+    border-bottom-color: var(--c-accent);
+  }
+
+  .color-pass-lab-project {
+    border-bottom: none;
+    background: var(--c-surface);
+  }
+
+  .color-pass-lab-project-chip {
+    display: inline-block;
+    margin-bottom: 0.45rem;
+    padding: 0.2rem 0.5rem;
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: color-mix(in srgb, var(--c-highlight) 85%, var(--c-ink));
+    background: color-mix(in srgb, var(--c-highlight) 12%, white);
+    border: 1px solid color-mix(in srgb, var(--c-highlight) 30%, white);
+    border-radius: 999rem;
+  }
+
+  .color-pass-lab-project-label {
+    margin: 0;
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.13em;
+    color: var(--c-accent);
+    font-weight: 600;
+  }
+
+  .color-pass-lab-project-title {
+    margin-top: 0.45rem;
+    font-size: 1.12rem;
+    letter-spacing: -0.01em;
+  }
+
+  /* ── Pass 1: Navy-only ── */
+  .color-pass-lab-pass--navy {
+    --c-divider: #9eb0c8;
+    --c-accent: #122a47;
+    --c-highlight: #122a47;
+    --c-label-ink: #122a47;
+  }
+
+  .color-pass-lab-pass--navy .color-pass-lab-section-label {
+    padding-left: 0;
+    padding-right: 0;
+    font-weight: 600;
+  }
+
+  .color-pass-lab-pass--navy .color-pass-lab-pain-prefix {
+    color: var(--c-accent);
+  }
+
+  .color-pass-lab-pass--navy .color-pass-lab-index {
+    color: var(--c-accent);
+    background: var(--c-accent-soft);
+    border-color: color-mix(in srgb, var(--c-accent) 35%, white);
+  }
+
+  /* ── Pass 2: Navy + teal micro ── */
+  .color-pass-lab-pass--teal {
+    --c-divider: #b0bcc9;
+    --c-accent: #142d4d;
+    --c-highlight: #2a7a7e;
+    --c-label-ink: #142d4d;
+  }
+
+  .color-pass-lab-pass--teal .color-pass-lab-section-label,
+  .color-pass-lab-pass--teal .color-pass-lab-project-label {
+    color: var(--c-accent);
+  }
+
+  .color-pass-lab-pass--teal .color-pass-lab-pain-prefix,
+  .color-pass-lab-pass--teal .color-pass-lab-index,
+  .color-pass-lab-pass--teal .color-pass-lab-status,
+  .color-pass-lab-pass--teal .color-pass-lab-project-chip {
+    --c-highlight: #2a7a7e;
+  }
+
+  .color-pass-lab-pass--teal .color-pass-lab-index {
+    color: #2a7a7e;
+    background: rgb(42 122 126 / 0.12);
+    border-color: rgb(42 122 126 / 0.32);
+  }
+
+  /* ── Pass 3: Warm sand bands ── */
+  .color-pass-lab-pass--sand {
+    --c-divider: #c4b8a8;
+    --c-accent: #1a3556;
+    --c-highlight: #1a3556;
+    --c-label-ink: #1a3556;
+    --c-page: #f5f1ea;
+    --c-surface: #fdfaf4;
+    --c-band: #f0ebe3;
+  }
+
+  .color-pass-lab-pass--sand .color-pass-lab-who,
+  .color-pass-lab-pass--sand .color-pass-lab-ways,
+  .color-pass-lab-pass--sand .color-pass-lab-link-row {
+    --c-panel: #f0ebe3;
+  }
+
+  .color-pass-lab-pass--sand .color-pass-lab-cta-row {
+    --c-band: #ebe6dc;
+  }
+
+  .color-pass-lab-pass--sand .color-pass-lab-project {
+    --c-surface: #fdfaf4;
+  }
+
+  /* ── Pass 4: Deep ink panels ── */
+  .color-pass-lab-pass--panels {
+    --c-divider: #c5cdd8;
+    --c-accent: #152e4c;
+    --c-highlight: #152e4c;
+    --c-label-ink: #152e4c;
+    --c-page: #f3f4f6;
+    --c-surface: #ffffff;
+  }
+
+  .color-pass-lab-pass--panels .color-pass-lab-pass-head,
+  .color-pass-lab-pass--panels .color-pass-lab-ways,
+  .color-pass-lab-pass--panels .color-pass-lab-link-row,
+  .color-pass-lab-pass--panels .color-pass-lab-project {
+    --c-panel: #ffffff;
+    --c-surface: #ffffff;
+  }
+
+  .color-pass-lab-pass--panels .color-pass-lab-who,
+  .color-pass-lab-pass--panels .color-pass-lab-cta-row {
+    --c-panel: #eef0f3;
+    --c-band: #eef0f3;
+  }
+
+  .color-pass-lab-pass--panels .color-pass-lab-block {
+    border-bottom-width: 1px;
+    border-bottom-color: #d5dbe3;
+  }
+
+  /* ── Pass 5: Accent wash hero ── */
+  .color-pass-lab-pass--wash {
+    --c-divider: #b4c0cf;
+    --c-accent: #173456;
+    --c-highlight: #173456;
+    --c-label-ink: #173456;
+    --c-hero-wash: linear-gradient(
+      180deg,
+      rgb(23 52 86 / 0.14) 0%,
+      rgb(23 52 86 / 0.06) 12%,
+      transparent 28%
+    );
+  }
+
+  .color-pass-lab-pass--wash .color-pass-lab-pass-head {
+    padding-bottom: 1.35rem;
+  }
+
+  .color-pass-lab-pass--wash .color-pass-lab-section-label {
+    color: #173456;
+    font-weight: 600;
+  }
+
+  /* ── Pass 6: Editorial accent line system ── */
+  .color-pass-lab-pass--editorial {
+    --c-divider: #b8c4d4;
+    --c-accent: #142d4d;
+    --c-highlight: #2a7a7e;
+    --c-accent-bar: #142d4d;
+    --c-label-bg: #142d4d;
+    --c-label-ink: #f4f7fb;
+  }
+
+  .color-pass-lab-pass--editorial .color-pass-lab-block {
+    padding-left: 1.65rem;
+  }
+
+  .color-pass-lab-pass--editorial .color-pass-lab-ways .color-pass-lab-section-label,
+  .color-pass-lab-pass--editorial .color-pass-lab-project .color-pass-lab-section-label {
+    --c-label-bg: #2a7a7e;
+    --c-label-ink: #f2fafb;
+  }
+
+  .color-pass-lab-pass--editorial .color-pass-lab-who .color-pass-lab-section-label {
+    --c-label-bg: #142d4d;
+    --c-label-ink: #f4f7fb;
+  }
+
+  .color-pass-lab-pass--editorial .color-pass-lab-pain-prefix {
+    color: #2a7a7e;
+  }
+
+  .color-pass-lab-pass--editorial .color-pass-lab-index {
+    color: #f2fafb;
+    background: #2a7a7e;
+    border-color: #2a7a7e;
+  }
+
+  .color-pass-lab-pass--editorial .color-pass-lab-project-label {
+    color: #142d4d;
+  }
+
+  @media (max-width: 48rem) {
+    .color-pass-lab-shell {
+      padding: 2.8rem 0;
+    }
+
+    .color-pass-lab-status {
+      margin-left: 0;
+    }
+  }
+</style>

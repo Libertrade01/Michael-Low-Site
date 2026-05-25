@@ -8,7 +8,7 @@ import TerminalPanel from '../TerminalPanel.astro';
   <TerminalPanel large filename={hero.terminal.filename} />
   <p class="mt-4 flex min-w-0 items-center gap-2 font-mono text-[11px] leading-none md:text-xs">
     <StatusDot color="blue" />
-    <span class="shrink-0 text-muted-dim">Status</span>
+    <span class="shrink-0 text-muted-dim">{hero.statusLabel}</span>
     <span class="min-w-0 text-off-white/80">{hero.statusPill}</span>
   </p>
 </div>

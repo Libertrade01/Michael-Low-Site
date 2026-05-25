@@ -1,0 +1,21 @@
+---
+import { homeHelpAreas } from '../../../config/site';
+
+const pad = (i: number) => String(i + 1).padStart(2, '0');
+---
+
+<div class="help-lab-b" role="list">
+  {
+    homeHelpAreas.map((area, i) => (
+      <article class="help-lab-b__row">
+        <span class="help-lab-b__index font-mono" aria-hidden="true">
+          {pad(i)}
+        </span>
+        <div class="help-lab-b__body">
+          <h3 class="help-lab-b__title">{area.title}</h3>
+          <p class="help-lab-b__desc">{area.description}</p>
+        </div>
+      </article>
+    ))
+  }
+</div>

@@ -1,0 +1,66 @@
+---
+import Layout from '../components/Layout.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import WhoSectionLabFrame from '../components/lab/who/WhoSectionLabFrame.astro';
+import WhoPreviewA from '../components/lab/who/WhoPreviewA.astro';
+import WhoPreviewB from '../components/lab/who/WhoPreviewB.astro';
+import WhoPreviewC from '../components/lab/who/WhoPreviewC.astro';
+---
+
+<Layout
+  title="Who I'm best for — placement lab — Michael Low"
+  description="Compare three ways to add audience-fit content before or inside the homepage Ways section."
+>
+  <header class="who-lab-page-header border-b border-border py-12 md:py-14">
+    <div class="container-main">
+      <SectionHeader
+        label="Preview board"
+        title="Who I'm best for — placement options"
+        subtitle="Three full-width mocks for audience + pain bullets alongside the existing Ways to work together block. Live homepage is unchanged."
+      />
+      <div class="mt-6 flex flex-wrap gap-4">
+        <a href="/" class="link-arrow">← Homepage</a>
+        <a href="/#help" class="link-arrow">Live Ways section</a>
+        <a href="/work" class="link-arrow">Work page (full who copy)</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="who-lab-page">
+    <section class="who-lab-page__section border-b border-border py-14 md:py-16">
+      <div class="container-main">
+        <WhoSectionLabFrame
+          option="Option A"
+          title="Separate section before Ways"
+          note="Clear two-beat scroll: qualify the visitor first, then show offerings — more vertical space, easiest to scan."
+        >
+          <WhoPreviewA />
+        </WhoSectionLabFrame>
+      </div>
+    </section>
+
+    <section class="who-lab-page__section border-b border-border py-14 md:py-16">
+      <div class="container-main">
+        <WhoSectionLabFrame
+          option="Option B"
+          title="Who inside Ways (top of section)"
+          note="One dense #help section — audience fit leads into offerings without an extra band; feels busier but stays in one anchor."
+        >
+          <WhoPreviewB />
+        </WhoSectionLabFrame>
+      </div>
+    </section>
+
+    <section class="who-lab-page__section py-14 md:py-16">
+      <div class="container-main">
+        <WhoSectionLabFrame
+          option="Option C"
+          title="Two-beat single viewport"
+          note="Heroic split: centered who story on top, Ways on bottom within ~70vh — strong first impression, fewer offerings visible above the fold."
+        >
+          <WhoPreviewC />
+        </WhoSectionLabFrame>
+      </div>
+    </section>
+  </div>
+</Layout>

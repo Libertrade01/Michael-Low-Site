@@ -1,0 +1,105 @@
+---
+import { hero } from '../config/site';
+import StatusDot from './StatusDot.astro';
+
+interface Props {
+  /** separate | panel | quiet | unified */
+  layout?: 'separate' | 'panel' | 'quiet' | 'unified';
+}
+
+const { layout = 'separate' } = Astro.props;
+const { cta, statusLabel, statusPill } = hero;
+---
+
+{
+  layout === 'separate' && (
+    <div class="space-y-5">
+      <div
+        class="inline-flex max-w-full items-center gap-2 rounded-full border border-amber-accent/22 bg-charcoal-card/90 px-4 py-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-sm"
+        role="status"
+        aria-label={`${statusLabel} ${statusPill}`}
+      >
+        <StatusDot color="blue" />
+        <span class="shrink-0 font-mono text-xs font-medium tracking-[0.04em] text-muted">
+          {statusLabel}
+        </span>
+        <span class="min-w-0 font-mono text-xs leading-none text-off-white md:text-sm">
+          {statusPill}
+        </span>
+      </div>
+      <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-5">
+        <a href={cta.href} class="link-arrow cta-link-primary">
+          {cta.label}
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  )
+}
+
+{
+  layout === 'panel' && (
+    <div class="rounded-2xl border border-border bg-charcoal-card/50 p-5 md:p-6">
+      <p
+        class="flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1 font-mono text-xs md:text-sm"
+        role="status"
+        aria-label={`${statusLabel} ${statusPill}`}
+      >
+        <StatusDot color="blue" />
+        <span class="text-muted">{statusLabel}</span>
+        <span class="text-off-white/90">{statusPill}</span>
+      </p>
+      <div class="my-5 h-px bg-border" aria-hidden="true" />
+      <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-5">
+        <a href={cta.href} class="link-arrow cta-link-primary">
+          {cta.label}
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  )
+}
+
+{
+  layout === 'quiet' && (
+    <div class="flex flex-col gap-4">
+      <p
+        class="flex min-w-0 items-center gap-x-2 font-mono text-xs leading-none md:text-sm"
+        role="status"
+        aria-label={`${statusLabel} ${statusPill}`}
+      >
+        <StatusDot color="blue" />
+        <span class="text-muted">{statusLabel}</span>
+        <span class="text-off-white/90">{statusPill}</span>
+      </p>
+      <div class="flex flex-wrap items-center justify-center gap-x-4 gap-y-3 sm:gap-x-5">
+        <a href={cta.href} class="link-arrow cta-link-primary">
+          {cta.label}
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  )
+}
+
+{
+  layout === 'unified' && (
+    <div class="inline-flex max-w-full flex-col gap-4 rounded-2xl border border-amber-accent/18 bg-charcoal-card/60 px-5 py-4 md:px-6 md:py-5">
+      <p
+        class="flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1 font-mono text-[11px] md:text-xs"
+        role="status"
+        aria-label={`${statusLabel} ${statusPill}`}
+      >
+        <StatusDot color="blue" subtle />
+        <span class="text-muted-dim">{statusLabel}</span>
+        <span class="text-off-white/85">{statusPill}</span>
+      </p>
+      <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+        <a href={cta.href} class="link-arrow cta-link-primary">
+          {cta.label}
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  )
+}
