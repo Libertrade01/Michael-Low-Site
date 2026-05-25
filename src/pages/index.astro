@@ -1,96 +1,89 @@
 ---
-
 import Layout from '../components/Layout.astro';
-
 import Hero from '../components/Hero.astro';
-
 import SectionHeader from '../components/SectionHeader.astro';
-
 import ProjectCard from '../components/ProjectCard.astro';
-
+import HelpManifestList from '../components/HelpManifestList.astro';
+import WhoPainList from '../components/WhoPainList.astro';
 import AvailabilityBanner from '../components/AvailabilityBanner.astro';
-
+import {
+  homeHelpCta,
+  homeHelpIntro,
+  homeHelpLabel,
+  homeHelpTitle,
+  homeWhoIntro,
+  homeWhoTitle,
+} from '../config/site';
 import { getFeaturedProjects } from '../utils/content';
 
-
-
 const featured = await getFeaturedProjects();
-
 ---
 
-
-
 <Layout>
-
   <Hero />
 
+  <section id="help" class="section-viewport section-flow">
+    <div class="container-main w-full">
+      <div class="flex flex-col gap-8 md:gap-10 lg:gap-12">
+        <div class="help-ways-section-label">
+          <span class="section-label section-label--large">{homeHelpLabel}</span>
+          <div class="h-px flex-1 max-w-[120px] bg-gradient-to-r from-amber-accent/40 to-transparent"></div>
+        </div>
 
+        <div class="help-who-block">
+          <h2 class="help-who-block__title">{homeWhoTitle}</h2>
+          <p class="help-who-block__intro section-subtitle-strong">{homeWhoIntro}</p>
+          <WhoPainList />
+        </div>
 
-  <section id="portfolio" class="section-padding relative">
+        <div class="help-offerings-head">
+          <h2 class="help-offerings-head__title">{homeHelpTitle}</h2>
+          <p class="help-offerings-head__intro section-subtitle-strong">{homeHelpIntro}</p>
+        </div>
 
-    <div
+        <HelpManifestList />
 
-      class="pointer-events-none absolute inset-0 opacity-50"
-
-      style="background: radial-gradient(ellipse 60% 50% at 50% 100%, rgba(var(--accent-rgb),0.06), transparent);"
-
-      aria-hidden="true"
-
-    >
-
-    </div>
-
-    <div class="container-main relative">
-
-      <SectionHeader
-
-        label="Portfolio"
-
-        title="Systems I've built"
-
-        subtitle="Products and workflows that turn messy inputs into structured, reusable output."
-
-      />
-
-      <div class="grid gap-8 md:grid-cols-2">
-
-        {featured.map((project, i) => <ProjectCard project={project} index={i} />)}
-
+        <p class="text-center">
+          <a href={homeHelpCta.href} class="hero-cta-link">
+            {homeHelpCta.label}
+            <span aria-hidden="true">→</span>
+          </a>
+        </p>
       </div>
-
-      <a href="/projects" class="link-arrow mt-12">
-
-        All projects
-
-        <span aria-hidden="true">→</span>
-
-      </a>
-
     </div>
-
   </section>
 
-
-
-  <section class="section-padding">
-
-    <div class="container-main max-w-3xl">
-
+  <section id="portfolio" class="section-padding-home section-flow section-band-sand">
+    <div class="container-main">
       <SectionHeader
-
-        label="Contact"
-
-        title="Interested in working together?"
-
-        subtitle="AI workflows, automation systems, research pipelines, or content operations."
-
+        label="Portfolio"
+        title="Systems I've built"
+        subtitle="Products and workflows that turn messy inputs into structured, reusable output."
       />
-
-      <AvailabilityBanner />
-
+      <div class="grid gap-8 md:grid-cols-2">
+        {featured.map((project, i) => <ProjectCard project={project} index={i} />)}
+      </div>
+      <a href="/projects" class="link-arrow mt-12">
+        All projects
+        <span aria-hidden="true">→</span>
+      </a>
     </div>
-
   </section>
 
+  <section class="section-padding-home section-flow">
+    <div class="container-main max-w-3xl">
+      <SectionHeader
+        label="Contact"
+        title="Interested in working together?"
+        subtitle="AI workflows, automation systems, research pipelines, or content operations."
+      />
+      <AvailabilityBanner />
+      <p class="mt-8 text-center">
+        <a href="/contact" class="link-arrow">
+          Start with a workflow call
+          <span aria-hidden="true">→</span>
+        </a>
+      </p>
+    </div>
+  </section>
 </Layout>
-

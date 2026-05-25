@@ -14,17 +14,11 @@ const { title, subtitle, label = 'Page', compact = false, tightSubtitle = false 
 
 <header
   class:list={[
-    'relative overflow-hidden border-b border-border',
+    'section-band-sand border-b border-border',
     compact ? 'pt-14 pb-6 md:pt-20 md:pb-8' : 'py-20 md:py-28',
   ]}
 >
-  <div
-    class="pointer-events-none absolute inset-0 opacity-60"
-    style="background: radial-gradient(ellipse 70% 80% at 50% -30%, rgba(var(--accent-rgb),0.1), transparent);"
-    aria-hidden="true"
-  >
-  </div>
-  <div class="container-main relative">
+  <div class="container-main">
     <span class="section-label">{label}</span>
     <h1 class="mt-5 font-sans text-4xl font-medium tracking-tight text-off-white md:text-5xl md:leading-tight">
       {title}
@@ -32,7 +26,7 @@ const { title, subtitle, label = 'Page', compact = false, tightSubtitle = false 
     {subtitle && (
       <p
         class:list={[
-          'max-w-2xl font-mono text-sm leading-relaxed text-muted md:text-base',
+          'max-w-2xl font-sans text-base leading-relaxed text-muted md:text-[17px]',
           tightSubtitle ? 'mt-3' : 'mt-5',
         ]}
       >

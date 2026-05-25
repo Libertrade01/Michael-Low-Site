@@ -19,14 +19,8 @@ const hasRetinaCover =
   existsSync(join(process.cwd(), 'public', coverRetina!.replace(/^\//, '')));
 ---
 
-<header class="relative overflow-hidden border-b border-border pt-16 pb-8 md:pt-24 md:pb-10">
-  <div
-    class="pointer-events-none absolute inset-0"
-    style="background: radial-gradient(ellipse 80% 60% at 50% -20%, rgba(var(--accent-rgb),0.12), transparent);"
-    aria-hidden="true"
-  >
-  </div>
-  <div class="container-main relative">
+<header class="section-band-sand border-b border-border pt-16 pb-8 md:pt-24 md:pb-10">
+  <div class="container-main">
     <div class="flex flex-wrap items-center gap-3">
       <StatusBadge status={status} />
       <span class="font-mono text-[10px] uppercase tracking-widest text-muted">{role}</span>
