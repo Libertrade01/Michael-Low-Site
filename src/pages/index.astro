@@ -1,93 +1,230 @@
 ---
 import Layout from '../components/Layout.astro';
-import Hero from '../components/Hero.astro';
-import FeaturedPortfolioSection from '../components/FeaturedPortfolioSection.astro';
-import HelpSignalGrid from '../components/HelpSignalGrid.astro';
-import WhoPainList from '../components/WhoPainList.astro';
-import WhyThisMattersCard from '../components/WhyThisMattersCard.astro';
-import {
-  homeHelpCta,
-  homeHelpIntro,
-  homeHelpLabel,
-  homeHelpTitle as waysOfferingsTitle,
-  homeWhoIntro,
-  homeWhoTitle as whoPanelTitle,
-  site,
-} from '../config/site';
+import { site } from '../config/site';
 import { getFeaturedProjects } from '../utils/content';
 
 const featured = await getFeaturedProjects();
-const homeContactStatus =
-  'Available: selected AI workflow projects and implementation support.';
+const priority = [
+  'libertrade-journal-analytics',
+  'trading-knowledge-wiki',
+  'book-inmobiliaria',
+];
+const systems = priority
+  .map((slug) => featured.find((project) => project.slug === slug))
+  .filter((project) => Boolean(project));
+
+const process = [
+  {
+    title: 'Observe',
+    description: 'Understand the real workflow, including the awkward parts people have learned to work around.',
+  },
+  {
+    title: 'Simplify',
+    description: 'Reduce the problem to the decisions, information and hand-offs that actually matter.',
+  },
+  {
+    title: 'Build',
+    description: 'Turn the model into a useful product, workflow or operating layer people can run.',
+  },
+  {
+    title: 'Iterate',
+    description: 'Watch the system in use, find the friction and refine until the structure feels inevitable.',
+  },
+];
+
+const decisions = [
+  {
+    index: '01',
+    title: 'Design for the decision, not the dashboard.',
+    body: 'Libertrade brings performance, readiness and journal context together so a weekly review ends with a specific operating focus.',
+  },
+  {
+    index: '02',
+    title: 'Give scattered knowledge one stable shape.',
+    body: 'The Trading Knowledge Wiki turns dense books and disconnected notes into a reference system built for retrieval before a session.',
+  },
+  {
+    index: '03',
+    title: 'Build for the person operating it next Tuesday.',
+    body: 'Every system is designed around the ordinary day: maintainable content, clear hand-offs and less dependence on memory.',
+  },
+];
+
+const capabilities = [
+  'Product design',
+  'AI-assisted workflows',
+  'Knowledge systems',
+  'Automation',
+  'Next.js & Astro',
+  'Supabase & CMS architecture',
+];
 ---
 
-<Layout>
-  <Hero />
-
-  <section id="help" class="section-viewport section-flow home-help-section">
-    <div class="container-main w-full">
-      <div class="flex flex-col gap-8 md:gap-10 lg:gap-12 home-help-stack">
-        <div class="section-label-row">
-          <span class="section-label section-label--large">{homeHelpLabel}</span>
-          <div class="section-label-rule"></div>
-        </div>
-
-        <div class="home-help-shell">
-          <div class="help-who-block">
-            <h2 class="help-who-block__title">{whoPanelTitle}</h2>
-            <p class="help-who-block__intro section-subtitle-strong">{homeWhoIntro}</p>
-            <WhoPainList />
-          </div>
-
-          <WhyThisMattersCard />
-
-          <div class="home-signal-section">
-            <div class="help-offerings-head">
-              <h2 class="help-offerings-head__title">{waysOfferingsTitle}</h2>
-              <p class="help-offerings-head__intro section-subtitle-strong">{homeHelpIntro}</p>
-            </div>
-
-            <HelpSignalGrid />
-          </div>
-
-          <div class="home-help-shell__actionbar" aria-label="Workflow audit action">
-            <a href={homeHelpCta.href} class="home-help-shell__cta hero-cta-link">
-              {homeHelpCta.label}
-              <span aria-hidden="true">→</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <FeaturedPortfolioSection projects={featured} />
-
-  <section id="contact" class="section-padding-home section-flow home-contact-closing">
-    <div class="container-main">
-      <div class="section-label-row home-contact-closing__label">
-        <span class="section-label section-label--large">CONTACT</span>
-        <div class="section-label-rule"></div>
-      </div>
-
-      <article class="home-contact-panel" aria-labelledby="home-contact-title">
-        <div class="home-contact-panel__copy">
-          <h2 id="home-contact-title" class="home-contact-panel__title">
-            Interested in working together?
-          </h2>
-          <p class="home-contact-panel__status">
-            <span class="home-contact-panel__status-dot" aria-hidden="true"></span>
-            <span>{homeContactStatus}</span>
+<Layout
+  title="Michael Low — Practical AI systems for messy workflows"
+  description="Michael Low designs and builds practical AI products, knowledge systems, and automation for information-heavy work."
+>
+  <div class="home-v2">
+    <section class="home-v2-hero" aria-labelledby="home-v2-title">
+      <div class="home-v2-shell home-v2-hero__grid">
+        <div class="home-v2-hero__copy">
+          <p class="home-v2-kicker">Product design · AI · Automation</p>
+          <h1 id="home-v2-title">Practical AI<br />systems<br />for messy<br />workflows.</h1>
+          <p class="home-v2-hero__intro">
+            I design and build AI-powered products, knowledge systems and automation that make complex work simpler.
           </p>
+          <div class="home-v2-actions">
+            <a class="home-v2-button home-v2-button--primary" href="#systems">Explore the systems</a>
+            <a class="home-v2-text-link" href="#process">How I work <span aria-hidden="true">↓</span></a>
+          </div>
         </div>
 
-        <div class="home-contact-panel__actionbar" aria-label="Contact actions">
-          <a href={`mailto:${site.email}`} class="home-contact-panel__cta hero-cta-link">
-            Get in Touch
-            <span aria-hidden="true">→</span>
-          </a>
+        <figure class="home-v2-refinement">
+          <img
+            src="/images/hero-refinement-v3.png"
+            alt="A warm blurred form gradually becoming a precise charcoal rectangle"
+            width="1254"
+            height="1254"
+            loading="eager"
+            decoding="async"
+          />
+          <figcaption>
+            <span>Iterative refinement</span>
+          </figcaption>
+        </figure>
+      </div>
+
+      <div class="home-v2-shell home-v2-hero__foot">
+        <span>Based in São Paulo · Working globally</span>
+        <span>Available for selected systems work</span>
+      </div>
+    </section>
+
+    <section id="systems" class="home-v2-section home-v2-systems" aria-labelledby="systems-title">
+      <div class="home-v2-shell">
+        <header class="home-v2-section-head">
+          <div>
+            <p class="home-v2-kicker">Selected work</p>
+            <h2 id="systems-title">Systems I’ve built</h2>
+          </div>
+          <p>Products that organise information, support better decisions and make complicated work easier to operate.</p>
+        </header>
+
+        <div class="home-v2-system-list">
+          {systems.map((project, index) => {
+            if (!project) return null;
+            const number = String(index + 1).padStart(2, '0');
+            const { title, description, coverImage, stack, category, status } = project.data;
+            return (
+              <article class="home-v2-system">
+                <a href={`/projects/${project.slug}`} class="home-v2-system__link" aria-label={`Read the ${title} case study`}>
+                  <div class="home-v2-system__meta">
+                    <span>SYSTEM {number}</span>
+                    <span>{status}</span>
+                  </div>
+                  <div class="home-v2-system__copy">
+                    <div>
+                      <p class="home-v2-system__category">{category}</p>
+                      <h3>{title}</h3>
+                    </div>
+                    <p>{description}</p>
+                  </div>
+                  <div class="home-v2-system__visual">
+                    {coverImage ? (
+                      <img src={coverImage} alt={`${title} interface`} loading="lazy" decoding="async" />
+                    ) : (
+                      <span>{title}</span>
+                    )}
+                  </div>
+                  <div class="home-v2-system__foot">
+                    <ul aria-label={`${title} technologies`}>
+                      {stack.slice(0, 4).map((item) => <li>{item}</li>)}
+                    </ul>
+                    <span class="home-v2-system__view">View system <span aria-hidden="true">↗</span></span>
+                  </div>
+                </a>
+              </article>
+            );
+          })}
         </div>
-      </article>
-    </div>
-  </section>
+
+        <div class="home-v2-section-action">
+          <a class="home-v2-text-link" href="/projects">View all systems <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section id="process" class="home-v2-section home-v2-process" aria-labelledby="process-title">
+      <div class="home-v2-shell">
+        <header class="home-v2-process__intro">
+          <p class="home-v2-kicker">How I work</p>
+          <h2 id="process-title">Refinement is the work.</h2>
+          <p>
+            I rarely start with a clean specification. I start with scattered information, repeated friction and a problem that has not been properly framed yet.
+          </p>
+        </header>
+
+        <ol class="home-v2-process__steps">
+          {process.map((step, index) => (
+            <li>
+              <span class="home-v2-process__number">0{index + 1}</span>
+              <div>
+                <h3>{step.title}</h3>
+                <p>{step.description}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <section class="home-v2-section home-v2-decisions" aria-labelledby="decisions-title">
+      <div class="home-v2-shell">
+        <header class="home-v2-section-head home-v2-section-head--compact">
+          <div>
+            <p class="home-v2-kicker">Inside the systems</p>
+            <h2 id="decisions-title">Selected decisions</h2>
+          </div>
+          <p>The work is in the choices: what to include, what to remove and what the system should help someone do next.</p>
+        </header>
+
+        <div class="home-v2-decision-list">
+          {decisions.map((decision) => (
+            <article>
+              <span>{decision.index}</span>
+              <h3>{decision.title}</h3>
+              <p>{decision.body}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="home-v2-section home-v2-capabilities" aria-labelledby="capabilities-title">
+      <div class="home-v2-shell home-v2-capabilities__layout">
+        <div>
+          <p class="home-v2-kicker">Selected capabilities</p>
+          <h2 id="capabilities-title">Designing the system and shipping the product.</h2>
+        </div>
+        <ul>
+          {capabilities.map((capability, index) => (
+            <li><span>0{index + 1}</span>{capability}</li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <section id="contact" class="home-v2-contact" aria-labelledby="contact-title">
+      <div class="home-v2-shell home-v2-contact__inner">
+        <div>
+          <p class="home-v2-kicker">Have a messy workflow?</p>
+          <h2 id="contact-title">Let’s build something useful.</h2>
+        </div>
+        <div class="home-v2-contact__copy">
+          <p>I work with small teams and operators who need clearer ways to capture, organise and act on information.</p>
+          <a class="home-v2-button home-v2-button--light" href={`mailto:${site.email}`}>Start a conversation <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+  </div>
 </Layout>

@@ -1,0 +1,37 @@
+---
+import type { ProjectEntry } from '../utils/content';
+
+interface Props {
+  project: ProjectEntry;
+  index: number;
+}
+
+const { project, index } = Astro.props;
+const { title, description, coverImage, stack, category, status } = project.data;
+const number = String(index + 1).padStart(2, '0');
+---
+
+<article class="home-v2-system">
+  <a href={`/projects/${project.slug}`} class="home-v2-system__link" aria-label={`Read the ${title} case study`}>
+    <div class="home-v2-system__meta">
+      <span>SYSTEM {number}</span>
+      <span>{status}</span>
+    </div>
+    <div class="home-v2-system__copy">
+      <div>
+        <p class="home-v2-system__category">{category}</p>
+        <h2>{title}</h2>
+      </div>
+      <p>{description}</p>
+    </div>
+    <div class="home-v2-system__visual">
+      {coverImage ? <img src={coverImage} alt={`${title} interface`} loading="lazy" decoding="async" /> : <span>{title}</span>}
+    </div>
+    <div class="home-v2-system__foot">
+      <ul aria-label={`${title} technologies`}>
+        {stack.slice(0, 5).map((item) => <li>{item}</li>)}
+      </ul>
+      <span class="home-v2-system__view">View system <span aria-hidden="true">↗</span></span>
+    </div>
+  </a>
+</article>

@@ -3,38 +3,17 @@ interface Props {
   title: string;
   subtitle?: string;
   label?: string;
-  /** Tighter vertical padding — About page and similar hero-to-content flows */
   compact?: boolean;
-  /** Less space between title and subtitle */
   tightSubtitle?: boolean;
 }
 
-const { title, subtitle, label = 'Page', compact = false, tightSubtitle = false } = Astro.props;
+const { title, subtitle, label = 'Index', compact = false, tightSubtitle = false } = Astro.props;
 ---
 
-<header
-  class:list={[
-    'section-band-sand border-b border-border',
-    compact ? 'pt-14 pb-6 md:pt-20 md:pb-8' : 'py-20 md:py-28',
-  ]}
->
-  <div class="container-main">
-    <div class="section-label-row">
-      <span class="section-label section-label--large">{label}</span>
-      <div class="section-label-rule"></div>
-    </div>
-    <h1 class="mt-5 font-sans text-4xl font-medium tracking-tight text-off-white md:text-5xl md:leading-tight">
-      {title}
-    </h1>
-    {subtitle && (
-      <p
-        class:list={[
-          'max-w-2xl font-sans text-base leading-relaxed text-muted md:text-[17px]',
-          tightSubtitle ? 'mt-3' : 'mt-5',
-        ]}
-      >
-        {subtitle}
-      </p>
-    )}
+<header class:list={['page-header-v2', compact && 'page-header-v2--compact']}>
+  <div class="page-header-v2__inner">
+    <p class="home-v2-kicker">{label}</p>
+    <h1>{title}</h1>
+    {subtitle && <p class:list={['page-header-v2__subtitle', tightSubtitle && 'page-header-v2__subtitle--tight']}>{subtitle}</p>}
   </div>
 </header>

@@ -7,7 +7,7 @@ const personJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Person',
   name: site.name,
-  jobTitle: 'AI Workflow Builder & Systems Operator',
+  jobTitle: 'AI Product Builder & Systems Designer',
   url: site.url,
   sameAs: [site.github, site.linkedin],
   description: site.description,
@@ -15,63 +15,52 @@ const personJsonLd = {
 };
 ---
 
-<Layout title={`About — ${site.name}`} description="How Michael Low works, what he builds, and who he works with.">
+<Layout title={`About — ${site.name}`} description="How Michael Low thinks, works and builds practical AI systems.">
   <script type="application/ld+json" set:html={JSON.stringify(personJsonLd)} />
-  <PageHeader
-    label="About"
-    title="Michael Low"
-    subtitle="Practical AI systems for messy, real-world workflows."
-    compact
-    tightSubtitle
-  />
+  <div class="inner-v2 about-v2">
+    <PageHeader
+      label="About"
+      title="I make complicated work easier to operate."
+      subtitle="I work between product design, engineering and operations — usually where the problem is still ambiguous and the workflow has not been properly defined yet."
+    />
 
-  <section class="pt-10 pb-24 md:pt-12 md:pb-32">
-    <div class="container-main max-w-3xl">
-      <div class="flex flex-col gap-10 md:flex-row md:items-start">
-        <div class="shrink-0 mx-auto md:mx-0">
-          <div
-            class="h-36 w-36 overflow-hidden rounded-2xl border border-amber-accent/15 bg-charcoal-card shadow-lg glow-amber md:h-44 md:w-44"
-          >
-            <img
-              src={site.headshot}
-              alt={`${site.name} — headshot`}
-              class="h-full w-full object-cover object-[center_20%]"
-              width={176}
-              height={176}
-              loading="eager"
-              onerror={`this.onerror=null;this.src='${site.headshotFallback}';`}
-            />
-          </div>
-        </div>
+    <section class="about-v2__story">
+      <div class="home-v2-shell about-v2__story-grid">
+        <figure>
+          <img src={site.headshot} alt={`${site.name} portrait`} width="690" height="707" loading="eager" />
+          <figcaption>Michael Low · São Paulo</figcaption>
+        </figure>
 
-        <div class="space-y-5 text-muted md:pt-2">
-          <p class="font-sans text-lg leading-relaxed text-off-white/90">
-            I'm <strong class="text-off-white">Michael Low</strong>. I build practical AI systems for
-            messy real-world workflows.
-          </p>
-          {about.paragraphs.map((p) => <p class="leading-relaxed">{p}</p>)}
-          <p class="font-mono text-sm text-amber-accent/90">{site.tagline}</p>
+        <div class="about-v2__copy">
+          <p class="home-v2-kicker">The work</p>
+          {about.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
         </div>
       </div>
+    </section>
 
-      <div class="mt-16">
-        <p class="section-label">How I show up</p>
-        <div class="mt-6 space-y-6 font-mono text-sm leading-relaxed">
-          {
-            about.traits.map((t) => (
-              <p>
-                <span class="text-amber-accent">{t.label}</span>
-                <span class="text-muted"> / {t.detail}</span>
-              </p>
-            ))
-          }
+    <section class="about-v2__principles">
+      <div class="home-v2-shell">
+        <header>
+          <p class="home-v2-kicker">How I show up</p>
+          <h2>Practical by default.</h2>
+        </header>
+        <div class="about-v2__principle-list">
+          {about.traits.map((trait, index) => (
+            <article>
+              <span>0{index + 1}</span>
+              <h3>{trait.label}</h3>
+              <p>{trait.detail}</p>
+            </article>
+          ))}
         </div>
       </div>
+    </section>
 
-      <div class="mt-20 md:mt-24">
-        <p class="section-label">Beyond work</p>
-        <p class="mt-6 max-w-2xl text-base leading-[1.8] text-muted md:text-[17px]">{about.personal}</p>
+    <section class="about-v2__personal">
+      <div class="home-v2-shell">
+        <p class="home-v2-kicker">Beyond the work</p>
+        <p>{about.personal}</p>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
 </Layout>

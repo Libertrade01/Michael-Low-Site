@@ -83,17 +83,15 @@ const hasRetinaCover =
 
 <style>
   .case-study-hero {
-    --case-study-navy: #1f344a;
-    --case-study-navy-deep: #162a3d;
-    --case-study-paper: #f7f6f1;
-    --case-study-sand: #f0ebe3;
-    --case-study-ink: #111827;
-    --case-study-muted: #4b5563;
-    --case-study-line: #d8d4ca;
-    background:
-      linear-gradient(180deg, rgba(240, 235, 227, 0.98) 0%, rgba(247, 246, 241, 0.98) 100%),
-      radial-gradient(circle at 82% 18%, rgba(31, 52, 74, 0.1), transparent 32%);
-    border-bottom: 1px solid rgba(216, 212, 202, 0.72);
+    --case-study-navy: var(--ml-ink);
+    --case-study-navy-deep: var(--ml-ink-soft);
+    --case-study-paper: var(--ml-paper);
+    --case-study-sand: var(--ml-paper-deep);
+    --case-study-ink: var(--ml-ink);
+    --case-study-muted: var(--ml-muted);
+    --case-study-line: var(--ml-line);
+    background: var(--case-study-paper);
+    border-bottom: 1px solid var(--case-study-line);
     color: var(--case-study-ink);
     padding: clamp(3.25rem, 7vw, 6rem) 0 2.25rem;
   }
@@ -140,7 +138,7 @@ const hasRetinaCover =
   }
 
   .case-study-hero__intro {
-    border-left: 1px solid rgba(31, 52, 74, 0.22);
+    border-left: 1px solid var(--ml-line-strong);
     color: var(--case-study-muted);
     font-size: 1rem;
     line-height: 1.75;
@@ -160,9 +158,9 @@ const hasRetinaCover =
     align-items: center;
     background: var(--case-study-navy);
     border: 1px solid var(--case-study-navy);
-    border-radius: 0.95rem;
-    box-shadow: 0 16px 38px rgba(31, 52, 74, 0.16);
-    color: #fff;
+    border-radius: 0.35rem;
+    box-shadow: 0 10px 26px rgba(31, 31, 28, 0.12);
+    color: var(--ml-paper);
     display: inline-flex;
     flex-direction: column;
     font-family: var(--font-mono, ui-monospace, monospace);
@@ -198,8 +196,8 @@ const hasRetinaCover =
   }
 
   .case-study-hero__artifact {
-    border-radius: 1.35rem;
-    margin: 1.5rem 0 0;
+    border-radius: 0;
+    margin: 2rem 0 0;
     overflow: hidden;
   }
 

@@ -1,45 +1,23 @@
 ---
-import { nav, site } from '../config/site';
+import { site } from '../config/site';
 const year = new Date().getFullYear();
 ---
 
-<footer class="site-footer relative border-t border-border/80 bg-charcoal/70">
-  <div class="container-main flex min-h-16 flex-wrap items-center gap-x-8 gap-y-4 py-4 md:min-h-20">
-    <a href="/" class="group inline-flex shrink-0 items-center gap-3">
-      <span
-        class="flex h-8 w-8 items-center justify-center rounded-lg border border-amber-accent/20 bg-amber-accent/5 font-mono text-xs text-amber-accent transition group-hover:border-amber-accent/40 group-hover:bg-amber-accent/10"
-      >
-        ML
-      </span>
-      <span class="font-mono text-sm tracking-tight text-off-white transition group-hover:text-amber-bright">
-        {site.name}
-      </span>
-    </a>
-
-    <div class="flex min-w-0 flex-1 basis-full flex-wrap items-center gap-x-6 gap-y-3 sm:basis-auto sm:justify-end">
-      <nav aria-label="Footer navigation">
-        <ul class="flex flex-wrap items-center gap-1">
-          {
-            nav.map((item) => (
-              <li>
-                <a href={item.href} class="rounded-lg px-3 py-2 text-sm text-muted transition hover:bg-white/[0.03] hover:text-off-white">
-                  {item.label}
-                </a>
-              </li>
-            ))
-          }
-          <li>
-            <a href={site.github} class="rounded-lg px-3 py-2 text-sm text-muted transition hover:bg-white/[0.03] hover:text-off-white" target="_blank" rel="noopener noreferrer">GitHub</a>
-          </li>
-          <li>
-            <a href={site.linkedin} class="rounded-lg px-3 py-2 text-sm text-muted transition hover:bg-white/[0.03] hover:text-off-white" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          </li>
-        </ul>
-      </nav>
-
-      <span class="shrink-0 font-mono text-[11px] text-muted-dim">
-        © {year} {site.name}
-      </span>
+<footer class="site-footer-v2">
+  <div class="site-footer-v2__inner">
+    <div>
+      <a href="/" class="site-footer-v2__name">{site.name}</a>
+      <p>Practical AI systems for messy workflows.</p>
     </div>
+
+    <nav aria-label="Footer navigation">
+      <a href="/projects">Systems</a>
+      <a href="/about">About</a>
+      <a href="/build-log">Notes</a>
+      <a href={site.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+      <a href={site.github} target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+    </nav>
+
+    <p class="site-footer-v2__meta">© {year} {site.name}<br />São Paulo · Working globally</p>
   </div>
 </footer>

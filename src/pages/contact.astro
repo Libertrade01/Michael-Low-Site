@@ -1,73 +1,38 @@
----
-import Layout from '../components/Layout.astro';
-import PageHeader from '../components/PageHeader.astro';
-import AvailabilityBanner from '../components/AvailabilityBanner.astro';
-import StatusLine from '../components/StatusLine.astro';
-import { site } from '../config/site';
-
-const contactLinks = [
-  {
-    label: 'Email',
-    detail: site.email,
-    href: `mailto:${site.email}`,
-    external: false,
-  },
-  {
-    label: 'LinkedIn',
-    detail: 'Connect on LinkedIn',
-    href: site.linkedin,
-    external: true,
-  },
-  {
-    label: 'GitHub',
-    detail: 'View projects & code',
-    href: site.github,
-    external: true,
-  },
-] as const;
----
-
-<Layout title={`Contact — ${site.name}`} description="Get in touch about AI workflows, automation, or remote opportunities.">
-  <PageHeader title="Contact" subtitle="Interested in AI workflows, automation, or joining a team? I'd like to hear from you." />
-
-  <section class="border-b border-border py-8">
-    <div class="container-main max-w-2xl">
-      <StatusLine variant="bar" />
-    </div>
-  </section>
-
-  <section class="section-padding">
-    <div class="container-main max-w-2xl">
-      <ul class="help-manifest-list" role="list">
-        {
-          contactLinks.map((link) => (
-            <li class="help-manifest-list__item">
-              <a
-                href={link.href}
-                {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                class="contact-manifest-link group block"
-              >
-                <div class="help-manifest-list__head">
-                  <span class="help-manifest-list__index font-mono">[{link.label}]</span>
-                  <span class="help-manifest-list__title contact-manifest-link__title">{link.detail}</span>
-                </div>
-                <span class="contact-manifest-link__arrow link-arrow mt-3" aria-hidden="true">
-                  Open
-                  <span>→</span>
-                </span>
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-
-      <div class="mt-12">
-        <AvailabilityBanner />
-      </div>
-
-      <p class="mt-8 text-center text-base text-muted">
-        Prefer a call? Mention availability for a 20-minute discovery call in your email.
-      </p>
-    </div>
-  </section>
-</Layout>
+---
+import Layout from '../components/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import { site } from '../config/site';
+
+const links = [
+  { index: '01', label: 'Email', value: site.email, href: `mailto:${site.email}`, external: false },
+  { index: '02', label: 'LinkedIn', value: 'Connect on LinkedIn', href: site.linkedin, external: true },
+  { index: '03', label: 'GitHub', value: 'See the work behind the systems', href: site.github, external: true },
+];
+---
+
+<Layout title={`Contact — ${site.name}`} description="Talk to Michael Low about a practical AI system, product, or information-heavy workflow.">
+  <div class="inner-v2 contact-v2">
+    <PageHeader
+      label="Contact"
+      title="Let’s make the messy part clearer."
+      subtitle="If you have an information-heavy workflow that is held together by tabs, memory and repeated manual work, tell me what is happening."
+    />
+    <section class="contact-v2__body">
+      <div class="home-v2-shell contact-v2__layout">
+        <div class="contact-v2__status">
+          <p class="home-v2-kicker">Current availability</p>
+          <p><span aria-hidden="true"></span>{site.availability}</p>
+        </div>
+        <div class="contact-v2__links">
+          {links.map((link) => (
+            <a href={link.href} {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
+              <span>{link.index}</span>
+              <div><small>{link.label}</small><strong>{link.value}</strong></div>
+              <i aria-hidden="true">↗</i>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>
