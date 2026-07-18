@@ -18,6 +18,7 @@ export const site = {
   availability:
     'Available for selected AI workflow projects, implementation support, and embedded remote roles with small teams.',
   headshot: '/images/headshot.png',
+  headshotCutout: '/images/headshot-studio-cutout.png',
   headshotFallback: '/images/headshot-placeholder.svg',
 } as const;
 

@@ -1,6 +1,5 @@
 ---
 import Layout from '../components/Layout.astro';
-import PageHeader from '../components/PageHeader.astro';
 import { site, about } from '../config/site';
 
 const personJsonLd = {
@@ -11,26 +10,45 @@ const personJsonLd = {
   url: site.url,
   sameAs: [site.github, site.linkedin],
   description: site.description,
-  image: new URL(site.headshot, site.url).href,
+  image: new URL(site.headshotCutout, site.url).href,
 };
 ---
 
 <Layout title={`About — ${site.name}`} description="How Michael Low thinks, works and builds practical AI systems.">
   <script type="application/ld+json" set:html={JSON.stringify(personJsonLd)} />
   <div class="inner-v2 about-v2">
-    <PageHeader
-      label="About"
-      title="I make complicated work easier to operate."
-      subtitle="I work between product design, engineering and operations — usually where the problem is still ambiguous and the workflow has not been properly defined yet."
-    />
-
-    <section class="about-v2__story">
-      <div class="home-v2-shell about-v2__story-grid">
-        <figure>
-          <img src={site.headshot} alt={`${site.name} portrait`} width="690" height="707" loading="eager" />
+    <section class="about-v2__intro" aria-labelledby="about-title">
+      <div class="home-v2-shell about-v2__intro-grid">
+        <figure class="about-v2__photo">
+          <div class="about-v2__cutout">
+            <img
+              src={`${site.headshotCutout}?v=8`}
+              alt={`${site.name} portrait`}
+              width="1024"
+              height="978"
+              loading="eager"
+              decoding="async"
+            />
+          </div>
           <figcaption>Michael Low · São Paulo</figcaption>
         </figure>
 
+        <div class="about-v2__intro-copy">
+          <p class="home-v2-kicker">About</p>
+          <h1 id="about-title">I make complicated work easier to operate.</h1>
+          <p class="about-v2__lede">
+            I work between product design, engineering and operations — usually where the problem is still ambiguous and the workflow has not been properly defined yet.
+          </p>
+          <div class="about-v2__meta">
+            <span>Based in São Paulo · Working globally</span>
+            <span>Open to AI product &amp; systems roles</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-v2__story">
+      <div class="home-v2-shell about-v2__story-grid">
         <div class="about-v2__copy">
           <p class="home-v2-kicker">The work</p>
           {about.paragraphs.map((paragraph) => <p>{paragraph}</p>)}

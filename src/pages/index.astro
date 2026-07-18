@@ -1,6 +1,6 @@
 ---
 import Layout from '../components/Layout.astro';
-import { site } from '../config/site';
+import { site, about } from '../config/site';
 import { getFeaturedProjects } from '../utils/content';
 
 const featured = await getFeaturedProjects();
@@ -16,47 +16,48 @@ const systems = priority
 const process = [
   {
     title: 'Observe',
-    description: 'Understand the real workflow, including the awkward parts people have learned to work around.',
+    description:
+      'Map the real workflow — including the awkward workarounds people have learned to ignore.',
   },
   {
     title: 'Simplify',
-    description: 'Reduce the problem to the decisions, information and hand-offs that actually matter.',
+    description:
+      'Cut the problem down to the decisions, information and hand-offs that actually matter.',
   },
   {
     title: 'Build',
-    description: 'Turn the model into a useful product, workflow or operating layer people can run.',
+    description:
+      'Ship a usable product or operating layer people can run without constant explanation.',
   },
   {
     title: 'Iterate',
-    description: 'Watch the system in use, find the friction and refine until the structure feels inevitable.',
+    description:
+      'Watch it in use, find the friction, and refine until the structure feels inevitable.',
   },
 ];
 
-const decisions = [
+const proofPoints = [
   {
-    index: '01',
-    title: 'Design for the decision, not the dashboard.',
-    body: 'Libertrade brings performance, readiness and journal context together so a weekly review ends with a specific operating focus.',
+    label: 'Systems shipped',
+    value: 'End-to-end',
+    detail: 'From messy input to a product people can operate on a normal Tuesday.',
   },
   {
-    index: '02',
-    title: 'Give scattered knowledge one stable shape.',
-    body: 'The Trading Knowledge Wiki turns dense books and disconnected notes into a reference system built for retrieval before a session.',
+    label: 'Focus',
+    value: 'AI + workflow',
+    detail: 'Products that organise dense information and make the next decision obvious.',
   },
   {
-    index: '03',
-    title: 'Build for the person operating it next Tuesday.',
-    body: 'Every system is designed around the ordinary day: maintainable content, clear hand-offs and less dependence on memory.',
+    label: 'Stack depth',
+    value: 'Full build',
+    detail: 'Product design, AI-assisted flows, Next.js / Astro, Supabase, CMS architecture.',
   },
 ];
 
-const capabilities = [
-  'Product design',
-  'AI-assisted workflows',
-  'Knowledge systems',
-  'Automation',
-  'Next.js & Astro',
-  'Supabase & CMS architecture',
+const skills = [
+  { group: 'Product', items: ['Product design', 'Information architecture', 'Decision-centred UX'] },
+  { group: 'AI systems', items: ['AI-assisted workflows', 'Knowledge systems', 'Retrieval & notes ops'] },
+  { group: 'Engineering', items: ['Next.js & Astro', 'Supabase', 'Automation & CMS'] },
 ];
 ---
 
@@ -64,22 +65,22 @@ const capabilities = [
   title="Michael Low — Practical AI systems for messy workflows"
   description="Michael Low designs and builds practical AI products, knowledge systems, and automation for information-heavy work."
 >
-  <div class="home-v2">
-    <section class="home-v2-hero" aria-labelledby="home-v2-title">
-      <div class="home-v2-shell home-v2-hero__grid">
-        <div class="home-v2-hero__copy">
-          <p class="home-v2-kicker">Product design · AI · Automation</p>
-          <h1 id="home-v2-title">Practical AI<br />systems<br />for messy<br />workflows.</h1>
-          <p class="home-v2-hero__intro">
+  <div class="mock">
+    <section class="mock-hero" aria-labelledby="mock-hero-title">
+      <div class="mock-shell mock-hero__grid">
+        <div class="mock-hero__copy">
+          <p class="mock-kicker">Product design · AI · Automation</p>
+          <h1 id="mock-hero-title">Practical AI<br />systems<br />for messy<br />workflows.</h1>
+          <p class="mock-hero__intro">
             I design and build AI-powered products, knowledge systems and automation that make complex work simpler.
           </p>
-          <div class="home-v2-actions">
-            <a class="home-v2-button home-v2-button--primary" href="#systems">Explore the systems</a>
-            <a class="home-v2-text-link" href="#process">How I work <span aria-hidden="true">↓</span></a>
+          <div class="mock-actions">
+            <a class="mock-button mock-button--primary" href="#systems">Explore the systems</a>
+            <a class="mock-text-link" href="#process">How I work <span aria-hidden="true">↓</span></a>
           </div>
         </div>
 
-        <figure class="home-v2-refinement">
+        <figure class="mock-refinement">
           <img
             src="/images/hero-refinement-v3.png"
             alt="A warm blurred form gradually becoming a precise charcoal rectangle"
@@ -88,59 +89,103 @@ const capabilities = [
             loading="eager"
             decoding="async"
           />
-          <figcaption>
-            <span>Iterative refinement</span>
-          </figcaption>
+          <figcaption><span>Iterative refinement</span></figcaption>
         </figure>
       </div>
 
-      <div class="home-v2-shell home-v2-hero__foot">
+      <div class="mock-shell mock-hero__foot">
         <span>Based in São Paulo · Working globally</span>
-        <span>Available for selected systems work</span>
+        <span>Open to AI product &amp; systems roles</span>
       </div>
     </section>
 
-    <section id="systems" class="home-v2-section home-v2-systems" aria-labelledby="systems-title">
-      <div class="home-v2-shell">
-        <header class="home-v2-section-head">
-          <div>
-            <p class="home-v2-kicker">Selected work</p>
-            <h2 id="systems-title">Systems I’ve built</h2>
+    <!-- NEW: quick proof strip for hiring managers skimming -->
+    <section class="mock-proof" aria-label="At a glance">
+      <div class="mock-shell mock-proof__grid">
+        {proofPoints.map((point) => (
+          <article>
+            <p class="mock-kicker">{point.label}</p>
+            <h2>{point.value}</h2>
+            <p>{point.detail}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- SYSTEMS: editorial / asymmetric — not a stacked card list -->
+    <section id="systems" class="mock-section mock-systems" aria-labelledby="systems-title">
+      <div class="mock-shell">
+        <header class="mock-systems__head">
+          <p class="mock-kicker">Selected systems</p>
+          <div class="mock-systems__head-row">
+            <h2 id="systems-title">Work that shows how I think and ship.</h2>
+            <p>
+              Three products that organise dense information and prove I can take a messy problem all the way to a usable system.
+            </p>
           </div>
-          <p>Products that organise information, support better decisions and make complicated work easier to operate.</p>
         </header>
 
-        <div class="home-v2-system-list">
-          {systems.map((project, index) => {
+        {systems[0] && (
+          <article class="mock-feature">
+            <a href={`/projects/${systems[0].slug}`} aria-label={`Read the ${systems[0].data.title} case study`}>
+              <div class="mock-feature__visual">
+                {systems[0].data.coverImage ? (
+                  <img
+                    src={systems[0].data.coverImage}
+                    alt={`${systems[0].data.title} interface`}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                ) : null}
+                <span class="mock-feature__index" aria-hidden="true">01</span>
+              </div>
+              <div class="mock-feature__copy">
+                <div class="mock-feature__meta">
+                  <span>{systems[0].data.category}</span>
+                  <span>{systems[0].data.status}</span>
+                </div>
+                <h3>{systems[0].data.title}</h3>
+                <p>{systems[0].data.description}</p>
+                <ul aria-label={`${systems[0].data.title} technologies`}>
+                  {systems[0].data.stack.slice(0, 4).map((item) => <li>{item}</li>)}
+                </ul>
+                <span class="mock-feature__view">
+                  Read case study <span aria-hidden="true">↗</span>
+                </span>
+              </div>
+            </a>
+          </article>
+        )}
+
+        <div class="mock-pair">
+          {systems.slice(1).map((project, index) => {
             if (!project) return null;
-            const number = String(index + 1).padStart(2, '0');
+            const number = String(index + 2).padStart(2, '0');
             const { title, description, coverImage, stack, category, status } = project.data;
             return (
-              <article class="home-v2-system">
-                <a href={`/projects/${project.slug}`} class="home-v2-system__link" aria-label={`Read the ${title} case study`}>
-                  <div class="home-v2-system__meta">
-                    <span>SYSTEM {number}</span>
-                    <span>{status}</span>
-                  </div>
-                  <div class="home-v2-system__copy">
-                    <div>
-                      <p class="home-v2-system__category">{category}</p>
-                      <h3>{title}</h3>
-                    </div>
-                    <p>{description}</p>
-                  </div>
-                  <div class="home-v2-system__visual">
+              <article class:list={['mock-pair__item', index === 1 && 'mock-pair__item--offset']}>
+                <a href={`/projects/${project.slug}`} aria-label={`Read the ${title} case study`}>
+                  <div class="mock-pair__visual">
                     {coverImage ? (
                       <img src={coverImage} alt={`${title} interface`} loading="lazy" decoding="async" />
                     ) : (
                       <span>{title}</span>
                     )}
                   </div>
-                  <div class="home-v2-system__foot">
+                  <div class="mock-pair__copy">
+                    <div class="mock-pair__meta">
+                      <span>{number}</span>
+                      <span>{category}</span>
+                      <span>{status}</span>
+                    </div>
+                    <h3>{title}</h3>
+                    <p>{description}</p>
                     <ul aria-label={`${title} technologies`}>
-                      {stack.slice(0, 4).map((item) => <li>{item}</li>)}
+                      {stack.slice(0, 3).map((item) => <li>{item}</li>)}
                     </ul>
-                    <span class="home-v2-system__view">View system <span aria-hidden="true">↗</span></span>
+                    <span class="mock-pair__view">
+                      Case study <span aria-hidden="true">↗</span>
+                    </span>
                   </div>
                 </a>
               </article>
@@ -148,26 +193,86 @@ const capabilities = [
           })}
         </div>
 
-        <div class="home-v2-section-action">
-          <a class="home-v2-text-link" href="/projects">View all systems <span aria-hidden="true">→</span></a>
+        <div class="mock-section-action">
+          <a class="mock-text-link" href="/projects">View all systems <span aria-hidden="true">→</span></a>
         </div>
       </div>
     </section>
 
-    <section id="process" class="home-v2-section home-v2-process" aria-labelledby="process-title">
-      <div class="home-v2-shell">
-        <header class="home-v2-process__intro">
-          <p class="home-v2-kicker">How I work</p>
+    <!-- ABOUT: compact trust layer for hiring managers -->
+    <section id="about" class="mock-section mock-about" aria-labelledby="about-title">
+      <div class="mock-shell mock-about__layout">
+        <figure class="mock-about__photo">
+          <div class="mock-about__cutout">
+            <img
+              src={`${site.headshotCutout}?v=8`}
+              alt={`${site.name} portrait`}
+              width="1024"
+              height="978"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <figcaption>Michael Low · São Paulo</figcaption>
+        </figure>
+
+        <div class="mock-about__copy">
+          <p class="mock-kicker">About</p>
+          <h2 id="about-title">I make complicated work easier to operate.</h2>
+          <p>
+            I work between product design, engineering and operations — usually where the problem is still ambiguous and the workflow has not been properly defined yet.
+          </p>
+          <p>
+            {about.paragraphs[0]} {about.paragraphs[1]}
+          </p>
+          <div class="mock-about__meta">
+            <span>Based in São Paulo · Working globally</span>
+            <span>Open to AI product &amp; systems roles</span>
+            <a href="/about">Full about page <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS: made prominent for AI hiring managers -->
+    <section id="skills" class="mock-section mock-skills" aria-labelledby="skills-title">
+      <div class="mock-shell mock-skills__layout">
+        <header>
+          <p class="mock-kicker">Capabilities</p>
+          <h2 id="skills-title">What I bring to an AI team.</h2>
+          <p>
+            Not slide decks — shipped systems. Comfortable across product, AI workflow design and the engineering needed to make them real.
+          </p>
+        </header>
+        <div class="mock-skills__groups">
+          {skills.map((skill) => (
+            <div class="mock-skill-group">
+              <p class="mock-kicker">{skill.group}</p>
+              <ul>
+                {skill.items.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section id="process" class="mock-section mock-process" aria-labelledby="process-title">
+      <div class="mock-shell mock-process__layout">
+        <header class="mock-process__intro">
+          <p class="mock-kicker">How I work</p>
           <h2 id="process-title">Refinement is the work.</h2>
           <p>
             I rarely start with a clean specification. I start with scattered information, repeated friction and a problem that has not been properly framed yet.
           </p>
         </header>
-
-        <ol class="home-v2-process__steps">
+        <ol class="mock-process__steps">
           {process.map((step, index) => (
             <li>
-              <span class="home-v2-process__number">0{index + 1}</span>
+              <span>0{index + 1}</span>
               <div>
                 <h3>{step.title}</h3>
                 <p>{step.description}</p>
@@ -178,53 +283,886 @@ const capabilities = [
       </div>
     </section>
 
-    <section class="home-v2-section home-v2-decisions" aria-labelledby="decisions-title">
-      <div class="home-v2-shell">
-        <header class="home-v2-section-head home-v2-section-head--compact">
-          <div>
-            <p class="home-v2-kicker">Inside the systems</p>
-            <h2 id="decisions-title">Selected decisions</h2>
+    <!-- CONTACT: job-seeking framing -->
+    <section id="contact" class="mock-contact" aria-labelledby="contact-title">
+      <div class="mock-shell mock-contact__inner">
+        <div>
+          <p class="mock-kicker">Next step</p>
+          <h2 id="contact-title">Looking for someone who can turn messy AI problems into working systems?</h2>
+        </div>
+        <div class="mock-contact__copy">
+          <p>
+            Open to AI product, workflow and systems roles — remote or hybrid — where the work is shipping useful software, not theatre.
+          </p>
+          <div class="mock-contact__actions">
+            <a class="mock-button mock-button--light" href={`mailto:${site.email}`}>
+              Email me <span aria-hidden="true">↗</span>
+            </a>
+            <a class="mock-text-link mock-text-link--on-dark" href={site.linkedin} target="_blank" rel="noopener noreferrer">
+              LinkedIn <span aria-hidden="true">↗</span>
+            </a>
           </div>
-          <p>The work is in the choices: what to include, what to remove and what the system should help someone do next.</p>
-        </header>
-
-        <div class="home-v2-decision-list">
-          {decisions.map((decision) => (
-            <article>
-              <span>{decision.index}</span>
-              <h3>{decision.title}</h3>
-              <p>{decision.body}</p>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <section class="home-v2-section home-v2-capabilities" aria-labelledby="capabilities-title">
-      <div class="home-v2-shell home-v2-capabilities__layout">
-        <div>
-          <p class="home-v2-kicker">Selected capabilities</p>
-          <h2 id="capabilities-title">Designing the system and shipping the product.</h2>
-        </div>
-        <ul>
-          {capabilities.map((capability, index) => (
-            <li><span>0{index + 1}</span>{capability}</li>
-          ))}
-        </ul>
-      </div>
-    </section>
-
-    <section id="contact" class="home-v2-contact" aria-labelledby="contact-title">
-      <div class="home-v2-shell home-v2-contact__inner">
-        <div>
-          <p class="home-v2-kicker">Have a messy workflow?</p>
-          <h2 id="contact-title">Let’s build something useful.</h2>
-        </div>
-        <div class="home-v2-contact__copy">
-          <p>I work with small teams and operators who need clearer ways to capture, organise and act on information.</p>
-          <a class="home-v2-button home-v2-button--light" href={`mailto:${site.email}`}>Start a conversation <span aria-hidden="true">↗</span></a>
         </div>
       </div>
     </section>
   </div>
 </Layout>
+
+<style>
+  .mock {
+    --paper: #f4f0e8;
+    --raised: #faf7f1;
+    --deep: #e9e2d7;
+    --ink: #1d1f1e;
+    --soft: #454744;
+    --muted: #77756f;
+    --line: rgba(48, 47, 43, 0.14);
+    --line-strong: rgba(48, 47, 43, 0.24);
+    --signal: #3d5a4c;
+    color: var(--ink);
+    background: var(--paper);
+    font-family: 'IBM Plex Sans', system-ui, sans-serif;
+  }
+
+  .mock a {
+    text-decoration: none;
+  }
+
+  .mock a:not(.mock-button) {
+    color: inherit;
+  }
+
+  .mock-shell {
+    width: min(92rem, calc(100% - 3rem));
+    margin-inline: auto;
+  }
+
+  .mock-kicker {
+    margin: 0;
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* Hero */
+  .mock-hero {
+    position: relative;
+    overflow: hidden;
+    min-height: calc(100svh - 4.75rem);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mock-hero::after {
+    content: '';
+    position: absolute;
+    z-index: 2;
+    top: 4%;
+    right: 0;
+    bottom: 4%;
+    width: min(46vw, 46rem);
+    pointer-events: none;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 3.5rem 3.5rem;
+    opacity: 0.32;
+    mask-image:
+      linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.15) 20%, rgba(0, 0, 0, 0.4) 40%, rgba(0, 0, 0, 0.7) 60%, rgba(0, 0, 0, 0.88) 80%, #000 100%),
+      linear-gradient(180deg, transparent 0%, #000 18%, #000 82%, transparent 100%);
+    mask-composite: intersect;
+  }
+
+  .mock-hero__grid {
+    flex: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-block: clamp(4rem, 8vh, 7rem) clamp(3rem, 6vh, 5rem);
+  }
+
+  .mock-hero__copy {
+    position: relative;
+    z-index: 3;
+    max-width: 40rem;
+  }
+
+  .mock-hero h1 {
+    margin: 1.25rem 0 0;
+    font-size: clamp(3rem, 5.7vw, 5.7rem);
+    font-weight: 500;
+    line-height: 0.98;
+    letter-spacing: -0.065em;
+  }
+
+  .mock-hero__intro {
+    max-width: 40rem;
+    margin: 1.8rem 0 0;
+    color: var(--muted);
+    font-size: clamp(1.05rem, 1.6vw, 1.35rem);
+    font-weight: 300;
+    line-height: 1.65;
+    text-wrap: balance;
+  }
+
+  .mock-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.35rem;
+    margin-top: 2.25rem;
+  }
+
+  .mock-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    min-height: 2.8rem;
+    padding: 0.75rem 1.15rem;
+    border-radius: 0.35rem;
+    font-size: 0.84rem;
+    font-weight: 500;
+    transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 220ms ease;
+  }
+
+  .mock-button:hover {
+    transform: translateY(-2px);
+  }
+
+  .mock-button:active {
+    transform: translateY(1px) scale(0.985);
+  }
+
+  a.mock-button.mock-button--primary {
+    color: var(--paper);
+    background: var(--ink);
+    box-shadow: 0 8px 22px rgba(31, 31, 28, 0.12);
+  }
+
+  a.mock-button.mock-button--light {
+    color: #202220;
+    background: #f4f0e8;
+  }
+
+  .mock-text-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    color: var(--soft);
+    font-size: 0.84rem;
+  }
+
+  .mock-text-link span {
+    transition: transform 180ms ease;
+  }
+
+  .mock-text-link:hover {
+    color: var(--ink);
+  }
+
+  .mock-text-link:hover span {
+    transform: translate(2px, -1px);
+  }
+
+  .mock-text-link--on-dark {
+    color: color-mix(in srgb, #f4f0e8 72%, transparent);
+  }
+
+  .mock-text-link--on-dark:hover {
+    color: #f4f0e8;
+  }
+
+  .mock-refinement {
+    position: absolute;
+    left: 11%;
+    top: 50%;
+    width: min(68vw, 58rem);
+    aspect-ratio: 1;
+    transform: translateY(-50%);
+    margin: 0;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .mock-refinement img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+    mix-blend-mode: darken;
+    transform: translateY(-9%) scaleY(1.36);
+    transform-origin: 50% 53%;
+    mask-image:
+      linear-gradient(90deg, transparent 0%, #000 5%, #000 95%, transparent 100%),
+      linear-gradient(180deg, transparent 0%, #000 5%, #000 95%, transparent 100%);
+    mask-composite: intersect;
+  }
+
+  .mock-refinement figcaption {
+    position: absolute;
+    left: 78%;
+    top: 63%;
+    transform: translateX(-50%);
+    width: max-content;
+    margin: 0;
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .mock-hero__foot {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-block: 1.1rem;
+    color: var(--muted);
+    border-top: 1px solid var(--line);
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  /* Proof strip */
+  .mock-proof {
+    border-top: 1px solid var(--line);
+    background: var(--raised);
+  }
+
+  .mock-proof__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+  }
+
+  .mock-proof article {
+    padding: clamp(2rem, 4vw, 3rem) clamp(1.25rem, 3vw, 2.5rem);
+    border-right: 1px solid var(--line);
+  }
+
+  .mock-proof article:last-child {
+    border-right: none;
+  }
+
+  .mock-proof h2 {
+    margin: 0.85rem 0 0.7rem;
+    font-size: clamp(1.55rem, 2.4vw, 2.1rem);
+    font-weight: 500;
+    letter-spacing: -0.04em;
+  }
+
+  .mock-proof p:last-child {
+    margin: 0;
+    max-width: 28rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+    font-weight: 300;
+    line-height: 1.65;
+  }
+
+  /* Shared section chrome */
+  .mock-section {
+    padding-block: clamp(5.5rem, 10vw, 9rem);
+    border-top: 1px solid var(--line);
+  }
+
+  .mock-section-head {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(16rem, 0.75fr);
+    gap: clamp(2rem, 7vw, 8rem);
+    align-items: end;
+    margin-bottom: clamp(3rem, 6vw, 5rem);
+  }
+
+  .mock-section-head h2,
+  .mock-about__copy h2,
+  .mock-skills h2,
+  .mock-process__intro h2,
+  .mock-contact h2 {
+    margin: 0.85rem 0 0;
+    font-size: clamp(2.2rem, 4.2vw, 4.2rem);
+    font-weight: 400;
+    line-height: 1.02;
+    letter-spacing: -0.055em;
+    text-wrap: balance;
+  }
+
+  .mock-section-head > p,
+  .mock-about__copy > p:not(.mock-kicker),
+  .mock-skills header > p:not(.mock-kicker),
+  .mock-process__intro > p:last-child,
+  .mock-contact__copy > p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  /* About */
+  .mock-about {
+    background: var(--raised);
+  }
+
+  .mock-about__layout {
+    display: grid;
+    grid-template-columns: minmax(16rem, 0.95fr) minmax(22rem, 1.05fr);
+    gap: clamp(1.5rem, 5vw, 4.5rem);
+    align-items: start;
+  }
+
+  .mock-about__photo {
+    margin: -0.5rem 0 0;
+    max-width: 34rem;
+    width: 100%;
+    justify-self: start;
+  }
+
+  .mock-about__cutout {
+    position: relative;
+    display: grid;
+    place-items: start center;
+  }
+
+  .mock-about__cutout::before {
+    content: '';
+    position: absolute;
+    left: 18%;
+    right: 18%;
+    bottom: 4%;
+    height: 14%;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at center, rgba(40, 36, 30, 0.14), transparent 72%);
+    filter: blur(8px);
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .mock-about__photo img {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 34rem;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    /* Soft contact shadow only — blends without muddy bottom blur */
+    filter: drop-shadow(0 16px 24px rgba(40, 36, 30, 0.1));
+  }
+
+  .mock-about__photo figcaption {
+    margin-top: 0.75rem;
+    text-align: left;
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .mock-about__copy {
+    padding-top: 0.35rem;
+  }
+
+  .mock-about__copy h2 {
+    max-width: 14ch;
+    margin-bottom: 1.5rem;
+  }
+
+  .mock-about__copy > p + p {
+    margin-top: 1rem;
+  }
+
+  .mock-about__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.85rem 1.5rem;
+    margin-top: 2rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .mock-about__meta a {
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', system-ui, sans-serif;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .mock-about__meta a span {
+    display: inline-block;
+    transition: transform 180ms ease;
+  }
+
+  .mock-about__meta a:hover span {
+    transform: translateX(3px);
+  }
+
+  .mock-section-action {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 2.25rem;
+  }
+
+  /* Systems — editorial feature + offset pair */
+  .mock-systems__head {
+    margin-bottom: clamp(3rem, 6vw, 5rem);
+  }
+
+  .mock-systems__head-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(14rem, 0.65fr);
+    gap: clamp(1.5rem, 5vw, 5rem);
+    align-items: end;
+    margin-top: 0.9rem;
+  }
+
+  .mock-systems__head-row h2 {
+    margin: 0;
+    font-size: clamp(2.2rem, 4.2vw, 4.2rem);
+    font-weight: 400;
+    line-height: 1.02;
+    letter-spacing: -0.055em;
+    text-wrap: balance;
+  }
+
+  .mock-systems__head-row > p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  .mock-feature {
+    margin-bottom: clamp(3.5rem, 7vw, 6rem);
+  }
+
+  .mock-feature > a {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(16rem, 0.75fr);
+    gap: clamp(1.75rem, 4vw, 3.5rem);
+    align-items: stretch;
+  }
+
+  .mock-feature__visual {
+    position: relative;
+    overflow: hidden;
+    min-height: clamp(22rem, 42vw, 34rem);
+    background: var(--deep);
+  }
+
+  .mock-feature__visual img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center top;
+    filter: saturate(0.88) contrast(0.97);
+    transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1), filter 300ms ease;
+  }
+
+  .mock-feature:hover .mock-feature__visual img {
+    transform: scale(1.03);
+    filter: saturate(0.98) contrast(1);
+  }
+
+  .mock-feature__index {
+    position: absolute;
+    left: 1.1rem;
+    bottom: 0.85rem;
+    color: color-mix(in srgb, var(--paper) 55%, transparent);
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-size: clamp(3.5rem, 7vw, 6rem);
+    font-weight: 400;
+    letter-spacing: -0.06em;
+    line-height: 0.85;
+    pointer-events: none;
+    mix-blend-mode: difference;
+  }
+
+  .mock-feature__copy {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 0.35rem;
+  }
+
+  .mock-feature__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.25rem;
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .mock-feature__copy h3 {
+    margin: 1.1rem 0 0;
+    font-size: clamp(2rem, 3.4vw, 3.4rem);
+    font-weight: 400;
+    letter-spacing: -0.05em;
+    line-height: 1.02;
+  }
+
+  .mock-feature__copy > p {
+    max-width: 28rem;
+    margin: 1.1rem 0 0;
+    color: var(--muted);
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.65;
+  }
+
+  .mock-feature__copy ul,
+  .mock-pair__copy ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 0.95rem;
+    margin: 1.25rem 0 0;
+    padding: 0;
+    list-style: none;
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .mock-feature__view,
+  .mock-pair__view {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    margin-top: 1.6rem;
+    font-size: 0.82rem;
+    font-weight: 500;
+  }
+
+  .mock-feature__view span,
+  .mock-pair__view span {
+    transition: transform 180ms ease;
+  }
+
+  .mock-feature:hover .mock-feature__view span,
+  .mock-pair__item:hover .mock-pair__view span {
+    transform: translate(2px, -2px);
+  }
+
+  .mock-pair {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: clamp(1.5rem, 4vw, 3.5rem);
+    align-items: start;
+    padding-top: clamp(1rem, 3vw, 2rem);
+    border-top: 1px solid var(--line);
+  }
+
+  .mock-pair__item--offset {
+    margin-top: clamp(3rem, 8vw, 7rem);
+  }
+
+  .mock-pair__item > a {
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  .mock-pair__visual {
+    overflow: hidden;
+    aspect-ratio: 5 / 4;
+    background: var(--deep);
+  }
+
+  .mock-pair__item--offset .mock-pair__visual {
+    aspect-ratio: 4 / 5;
+  }
+
+  .mock-pair__visual img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center top;
+    filter: saturate(0.86) contrast(0.97);
+    transition: transform 650ms cubic-bezier(0.22, 1, 0.36, 1), filter 280ms ease;
+  }
+
+  .mock-pair__item:hover .mock-pair__visual img {
+    transform: scale(1.025);
+    filter: saturate(0.96) contrast(1);
+  }
+
+  .mock-pair__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem 1.1rem;
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .mock-pair__copy h3 {
+    margin: 0.85rem 0 0;
+    font-size: clamp(1.45rem, 2.2vw, 2.15rem);
+    font-weight: 400;
+    letter-spacing: -0.04em;
+    line-height: 1.08;
+  }
+
+  .mock-pair__copy > p {
+    max-width: 30rem;
+    margin: 0.8rem 0 0;
+    color: var(--muted);
+    font-size: 0.9rem;
+    font-weight: 300;
+    line-height: 1.65;
+  }
+
+  /* Skills */
+  .mock-skills {
+    background: var(--deep);
+  }
+
+  .mock-skills__layout {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(22rem, 1.1fr);
+    gap: clamp(3rem, 8vw, 9rem);
+    align-items: start;
+  }
+
+  .mock-skills header > p {
+    max-width: 32rem;
+    margin-top: 1.35rem;
+  }
+
+  .mock-skills__groups {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .mock-skill-group {
+    padding-top: 1rem;
+    border-top: 1px solid var(--line-strong);
+  }
+
+  .mock-skill-group ul {
+    margin: 1.25rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .mock-skill-group li {
+    padding-block: 0.65rem;
+    border-bottom: 1px solid var(--line);
+    color: var(--soft);
+    font-size: 0.95rem;
+    font-weight: 300;
+  }
+
+  /* Process */
+  .mock-process {
+    background: var(--raised);
+  }
+
+  .mock-process__layout {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(24rem, 1.2fr);
+    gap: clamp(3rem, 8vw, 9rem);
+    align-items: start;
+  }
+
+  .mock-process__intro {
+    position: sticky;
+    top: 5rem;
+  }
+
+  .mock-process__intro h2 {
+    max-width: 9ch;
+  }
+
+  .mock-process__intro > p:last-child {
+    max-width: 32rem;
+    margin-top: 1.4rem;
+  }
+
+  .mock-process__steps {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid var(--line-strong);
+  }
+
+  .mock-process__steps li {
+    display: grid;
+    grid-template-columns: 3.5rem 1fr;
+    gap: 1.25rem;
+    padding-block: 2rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .mock-process__steps span {
+    padding-top: 0.35rem;
+    color: var(--signal);
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-size: 0.65rem;
+  }
+
+  .mock-process__steps h3 {
+    margin: 0;
+    font-size: clamp(1.45rem, 2.2vw, 2.15rem);
+    font-weight: 400;
+    letter-spacing: -0.035em;
+  }
+
+  .mock-process__steps p {
+    max-width: 34rem;
+    margin: 0.75rem 0 0;
+    color: var(--muted);
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  /* Contact */
+  .mock-contact {
+    color: #f4f0e8;
+    background: #202220;
+    padding-block: clamp(5rem, 9vw, 8rem);
+  }
+
+  .mock-contact__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(16rem, 0.7fr);
+    gap: clamp(2.5rem, 8vw, 9rem);
+    align-items: end;
+  }
+
+  .mock-contact .mock-kicker,
+  .mock-contact__copy > p {
+    color: color-mix(in srgb, #f4f0e8 62%, transparent);
+  }
+
+  .mock-contact h2 {
+    color: inherit;
+    max-width: 16ch;
+  }
+
+  .mock-contact__copy {
+    display: grid;
+    gap: 1.6rem;
+    justify-items: start;
+  }
+
+  .mock-contact__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.25rem;
+  }
+
+  @media (max-width: 980px) {
+    .mock-proof__grid,
+    .mock-skills__groups,
+    .mock-skills__layout,
+    .mock-about__layout,
+    .mock-process__layout,
+    .mock-contact__inner,
+    .mock-section-head,
+    .mock-systems__head-row,
+    .mock-feature > a,
+    .mock-pair {
+      grid-template-columns: 1fr;
+    }
+
+    .mock-about__photo,
+    .mock-about__photo img {
+      max-width: 26rem;
+    }
+
+    .mock-feature__visual {
+      min-height: 18rem;
+    }
+
+    .mock-pair__item--offset {
+      margin-top: 0;
+    }
+
+    .mock-pair__item--offset .mock-pair__visual {
+      aspect-ratio: 5 / 4;
+    }
+
+    .mock-proof article {
+      border-right: none;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .mock-proof article:last-child {
+      border-bottom: none;
+    }
+
+    .mock-process__intro {
+      position: static;
+    }
+
+    .mock-refinement {
+      left: 20%;
+      width: min(90vw, 48rem);
+      opacity: 0.7;
+    }
+  }
+
+  @media (max-width: 680px) {
+    .mock-hero {
+      min-height: auto;
+    }
+
+    .mock-hero h1 {
+      font-size: clamp(2.7rem, 12vw, 4rem);
+    }
+
+    .mock-refinement {
+      left: -10%;
+      top: 58%;
+      width: 120vw;
+      opacity: 0.42;
+    }
+
+    .mock-hero__foot {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .mock-skills__groups {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mock *,
+    .mock *::before,
+    .mock *::after {
+      transition-duration: 0.01ms !important;
+    }
+  }
+</style>
