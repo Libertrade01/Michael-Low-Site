@@ -7,17 +7,19 @@ export type AccentTheme = 'gold' | 'cyan' | 'silver' | 'warm' | 'champagne' | 'b
 
 export const site = {
   name: 'Michael Low',
-  title: 'Michael Low — Practical AI implementation',
+  title: 'Michael Low - Applied AI systems for real operations',
   description:
-    'Practical AI systems for messy business workflows. I help small teams turn scattered notes, manual tasks, and repeated admin into systems they can actually use.',
+    'Michael Low designs and builds AI-enabled workflows, internal tools and automation for messy, information-heavy business processes.',
+  shortBio:
+    'Applied AI builder working across workflow design, product engineering and automation. I turn ambiguous, manual processes into systems people can operate reliably.',
   tagline: 'Messy input in. Clean operating system out.',
-  url: 'https://michaellow.dev',
-  email: 'hello@michaellow.dev',
+  url: 'https://michaeljlow.com',
+  email: 'hello@michaeljlow.com',
   github: 'https://github.com/Libertrade01',
   linkedin: 'https://linkedin.com/in/michaellow',
   availability:
     'Available for selected AI workflow projects, implementation support, and embedded remote roles with small teams.',
-  headshot: '/images/headshot.png',
+  headshot: '/images/headshot-studio.png',
   headshotCutout: '/images/headshot-studio-cutout.png',
   headshotFallback: '/images/headshot-placeholder.svg',
 } as const;
@@ -36,7 +38,7 @@ export const about = {
     { label: 'Works in reality', detail: 'Useful implementation that survives a normal day, not AI theatre.' },
   ],
   personal:
-    'Outside of build time, I love to travel — new places, new routines, and seeing how people solve the same messy problems in different ways.',
+    'I live in São Paulo and travel when I can. New places reset my attention, and I notice the same pattern everywhere: people invent workarounds when the system does not fit the work.',
 } as const;
 
 export const hero = {

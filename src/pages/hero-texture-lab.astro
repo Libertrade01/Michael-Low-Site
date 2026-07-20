@@ -1,0 +1,316 @@
+---
+import Layout from '../components/Layout.astro';
+
+const options = [
+  {
+    id: 'limewash',
+    number: '01',
+    title: 'Chalky limewash',
+    note: 'A clearly material plaster-paper surface with visible tonal movement and warm directional light.',
+  },
+  {
+    id: 'window-light',
+    number: '02',
+    title: 'Architectural light',
+    note: 'Broad window light and soft structural shadows give the hero immediate spatial depth.',
+  },
+  {
+    id: 'tracing',
+    number: '03',
+    title: 'Tracing-paper layers',
+    note: 'Visible translucent sheets, overlapping edges and contact shadows express iteration physically.',
+  },
+  {
+    id: 'diffusion',
+    number: '04',
+    title: 'Graphite + clay diffusion',
+    note: 'A broad pigment field bleeds through the paper behind the network, connecting its two key colours.',
+  },
+  {
+    id: 'relief',
+    number: '05',
+    title: 'Embossed paper relief',
+    note: 'Large hidden geometric forms press up beneath handmade paper and catch the studio light.',
+  },
+];
+---
+
+<Layout
+  title="Hero texture study — Michael Low"
+  description="Four background texture treatments applied to the Michael Low portfolio hero."
+>
+  <div class="texture-lab">
+    <aside class="texture-lab__bar">
+      <div>
+        <p><strong>Hero texture study</strong><span>Five material treatments · live homepage unchanged</span></p>
+        <nav aria-label="Texture options">
+          {options.map((option) => <a href={`#${option.id}`}>{option.number}</a>)}
+          <a class="texture-lab__return" href="/">Live site ↗</a>
+        </nav>
+      </div>
+    </aside>
+
+    <main>
+      {options.map((option) => (
+        <article class="texture-option" id={option.id}>
+          <header class="texture-option__head">
+            <div><span>{option.number}</span><h2>{option.title}</h2></div>
+            <p>{option.note}</p>
+          </header>
+
+          <section class:list={['texture-hero', `texture-hero--${option.id}`]} aria-labelledby={`${option.id}-title`}>
+            <div class="texture-hero__surface" aria-hidden="true"></div>
+            <div class="texture-hero__grain" aria-hidden="true"></div>
+            <div class="texture-hero__copy">
+              <p class="texture-kicker">Product design · AI · Automation</p>
+              <h1 id={`${option.id}-title`}>Practical AI<br />systems<br />for messy<br />workflows.</h1>
+              <p class="texture-hero__intro">
+                I design and build AI-powered products, knowledge systems and automation that make complex work simpler.
+              </p>
+              <div class="texture-hero__actions">
+                <a class="texture-button" href="/#systems">Explore the systems</a>
+                <a class="texture-link" href="/#process">How I work <span aria-hidden="true">↓</span></a>
+              </div>
+            </div>
+
+            <figure class="texture-hero__visual">
+              <img
+                src="/images/neural-system-hero.png"
+                alt="An intricate spherical network of connected nodes and paths"
+                width="1254"
+                height="1254"
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
+          </section>
+        </article>
+      ))}
+    </main>
+  </div>
+</Layout>
+
+<style>
+  :global(.site-footer-v2) { display: none; }
+  :global(html) { scroll-behavior: smooth; scroll-padding-top: 10rem; }
+
+  .texture-lab {
+    --paper: #f4f0e8;
+    --ink: #1d1f1e;
+    --soft: #263b47;
+    --muted: #77756f;
+    --line: rgba(48, 47, 43, 0.15);
+    color: var(--ink);
+    background: #ddd6ca;
+    font-family: 'IBM Plex Sans', system-ui, sans-serif;
+  }
+
+  .texture-lab__bar {
+    position: sticky;
+    top: 6.4rem;
+    z-index: 40;
+    padding: 0.8rem 1.5rem;
+    color: var(--ink);
+    background: color-mix(in srgb, #eee8de 93%, transparent);
+    border-bottom: 1px solid var(--line);
+    backdrop-filter: blur(14px);
+  }
+
+  .texture-lab__bar > div {
+    width: min(96rem, 100%);
+    margin-inline: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  .texture-lab__bar p {
+    display: flex;
+    gap: 0.8rem;
+    margin: 0;
+    font-size: 0.76rem;
+  }
+
+  .texture-lab__bar p span { color: var(--muted); }
+  .texture-lab__bar nav { display: flex; align-items: center; gap: 0.45rem; }
+  .texture-lab__bar a {
+    min-width: 2rem;
+    min-height: 2rem;
+    display: inline-grid;
+    place-items: center;
+    color: var(--ink);
+    border: 1px solid var(--line);
+    border-radius: 0.2rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    text-decoration: none;
+  }
+  .texture-lab__bar a:hover { background: rgba(255,255,255,.4); border-color: rgba(48,47,43,.3); }
+  .texture-lab__bar .texture-lab__return { min-width: auto; margin-left: 0.45rem; padding-inline: 0.75rem; }
+
+  .texture-option { padding: 2rem 1.5rem 4.5rem; border-bottom: 1px solid rgba(48,47,43,.25); }
+  .texture-option__head {
+    width: min(96rem, 100%);
+    margin: 0 auto 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 2rem;
+  }
+  .texture-option__head > div { display: flex; align-items: baseline; gap: 0.8rem; }
+  .texture-option__head span { color: #9c6948; font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; }
+  .texture-option__head h2 { margin: 0; font-size: 1.05rem; font-weight: 500; }
+  .texture-option__head p { max-width: 38rem; margin: 0; color: #5f5c56; font-size: 0.78rem; line-height: 1.55; text-align: right; }
+
+  .texture-hero {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    width: min(96rem, 100%);
+    min-height: min(51rem, calc(100svh - 3rem));
+    margin-inline: auto;
+    display: flex;
+    align-items: center;
+    padding: clamp(3.5rem, 7vh, 6rem) clamp(1.5rem, 3vw, 3rem);
+    color: var(--ink);
+    background: var(--paper);
+    box-shadow: 0 2.5rem 5rem rgba(58, 47, 37, 0.08);
+  }
+
+  .texture-hero__surface,
+  .texture-hero__grain { position: absolute; z-index: -2; inset: 0; pointer-events: none; }
+  .texture-hero__grain {
+    z-index: 4;
+    opacity: 0.42;
+    background-image:
+      repeating-linear-gradient(8deg, rgba(75, 62, 48, 0.018) 0, rgba(75, 62, 48, 0.018) 1px, transparent 1px, transparent 5px),
+      repeating-linear-gradient(98deg, rgba(255,255,255,.03) 0, rgba(255,255,255,.03) 1px, transparent 1px, transparent 7px);
+    mix-blend-mode: multiply;
+  }
+
+  .texture-hero__copy { position: relative; z-index: 3; width: min(43rem, 48%); }
+  .texture-kicker { margin: 0 0 2rem; color: var(--ink); font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; letter-spacing: 0.055em; text-transform: uppercase; }
+  .texture-hero h1 { margin: 0; font-size: clamp(3.8rem, 5.5vw, 5.7rem); font-weight: 500; line-height: 0.98; letter-spacing: -0.063em; }
+  .texture-hero__intro { max-width: 41rem; margin: 2.25rem 0 0; color: var(--soft); font-size: clamp(1.05rem, 1.4vw, 1.33rem); line-height: 1.65; text-wrap: balance; }
+  .texture-hero__actions { display: flex; align-items: center; gap: 1.65rem; margin-top: 2.7rem; }
+  .texture-button { min-height: 3.55rem; display: inline-flex; align-items: center; padding: 0.95rem 1.4rem; color: var(--paper); background: var(--ink); border-radius: 0.4rem; font-size: 0.92rem; font-weight: 500; text-decoration: none; box-shadow: 0 0.8rem 1.8rem rgba(40,35,30,.13); }
+  .texture-link { display: inline-flex; align-items: center; gap: 0.7rem; color: var(--ink); font-size: 0.92rem; font-weight: 500; text-decoration: none; }
+  .texture-hero__visual { position: absolute; z-index: 1; right: 2%; top: 50%; width: min(49%, 47rem); aspect-ratio: 1; margin: 0; transform: translateY(-50%); pointer-events: none; }
+  .texture-hero__visual img { width: 100%; height: 100%; display: block; object-fit: contain; mix-blend-mode: darken; -webkit-mask-image: radial-gradient(circle, #000 69%, rgba(0,0,0,.65) 84%, transparent 100%); mask-image: radial-gradient(circle, #000 69%, rgba(0,0,0,.65) 84%, transparent 100%); }
+
+  /* 01 — a materially visible limewashed surface */
+  .texture-hero--limewash .texture-hero__surface {
+    background:
+      radial-gradient(ellipse 38% 52% at 74% 40%, rgba(190,128,73,.22), transparent 68%),
+      radial-gradient(ellipse 34% 46% at 15% 73%, rgba(50,73,77,.13), transparent 70%),
+      radial-gradient(ellipse 29% 36% at 34% 24%, rgba(255,255,255,.72), transparent 68%),
+      radial-gradient(ellipse 30% 42% at 91% 84%, rgba(118,95,72,.12), transparent 72%),
+      linear-gradient(118deg, rgba(255,255,255,.4), transparent 46%);
+  }
+  .texture-hero--limewash .texture-hero__grain {
+    opacity: 1;
+    background-image:
+      repeating-linear-gradient(7deg, rgba(75,62,48,.038) 0, rgba(75,62,48,.038) 1px, transparent 1px, transparent 4px),
+      repeating-linear-gradient(97deg, rgba(255,255,255,.1) 0, rgba(255,255,255,.1) 1px, transparent 1px, transparent 9px);
+  }
+
+  /* 02 — explicit directional sunlight and broad window-frame shadows */
+  .texture-hero--window-light .texture-hero__surface {
+    background:
+      linear-gradient(104deg, transparent 0 48%, rgba(90,72,55,.13) 48.5% 50.2%, transparent 51% 65%, rgba(90,72,55,.09) 65.5% 68.2%, transparent 69%),
+      linear-gradient(14deg, transparent 0 51%, rgba(86,70,54,.10) 51.5% 53.5%, transparent 54%),
+      linear-gradient(118deg, rgba(255,247,224,.58) 4%, rgba(244,210,158,.2) 49%, rgba(255,255,255,.08) 78%);
+    filter: blur(.35px);
+  }
+  .texture-hero--window-light::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    inset: 8% -8% 5% 43%;
+    background: rgba(255,247,224,.18);
+    transform: skewX(-13deg);
+    box-shadow: -2rem 2.5rem 4.5rem rgba(77,60,44,.08);
+    pointer-events: none;
+  }
+
+  /* 03 — overlapping sheets are clearly legible as physical layers */
+  .texture-hero--tracing .texture-hero__surface {
+    background:
+      linear-gradient(101deg, transparent 0 15%, rgba(255,255,255,.46) 15.2% 45%, transparent 45.3%),
+      linear-gradient(82deg, transparent 0 43%, rgba(212,192,168,.20) 43.3% 72%, transparent 72.3%),
+      radial-gradient(ellipse 45% 57% at 76% 48%, rgba(188,127,72,.13), transparent 72%);
+  }
+  .texture-hero--tracing::before,
+  .texture-hero--tracing::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    pointer-events: none;
+    background: rgba(255,255,255,.13);
+    border: 1px solid rgba(89,74,58,.09);
+    box-shadow: 1.5rem 2rem 3.5rem rgba(72,58,44,.07);
+  }
+  .texture-hero--tracing::before { inset: 8% 34% 11% 8%; transform: rotate(-2.2deg); }
+  .texture-hero--tracing::after { inset: 13% 7% 5% 42%; transform: rotate(1.4deg); }
+
+  /* 04 — a high-presence pigment cloud with fibrous, absorbed edges */
+  .texture-hero--diffusion .texture-hero__surface {
+    inset: -5%;
+    background:
+      radial-gradient(ellipse 34% 43% at 72% 44%, rgba(188,117,48,.29), transparent 68%),
+      radial-gradient(ellipse 35% 39% at 87% 63%, rgba(55,79,84,.22), transparent 70%),
+      radial-gradient(ellipse 42% 35% at 49% 57%, rgba(89,83,72,.15), transparent 72%),
+      radial-gradient(ellipse 28% 42% at 20% 76%, rgba(59,77,80,.09), transparent 73%);
+    filter: blur(19px) saturate(.82);
+  }
+  .texture-hero--diffusion .texture-hero__grain { opacity: 1; mix-blend-mode: multiply; }
+
+  /* 05 — large irregular forms appear to push up beneath heavy paper */
+  .texture-hero--relief .texture-hero__surface {
+    background:
+      radial-gradient(ellipse 23% 35% at 77% 42%, rgba(255,255,255,.46) 0 47%, rgba(104,87,68,.09) 49%, transparent 53%),
+      radial-gradient(ellipse 31% 22% at 52% 78%, rgba(255,255,255,.36) 0 45%, rgba(104,87,68,.075) 48%, transparent 54%),
+      radial-gradient(ellipse 18% 30% at 19% 34%, rgba(255,255,255,.31) 0 43%, rgba(67,78,76,.06) 47%, transparent 54%),
+      linear-gradient(124deg, rgba(255,255,255,.24), transparent 48%);
+  }
+  .texture-hero--relief::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    right: 9%;
+    top: 13%;
+    width: 43%;
+    height: 68%;
+    border-radius: 47% 53% 45% 55%;
+    border: 1px solid rgba(92,76,60,.08);
+    box-shadow: inset .8rem 1.1rem 2rem rgba(255,255,255,.24), inset -.9rem -1.1rem 2rem rgba(70,59,47,.06), 1rem 1.4rem 3rem rgba(70,59,47,.045);
+    transform: rotate(-5deg);
+    pointer-events: none;
+  }
+
+  @media (max-width: 900px) {
+    .texture-hero { min-height: 46rem; align-items: flex-start; }
+    .texture-hero__copy { width: min(39rem, 76%); }
+    .texture-hero__visual { right: -12%; top: 57%; width: 66%; opacity: .62; }
+  }
+
+  @media (max-width: 650px) {
+    :global(html) { scroll-padding-top: 8rem; }
+    .texture-lab__bar { top: 4rem; }
+    .texture-lab__bar p span { display: none; }
+    .texture-lab__bar .texture-lab__return { display: none; }
+    .texture-option { padding-inline: .75rem; }
+    .texture-option__head { align-items: start; }
+    .texture-option__head p { max-width: 15rem; text-align: left; }
+    .texture-hero { min-height: 49rem; padding: 3.5rem 1.25rem 2rem; align-items: flex-start; }
+    .texture-hero__copy { width: 100%; }
+    .texture-hero h1 { font-size: clamp(3rem, 14vw, 4.3rem); }
+    .texture-hero__intro { max-width: 28rem; font-size: 1rem; }
+    .texture-hero__visual { position: absolute; right: -37%; top: 68%; width: 114%; opacity: .38; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :global(html) { scroll-behavior: auto; }
+  }
+</style>

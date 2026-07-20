@@ -9,8 +9,8 @@ const personJsonLd = {
   jobTitle: 'AI Product Builder & Systems Designer',
   url: site.url,
   sameAs: [site.github, site.linkedin],
-  description: site.description,
-  image: new URL(site.headshotCutout, site.url).href,
+  description: site.shortBio,
+  image: new URL(site.headshot, site.url).href,
 };
 ---
 
@@ -20,24 +20,23 @@ const personJsonLd = {
     <section class="about-v2__intro" aria-labelledby="about-title">
       <div class="home-v2-shell about-v2__intro-grid">
         <figure class="about-v2__photo">
-          <div class="about-v2__cutout">
+          <div class="about-v2__frame">
             <img
-              src={`${site.headshotCutout}?v=8`}
+              src={`${site.headshot}?v=1`}
               alt={`${site.name} portrait`}
-              width="1024"
-              height="978"
+              width="819"
+              height="1024"
               loading="eager"
               decoding="async"
             />
           </div>
-          <figcaption>Michael Low · São Paulo</figcaption>
         </figure>
 
         <div class="about-v2__intro-copy">
           <p class="home-v2-kicker">About</p>
           <h1 id="about-title">I make complicated work easier to operate.</h1>
           <p class="about-v2__lede">
-            I work between product design, engineering and operations — usually where the problem is still ambiguous and the workflow has not been properly defined yet.
+            I work between product design, engineering and operations, usually where the problem is still ambiguous and the workflow has not been properly defined yet.
           </p>
           <div class="about-v2__meta">
             <span>Based in São Paulo · Working globally</span>

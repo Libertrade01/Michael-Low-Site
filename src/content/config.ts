@@ -21,6 +21,8 @@ const projectSchema = z.object({
   coverPosition: z.enum(['center', 'top']).optional(),
   /** Hide the standard hero artifact when a case study provides its own opening-screen composition. */
   showHeroCover: z.boolean().default(true),
+  /** Optional one-line operating loop shown on homepage feature cards. */
+  systemLine: z.string().optional(),
   github: z.string().url().optional(),
   liveUrl: z.string().url().optional(),
   /** Case study hero CTA label (e.g. View live site, Open live demo). */

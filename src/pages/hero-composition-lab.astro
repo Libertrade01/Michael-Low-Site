@@ -1,0 +1,708 @@
+---
+/**
+ * Hero composition lab — 5 layout options.
+ * Live homepage unchanged. Same copy, font, iterative refinement asset.
+ */
+import Layout from '../components/Layout.astro';
+
+const variants = [
+  {
+    id: 'a',
+    label: 'A · Split stage',
+    note: 'True two-column split. Copy owns the left; refinement lives in a contained right stage with the grid. No overlap — easier to read.',
+  },
+  {
+    id: 'b',
+    label: 'B · Horizon band',
+    note: 'Refinement becomes a wide horizontal band through the middle. Text stays clear above/left; the graphic reads as a single calm gesture.',
+  },
+  {
+    id: 'c',
+    label: 'C · Docked panel',
+    note: 'Tall right panel with the grid as a frame. Refinement is cropped into that panel so it feels placed, not floating.',
+  },
+  {
+    id: 'd',
+    label: 'D · Soft overlap',
+    note: 'New iterative refinement graphic — translucent squares resolving into a solid charcoal slab. Paper grid stays lighter and further right.',
+  },
+  {
+    id: 'e',
+    label: 'E · Foundation strip',
+    note: 'Copy first, then refinement as a full-width foundation under the CTAs. Same idea, less competition with the headline.',
+  },
+];
+---
+
+<Layout
+  title="Hero composition lab — Michael Low"
+  description="Five hero layout options keeping the same copy, type, and iterative refinement."
+>
+  <div class="lab">
+    <aside class="lab-bar" role="note">
+      <div class="lab-bar__inner">
+        <p><strong>Hero composition lab</strong> — same text, font, and iterative refinement. Live homepage untouched.</p>
+        <a href="/">← Live homepage</a>
+      </div>
+    </aside>
+
+    <nav class="lab-nav" aria-label="Hero variants">
+      <div class="lab-nav__inner">
+        {variants.map((variant) => (
+          <a href={`#hero-${variant.id}`}>{variant.label}</a>
+        ))}
+      </div>
+    </nav>
+
+    {variants.map((variant) => (
+      <section class="lab-block" id={`hero-${variant.id}`} aria-labelledby={`title-${variant.id}`}>
+        <header class="lab-block__meta">
+          <h2 id={`title-${variant.id}`}>{variant.label}</h2>
+          <p>{variant.note}</p>
+        </header>
+
+        <div class:list={['hero', `hero--${variant.id}`]}>
+          <div class="hero__field-grid" aria-hidden="true"></div>
+          <div class="hero__shell hero__stage">
+            <div class="hero__copy">
+              <p class="hero__kicker">Product design · AI · Automation</p>
+              <h1>Practical AI<br />systems<br />for messy<br />workflows.</h1>
+              <p class="hero__intro">
+                I design and build AI-powered products, knowledge systems and automation that make complex work simpler.
+              </p>
+              <div class="hero__actions">
+                <a class="hero__button" href="/#systems">Explore the systems</a>
+                <a class="hero__link" href="/#process">How I work <span aria-hidden="true">↓</span></a>
+              </div>
+            </div>
+
+            <figure class="hero__refinement">
+              <div class="hero__grid" aria-hidden="true"></div>
+              <img
+                src={variant.id === 'd'
+                  ? '/images/hero-refinement-slab.png?v=2'
+                  : '/images/hero-refinement-transparent.png?v=2'}
+                alt={variant.id === 'd'
+                  ? 'Translucent squares gathering into a solid charcoal form'
+                  : 'A warm blurred form gradually becoming a precise charcoal rectangle'}
+                width={variant.id === 'd' ? 1024 : 991}
+                height={variant.id === 'd' ? 682 : 353}
+                loading="lazy"
+                decoding="async"
+              />
+              <figcaption>Iterative refinement</figcaption>
+            </figure>
+          </div>
+
+          <div class="hero__shell hero__foot">
+            <span>Based in São Paulo · Working globally</span>
+            <span>Open to AI product &amp; systems roles</span>
+          </div>
+        </div>
+      </section>
+    ))}
+  </div>
+</Layout>
+
+<style>
+  :global(.site-nav),
+  :global(.site-footer-v2) {
+    display: none;
+  }
+
+  .lab {
+    --paper: #f4f0e8;
+    --raised: #faf7f1;
+    --deep: #e9e2d7;
+    --ink: #1d1f1e;
+    --soft: #454744;
+    --muted: #77756f;
+    --line: rgba(48, 47, 43, 0.14);
+    --line-strong: rgba(48, 47, 43, 0.24);
+    color: var(--ink);
+    background: #e7e1d6;
+    font-family: 'IBM Plex Sans', system-ui, sans-serif;
+  }
+
+  .lab a {
+    text-decoration: none;
+  }
+
+  .lab-bar {
+    background: #202220;
+    color: #f4f0e8;
+  }
+
+  .lab-bar__inner {
+    width: min(92rem, calc(100% - 3rem));
+    margin-inline: auto;
+    min-height: 2.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    font-size: 0.78rem;
+  }
+
+  .lab-bar p {
+    margin: 0;
+    color: color-mix(in srgb, #f4f0e8 78%, transparent);
+  }
+
+  .lab-bar strong {
+    color: #f4f0e8;
+    font-weight: 500;
+  }
+
+  .lab-bar a {
+    color: #f4f0e8;
+    border-bottom: 1px solid color-mix(in srgb, #f4f0e8 35%, transparent);
+    white-space: nowrap;
+  }
+
+  .lab-nav {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    background: color-mix(in srgb, var(--paper) 92%, transparent);
+    border-bottom: 1px solid var(--line);
+    backdrop-filter: blur(14px);
+  }
+
+  .lab-nav__inner {
+    width: min(92rem, calc(100% - 3rem));
+    margin-inline: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 1.25rem;
+    padding-block: 0.85rem;
+  }
+
+  .lab-nav a {
+    color: var(--soft);
+    font-size: 0.78rem;
+    font-weight: 500;
+  }
+
+  .lab-nav a:hover {
+    color: var(--ink);
+  }
+
+  .lab-block {
+    padding: 2rem 0 3.5rem;
+  }
+
+  .lab-block__meta {
+    width: min(92rem, calc(100% - 3rem));
+    margin: 0 auto 1.25rem;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1rem 2rem;
+    align-items: end;
+  }
+
+  .lab-block__meta h2 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+  .lab-block__meta p {
+    margin: 0;
+    max-width: 46rem;
+    color: var(--muted);
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+
+  .hero {
+    position: relative;
+    overflow: hidden;
+    min-height: calc(100svh - 8rem);
+    display: flex;
+    flex-direction: column;
+    background: var(--paper);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .hero__shell {
+    width: min(92rem, calc(100% - 3rem));
+    margin-inline: auto;
+  }
+
+  .hero__kicker {
+    margin: 0;
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .hero__copy {
+    position: relative;
+    z-index: 3;
+  }
+
+  .hero h1 {
+    margin: 1.25rem 0 0;
+    font-size: clamp(3rem, 5.7vw, 5.7rem);
+    font-weight: 500;
+    line-height: 0.98;
+    letter-spacing: -0.065em;
+  }
+
+  .hero__intro {
+    max-width: 36rem;
+    margin: 1.8rem 0 0;
+    color: var(--muted);
+    font-size: clamp(1.05rem, 1.6vw, 1.35rem);
+    font-weight: 300;
+    line-height: 1.65;
+    text-wrap: balance;
+  }
+
+  .hero__actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.35rem;
+    margin-top: 2.25rem;
+  }
+
+  .hero__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.8rem;
+    padding: 0.75rem 1.15rem;
+    border-radius: 0.35rem;
+    color: var(--paper) !important;
+    background: var(--ink);
+    font-size: 0.84rem;
+    font-weight: 500;
+    box-shadow: 0 8px 22px rgba(31, 31, 28, 0.12);
+  }
+
+  .hero__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    color: var(--soft) !important;
+    font-size: 0.84rem;
+  }
+
+  .hero__refinement {
+    margin: 0;
+    position: relative;
+  }
+
+  .hero__refinement img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    /* Transparent asset — no cream plate behind the charcoal */
+  }
+
+  .hero__refinement figcaption {
+    margin: 0;
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .hero__grid,
+  .hero__field-grid {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 3.5rem 3.5rem;
+    opacity: 0.34;
+  }
+
+  /* Full-hero field grid — used by D; hidden on other variants */
+  .hero__field-grid {
+    display: none;
+  }
+
+  .hero--d .hero__foot {
+    z-index: 3;
+  }
+
+  .hero__foot {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-block: 1.1rem;
+    margin-top: auto;
+    color: var(--muted);
+    border-top: 1px solid var(--line);
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  /* ── A · Split stage ── */
+  .hero--a .hero__stage {
+    flex: 1;
+    display: grid;
+    grid-template-columns: minmax(18rem, 0.92fr) minmax(20rem, 1.08fr);
+    gap: clamp(2rem, 5vw, 4.5rem);
+    align-items: center;
+    padding-block: clamp(3.5rem, 7vh, 6rem);
+  }
+
+  .hero--a .hero__copy {
+    max-width: 34rem;
+  }
+
+  .hero--a .hero__refinement {
+    min-height: clamp(22rem, 48vh, 34rem);
+    display: grid;
+    place-items: center;
+    background: color-mix(in srgb, var(--raised) 70%, transparent);
+    border: 1px solid var(--line);
+    overflow: hidden;
+  }
+
+  .hero--a .hero__grid {
+    mask-image: radial-gradient(ellipse 80% 70% at 55% 50%, #000 20%, transparent 78%);
+  }
+
+  .hero--a .hero__refinement img {
+    width: 118%;
+    max-width: none;
+    height: auto;
+    transform: translateX(4%) scaleY(1.15);
+  }
+
+  .hero--a .hero__refinement figcaption {
+    position: absolute;
+    right: 1.1rem;
+    bottom: 1rem;
+  }
+
+  /* ── B · Horizon band ── */
+  .hero--b .hero__stage {
+    flex: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-block: clamp(4rem, 8vh, 7rem);
+  }
+
+  .hero--b .hero__copy {
+    max-width: 36rem;
+  }
+
+  .hero--b .hero__refinement {
+    position: absolute;
+    left: 8%;
+    right: 0;
+    top: 46%;
+    height: min(38vh, 22rem);
+    transform: translateY(-50%);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .hero--b .hero__grid {
+    inset: 8% 0;
+    opacity: 0.28;
+    mask-image: linear-gradient(90deg, transparent, #000 18%, #000 88%, transparent);
+  }
+
+  .hero--b .hero__refinement img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 48%;
+    transform: scaleY(1.05);
+    mask-image: linear-gradient(90deg, transparent, #000 12%, #000 92%, transparent);
+  }
+
+  .hero--b .hero__refinement figcaption {
+    position: absolute;
+    right: clamp(1.25rem, 3vw, 2.75rem);
+    bottom: -1.6rem;
+  }
+
+  .hero--b .hero__copy {
+    z-index: 3;
+  }
+
+  .hero--b .hero__intro,
+  .hero--b .hero__actions {
+    position: relative;
+    z-index: 3;
+    background: linear-gradient(90deg, var(--paper) 70%, transparent);
+    padding-right: 1rem;
+  }
+
+  /* ── C · Docked panel ── */
+  .hero--c .hero__stage {
+    flex: 1;
+    display: grid;
+    grid-template-columns: minmax(18rem, 1fr) minmax(18rem, 0.95fr);
+    gap: clamp(2rem, 6vw, 5rem);
+    align-items: stretch;
+    padding-block: clamp(3rem, 6vh, 5rem);
+  }
+
+  .hero--c .hero__copy {
+    align-self: center;
+    max-width: 34rem;
+  }
+
+  .hero--c .hero__refinement {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1.25rem;
+    border-left: 1px solid var(--line);
+    background:
+      linear-gradient(180deg, transparent, color-mix(in srgb, var(--deep) 35%, transparent)),
+      var(--raised);
+    overflow: hidden;
+  }
+
+  .hero--c .hero__grid {
+    inset: 1.25rem;
+    opacity: 0.4;
+    mask-image: linear-gradient(180deg, #000 30%, transparent 95%);
+  }
+
+  .hero--c .hero__refinement img {
+    position: relative;
+    z-index: 1;
+    width: 140%;
+    max-width: none;
+    margin-left: -8%;
+    margin-bottom: -6%;
+    transform: scaleY(1.2);
+    mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+  }
+
+  .hero--c .hero__refinement figcaption {
+    position: relative;
+    z-index: 2;
+    margin-top: 0.85rem;
+  }
+
+  /* ── D · Soft overlap ──
+     Charcoal/orange graphic = headline height.
+     Squared paper grid = full hero height, fading at the edges. */
+  .hero--d .hero__field-grid {
+    display: none;
+  }
+
+  .hero--d .hero__stage {
+    flex: 1;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    padding-block: clamp(3.5rem, 7vh, 6rem);
+  }
+
+  .hero--d .hero__copy {
+    position: relative;
+    z-index: 3;
+    max-width: 34rem;
+  }
+
+  .hero--d .hero__kicker {
+    margin-bottom: 1.25rem;
+  }
+
+  .hero--d h1 {
+    margin-top: 0;
+  }
+
+  /* Keep type readable where the graphic drifts underneath */
+  .hero--d .hero__intro,
+  .hero--d .hero__actions {
+    position: relative;
+    background: linear-gradient(90deg, var(--paper) 72%, transparent);
+    padding-right: 1.5rem;
+  }
+
+  /* Full-bleed graphic plane — keep the hard charcoal right edge in frame */
+  .hero--d .hero__refinement {
+    position: absolute;
+    left: 16%;
+    right: 2%;
+    top: 44%;
+    height: min(72vh, 38rem);
+    transform: translateY(-46%);
+    margin: 0;
+    z-index: 1;
+    pointer-events: none;
+    overflow: visible;
+  }
+
+  .hero--d .hero__refinement .hero__grid {
+    display: none;
+  }
+
+  .hero--d .hero__refinement img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    max-width: none;
+    height: 112%;
+    margin: 0;
+    object-fit: contain;
+    /* Anchor to the right so the hard charcoal edge stays visible */
+    object-position: right center;
+    transform: translate(-6%, -5%) scale(1.08);
+    mix-blend-mode: multiply;
+    opacity: 0.92;
+    -webkit-mask-image:
+      linear-gradient(90deg, transparent 0%, #000 10%, #000 100%),
+      linear-gradient(180deg, transparent 0%, #000 10%, #000 88%, transparent 100%);
+    -webkit-mask-composite: source-in;
+    mask-image:
+      linear-gradient(90deg, transparent 0%, #000 10%, #000 100%),
+      linear-gradient(180deg, transparent 0%, #000 10%, #000 88%, transparent 100%);
+    mask-composite: intersect;
+  }
+
+  .hero--d .hero__refinement figcaption {
+    display: none;
+  }
+
+  /* ── E · Foundation strip ── */
+  .hero--e .hero__stage {
+    flex: 1;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    align-content: center;
+    padding-top: clamp(3.5rem, 7vh, 6rem);
+    gap: clamp(2rem, 5vh, 3.5rem);
+  }
+
+  .hero--e .hero__copy {
+    max-width: 40rem;
+  }
+
+  .hero--e .hero__refinement {
+    position: relative;
+    height: clamp(11rem, 22vh, 16rem);
+    margin-inline: calc(50% - 50vw);
+    width: 100vw;
+    border-top: 1px solid var(--line);
+    background: var(--raised);
+    overflow: hidden;
+  }
+
+  .hero--e .hero__grid {
+    opacity: 0.26;
+    mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+  }
+
+  .hero--e .hero__refinement img {
+    position: absolute;
+    left: 50%;
+    top: 42%;
+    width: min(92vw, 70rem);
+    height: auto;
+    transform: translate(-42%, -50%) scaleY(1.2);
+    mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  }
+
+  .hero--e .hero__refinement figcaption {
+    position: absolute;
+    right: max(1.5rem, calc((100vw - 92rem) / 2 + 1.5rem));
+    bottom: 1rem;
+    z-index: 2;
+  }
+
+  @media (max-width: 900px) {
+    .lab-block__meta {
+      grid-template-columns: 1fr;
+      gap: 0.4rem;
+    }
+
+    .hero--a .hero__stage,
+    .hero--c .hero__stage {
+      grid-template-columns: 1fr;
+    }
+
+    .hero--a .hero__refinement,
+    .hero--c .hero__refinement {
+      min-height: 16rem;
+    }
+
+    .hero--b .hero__refinement {
+      position: relative;
+      inset: auto;
+      transform: none;
+      width: 100%;
+      height: 14rem;
+      margin-top: 2rem;
+      aspect-ratio: auto;
+    }
+
+    .hero--d .hero__stage {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .hero--d .hero__refinement {
+      position: relative;
+      left: auto;
+      right: auto;
+      top: auto;
+      height: 16rem;
+      margin-top: 1.25rem;
+      transform: none;
+    }
+
+    .hero--d .hero__refinement img {
+      width: 100%;
+      height: 100%;
+      transform: none;
+      opacity: 0.9;
+    }
+
+    .hero--d .hero__refinement figcaption {
+      right: 0.5rem;
+      bottom: 0.5rem;
+    }
+
+    .hero--b .hero__intro,
+    .hero--b .hero__actions {
+      background: none;
+    }
+  }
+
+  @media (max-width: 680px) {
+    .lab-nav__inner {
+      gap: 0.5rem 0.9rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.7rem, 12vw, 4rem);
+    }
+
+    .hero__foot {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>

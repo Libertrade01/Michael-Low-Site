@@ -7,7 +7,7 @@ const year = new Date().getFullYear();
   <div class="site-footer-v2__inner">
     <div>
       <a href="/" class="site-footer-v2__name">{site.name}</a>
-      <p>Practical AI systems for messy workflows.</p>
+      <p>{site.shortBio}</p>
     </div>
 
     <nav aria-label="Footer navigation">
@@ -18,7 +18,7 @@ const year = new Date().getFullYear();
       <a href={site.github} target="_blank" rel="noopener noreferrer">GitHub ↗</a>
     </nav>
 
-    <p class="site-footer-v2__meta">© {year} {site.name}<br />São Paulo · Working globally</p>
+    <p class="site-footer-v2__meta">© {year} {site.name}</p>
   </div>
 </footer>
 
