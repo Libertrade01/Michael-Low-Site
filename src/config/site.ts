@@ -191,6 +191,7 @@ export const workPage = {
 
 export const featuredProjectSlugs = [
   'libertrade-journal-analytics',
+  'ai-brief',
   'book-inmobiliaria',
   'raiz-life-journal',
   'trading-knowledge-wiki',

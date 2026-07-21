@@ -5,18 +5,20 @@ const year = new Date().getFullYear();
 
 <footer class="site-footer-v2">
   <div class="site-footer-v2__inner">
-    <div>
-      <a href="/" class="site-footer-v2__name">{site.name}</a>
-      <p>{site.shortBio}</p>
-    </div>
+    <div class="site-footer-v2__main">
+      <div>
+        <a href="/" class="site-footer-v2__name">{site.name}</a>
+        <p>{site.shortBio}</p>
+      </div>
 
-    <nav aria-label="Footer navigation">
-      <a href="/projects">Systems</a>
-      <a href="/about">About</a>
-      <a href="/build-log">Notes</a>
-      <a href={site.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
-      <a href={site.github} target="_blank" rel="noopener noreferrer">GitHub ↗</a>
-    </nav>
+      <nav aria-label="Footer navigation">
+        <a href="/projects">Systems</a>
+        <a href="/about">About</a>
+        <a href="/build-log">Notes</a>
+        <a href={site.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+        <a href={site.github} target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      </nav>
+    </div>
 
     <p class="site-footer-v2__meta">© {year} {site.name}</p>
   </div>
@@ -39,11 +41,17 @@ const year = new Date().getFullYear();
   .site-footer-v2__inner {
     width: var(--foot-shell);
     margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(2rem, 4vw, 3rem);
+    padding-block: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 3vw, 2.25rem);
+  }
+
+  .site-footer-v2__main {
     display: grid;
-    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) auto;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
     gap: 2rem;
     align-items: start;
-    padding-block: clamp(2.5rem, 5vw, 4rem);
   }
 
   .site-footer-v2__name {
@@ -65,6 +73,7 @@ const year = new Date().getFullYear();
     display: flex;
     flex-wrap: wrap;
     gap: 0.85rem 1.4rem;
+    justify-content: flex-end;
   }
 
   .site-footer-v2 nav a {
@@ -79,16 +88,24 @@ const year = new Date().getFullYear();
 
   .site-footer-v2__meta {
     margin: 0;
+    padding-top: 1.15rem;
+    border-top: 1px solid var(--foot-line);
     color: var(--foot-muted);
-    font-size: 0.78rem;
-    line-height: 1.6;
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
     text-align: right;
+    line-height: 1.4;
   }
 
   @media (max-width: 980px) {
     .site-footer-v2__inner {
-      grid-template-columns: 1fr;
       width: min(100% - 2rem, 60rem);
+    }
+
+    .site-footer-v2__main {
+      grid-template-columns: 1fr;
     }
 
     .site-footer-v2 nav {

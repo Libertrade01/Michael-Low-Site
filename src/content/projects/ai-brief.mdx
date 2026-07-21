@@ -1,0 +1,69 @@
+---
+title: AI Brief
+description: A daily AI news briefing that turns a noisy feed of product, research and infra signal into a short edition you can actually finish.
+descriptionExtra: Editions are structured around three things to know, one featured story, and a filtered signal feed — so scanning the AI landscape takes minutes, not tabs.
+date: 2026-07-20
+status: Live
+category: AI editorial system
+type: product
+stack: [Next.js, TypeScript, Vercel]
+featured: true
+order: 2
+role: Solo builder — product design, editorial structure, implementation
+outcomes:
+  - Daily edition format with a fixed reading path
+  - Featured story plus compact signal cards instead of an endless feed
+  - Category filters for pulse, product, research and infra
+audience: [employer, personal]
+coverImage: /images/projects/ai-briefing/cover.png
+coverFit: cover
+coverPosition: top
+systemLine: Sources → Filter → Brief → Signal feed
+---
+
+import ProblemGoalSplit from '../../components/case-study/ProblemGoalSplit.astro';
+import Callout from '../../components/Callout.astro';
+
+<ProblemGoalSplit
+  problem={{
+    title: 'Problem',
+    lead: 'AI news arrives as an endless stream of launches, papers, policy notes and product updates.',
+    items: [
+      'Useful signal is buried under duplicate headlines and low-context posts.',
+      'Reading five sources still leaves no clear picture of what mattered today.',
+      'There is no stable format for returning to the same beat tomorrow.',
+    ],
+    body: [
+      'The issue is not access to information. It is the absence of an editorial system that reduces the day to what is worth knowing.',
+    ],
+  }}
+  goal={{
+    title: 'Goal',
+    lead: 'Build a briefing product that packages the AI landscape into a short, repeatable edition.',
+    items: [
+      'Open with three things to know.',
+      'Give one story room to breathe.',
+      'Keep the rest as a scannable signal feed with clear categories.',
+    ],
+    body: [
+      'The product should feel like a terminal for AI news: dense, calm, and finished in one sitting.',
+    ],
+  }}
+/>
+
+## System
+
+The briefing runs as a fixed daily composition:
+
+1. **Edition frame** — date, reading time, and a clear path through the page.
+2. **Three things to know** — the highest-signal points before anything else.
+3. **Featured story** — one narrative given space, with a source link out.
+4. **Signal feed** — filtered cards across pulse, product, research and infra.
+
+## Result
+
+AI Brief turns a scattered monitoring habit into a productized daily edition. The design priority is orientation, not completeness: finish the brief, then go deep only where it matters.
+
+<Callout type="tip">
+  The homepage screenshot shows the live edition layout: left-rail archive, featured story, and category-filtered signal feed.
+</Callout>
