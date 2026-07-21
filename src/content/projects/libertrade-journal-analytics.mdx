@@ -21,6 +21,60 @@ liveLabel: Visit Libertrade LOOP
 liveCtaNote: Live product · Libertrade.app
 ---
 
-import LoopCaseStudy from '../../components/case-study/LoopCaseStudy.astro';
+import ProjectCaseBrief from '../../components/case-study/ProjectCaseBrief.astro';
 
-<LoopCaseStudy />
+<ProjectCaseBrief
+  overview={{
+    title: 'Overview',
+    lead: 'A process-first trading OS for discretionary futures traders.',
+    items: [
+      'Solo build — product strategy, UX/UI, and full-stack delivery.',
+      'Stack: Next.js, Supabase, Chart.js, ChatGPT, Vercel.',
+      'Status: live product at Libertrade.app.',
+    ],
+  }}
+  problem={{
+    title: 'Problem',
+    lead: 'The plan, the trade, and the lesson lived in separate places.',
+    items: [
+      'Traders prepare, execute, and reflect in different tools — or skip parts entirely.',
+      'Risk decisions move into the most pressurised moment of the session.',
+      'Journals explain P&L after the fact instead of reinforcing the next decision.',
+    ],
+    note: 'The gap was not missing analytics. It was a broken feedback loop.',
+  }}
+  solution={{
+    title: 'Solution',
+    lead: 'One daily loop: readiness → plan → execute → review → improve.',
+    items: [
+      'Check-in captures state before capital is at risk.',
+      'Session plan locks bias, levels, setups, and risk while thinking is still deliberate.',
+      'Close-the-loop review separates process quality from P&L and carries one lesson forward.',
+      'History, analytics, and weekly review turn isolated sessions into patterns.',
+    ],
+  }}
+  build={{
+    title: 'Implementation & challenges',
+    lead: 'Ship a complete operating rhythm, not another notebook.',
+    items: [
+      'Modelled the product around a fixed daily loop so every screen advances the same workflow.',
+      'Chose Supabase + Next.js for auth, persistence, and fast iteration on a solo build.',
+      'Hardest design problem: make yesterday’s lesson useful before the next trade, without adding session friction.',
+      'Trade-off: process adherence over vanity P&L charts — green days can still hide broken rules.',
+    ],
+  }}
+  results={{
+    title: 'Results & learnings',
+    lead: 'A live system traders can run every session.',
+    items: [
+      'Live product covering check-in, planning, execution rails, review, and analytics.',
+      'Process and risk stay visible before and after the trade — not only in a post-mortem.',
+      'Learning: the product wins when closing the loop is easier than skipping it.',
+    ],
+  }}
+  screenshot={{
+    src: '/images/projects/libertrade-analytics/loop-check-in.png',
+    alt: 'Libertrade LOOP pre-market readiness check-in',
+    caption: 'Readiness before risk',
+  }}
+/>

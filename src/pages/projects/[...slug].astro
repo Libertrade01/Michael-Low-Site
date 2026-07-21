@@ -22,6 +22,9 @@ const allProjects = await getPublishedProjects();
 const { title, description, outcomes } = project.data;
 const caseStudySlugs = [
   'libertrade-journal-analytics',
+  'ai-daily-pulse',
+  'macro-signal-room',
+  'sentinel-mental-game-agent',
   'book-inmobiliaria',
   'trading-knowledge-wiki',
 ] as const;
@@ -33,7 +36,7 @@ const isCaseStudy = caseStudySlugs.includes(project.slug as (typeof caseStudySlu
     <CaseStudyHero project={project} />
     <article class="project-case-study__article">
       <div class="project-case-study__body">
-      {!isCaseStudy && outcomes.length > 0 && <OutcomeList outcomes={outcomes} />}
+        {!isCaseStudy && outcomes.length > 0 && <OutcomeList outcomes={outcomes} />}
         <div class="project-case-study__content">
           <Content />
         </div>

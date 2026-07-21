@@ -10,10 +10,6 @@ stack: [Next.js, TypeScript, Vercel]
 featured: true
 order: 2
 role: Solo builder — product design, editorial structure, implementation
-outcomes:
-  - Daily edition format with a fixed reading path
-  - Featured story plus compact signal cards instead of an endless feed
-  - Category filters for pulse, product, research and infra
 audience: [employer, personal]
 coverImage: /images/projects/ai-briefing/cover.png
 cardImage: /images/projects/ai-briefing/cover-card.png
@@ -22,49 +18,59 @@ coverPosition: top
 systemLine: Sources → Filter → Pulse → Signal feed
 ---
 
-import ProblemGoalSplit from '../../components/case-study/ProblemGoalSplit.astro';
-import Callout from '../../components/Callout.astro';
+import ProjectCaseBrief from '../../components/case-study/ProjectCaseBrief.astro';
 
-<ProblemGoalSplit
+<ProjectCaseBrief
+  overview={{
+    title: 'Overview',
+    lead: 'A fixed daily edition for the AI landscape.',
+    items: [
+      'Solo build — product design, editorial structure, and implementation.',
+      'Stack: Next.js, TypeScript, Vercel.',
+      'Status: live daily briefing product.',
+    ],
+  }}
   problem={{
     title: 'Problem',
-    lead: 'AI news arrives as an endless stream of launches, papers, policy notes and product updates.',
+    lead: 'AI news arrives as an endless stream, not a finished picture.',
     items: [
       'Useful signal is buried under duplicate headlines and low-context posts.',
-      'Reading five sources still leaves no clear picture of what mattered today.',
+      'Reading five sources still leaves no clear view of what mattered today.',
       'There is no stable format for returning to the same beat tomorrow.',
     ],
-    body: [
-      'The issue is not access to information. It is the absence of an editorial system that reduces the day to what is worth knowing.',
+    note: 'The issue is not access to information. It is the absence of an editorial system.',
+  }}
+  solution={{
+    title: 'Solution',
+    lead: 'Package the day into a short, repeatable pulse.',
+    items: [
+      'Open with three things to know — orientation before depth.',
+      'Give one featured story room to breathe, with a source link out.',
+      'Keep the rest as a scannable signal feed filtered by pulse, product, research, and infra.',
     ],
   }}
-  goal={{
-    title: 'Goal',
-    lead: 'Build a daily pulse product that packages the AI landscape into a short, repeatable edition.',
+  build={{
+    title: 'Implementation & challenges',
+    lead: 'Design for finishability, not completeness.',
     items: [
-      'Open with three things to know.',
-      'Give one story room to breathe.',
-      'Keep the rest as a scannable signal feed with clear categories.',
+      'Fixed edition frame (date, reading time, path) so every day shares the same reading contract.',
+      'Chose a dense terminal aesthetic to make scanning faster than browsing tabs.',
+      'Trade-off: editorial reduction over exhaustive coverage — the product succeeds when the pulse is finishable.',
+      'Hardest problem: ranking what belongs in “three things to know” without turning the page into another feed.',
     ],
-    body: [
-      'The product should feel like a terminal for AI news: dense, calm, and finished in one sitting.',
+  }}
+  results={{
+    title: 'Results & learnings',
+    lead: 'A monitoring habit turned into a productized daily edition.',
+    items: [
+      'Stable daily composition: edition frame, three takeaways, featured story, filtered feed.',
+      'Category filters keep secondary signal available without breaking the primary path.',
+      'Learning: orientation beats completeness when the goal is a finished daily read.',
     ],
+  }}
+  screenshot={{
+    src: '/images/projects/ai-briefing/cover.png',
+    alt: 'AI Daily Pulse edition layout',
+    caption: 'Edition frame · featured story · signal feed',
   }}
 />
-
-## System
-
-AI Daily Pulse runs as a fixed daily composition:
-
-1. **Edition frame** — date, reading time, and a clear path through the page.
-2. **Three things to know** — the highest-signal points before anything else.
-3. **Featured story** — one narrative given space, with a source link out.
-4. **Signal feed** — filtered cards across pulse, product, research and infra.
-
-## Result
-
-AI Daily Pulse turns a scattered monitoring habit into a productized daily edition. The design priority is orientation, not completeness: finish the pulse, then go deep only where it matters.
-
-<Callout type="tip">
-  The homepage screenshot shows the live edition layout: left-rail archive, featured story, and category-filtered signal feed.
-</Callout>
