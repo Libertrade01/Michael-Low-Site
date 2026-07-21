@@ -19,8 +19,8 @@ export const site = {
   linkedin: 'https://linkedin.com/in/michaellow',
   availability:
     'Available for selected AI workflow projects, implementation support, and embedded remote roles with small teams.',
-  headshot: '/images/headshot-studio-tight.png',
-  headshotCutout: '/images/headshot-studio-cutout.png',
+  headshot: '/images/headshot-portfolio-tight.png',
+  headshotCutout: '/images/headshot-portfolio-cutout.png',
   headshotFallback: '/images/headshot-placeholder.svg',
 } as const;
 
