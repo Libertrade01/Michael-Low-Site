@@ -201,10 +201,10 @@ const skills = [
         <figure class="mock-about__photo" data-reveal>
           <div class="mock-about__frame">
             <img
-              src={`${site.headshotCutout}?v=11`}
+              src="/images/headshot-studio-tight.png?v=12"
               alt={`${site.name} portrait`}
               width="819"
-              height="932"
+              height="1024"
               loading="lazy"
               decoding="async"
             />
@@ -213,15 +213,15 @@ const skills = [
 
         <div class="mock-about__copy" data-reveal data-reveal-delay="1">
           <p class="mock-kicker">About</p>
-          <h2 id="about-title">I work where operations, product and engineering meet.</h2>
+          <h2 id="about-title">I turn messy operational work into systems people can run.</h2>
           <p>
-            I’m most useful when the problem is still ambiguous: the process is spread across tools, important context lives in people’s heads, and nobody has written a clean specification.
+            Ambiguous process, scattered tools, context stuck in people’s heads — that’s usually where I start.
           </p>
           <p>
-            I study how the work actually happens, reduce it to the decisions, information and hand-offs that matter, and build a system around it. My work combines product thinking, applied AI and full-stack implementation.
+            I map the real workflow, then build the capture, automation, and interfaces around it: product thinking, applied AI, and full-stack implementation in one pass.
           </p>
           <p>
-            I care less about whether something looks agentic and more about whether it helps someone complete real work reliably.
+            I care less about whether it looks agentic and more about whether someone can complete the work reliably.
           </p>
           <div class="mock-about__meta">
             <a href="/about">Full about page <span aria-hidden="true">→</span></a>
@@ -638,7 +638,7 @@ const skills = [
 
   .mock-about__photo {
     margin: 0;
-    max-width: 28rem;
+    max-width: min(26rem, 100%);
     width: 100%;
     justify-self: start;
     align-self: center;
@@ -646,19 +646,22 @@ const skills = [
 
   .mock-about__frame {
     position: relative;
-    overflow: visible;
-    border-radius: 0;
-    aspect-ratio: auto;
-    background: transparent;
+    overflow: hidden;
+    aspect-ratio: 4 / 5;
+    border-radius: 0.15rem;
+    background: #8f857c;
+    box-shadow:
+      inset 0 0 0 1px rgba(48, 47, 43, 0.14),
+      0 0.65rem 1.6rem rgba(48, 47, 43, 0.14);
     line-height: 0;
   }
 
   .mock-about__photo img {
     width: 100%;
-    height: auto;
+    height: 100%;
     display: block;
-    object-fit: contain;
-    object-position: center center;
+    object-fit: cover;
+    object-position: center 10%;
   }
 
   .mock-about__photo figcaption {
