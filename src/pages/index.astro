@@ -112,12 +112,13 @@ const skills = [
           <article class="mock-feature" data-reveal data-reveal-media>
             <a href={`/projects/${systems[0].slug}`} aria-label={`Read the ${systems[0].data.title} case study`}>
               <div class="mock-feature__visual">
-                {systems[0].data.coverImage ? (
+                {(systems[0].data.cardImage ?? systems[0].data.coverImage) ? (
                   <img
-                    src={systems[0].data.coverImage}
+                    src={systems[0].data.cardImage ?? systems[0].data.coverImage}
                     alt={`${systems[0].data.title} interface`}
                     loading="lazy"
                     decoding="async"
+                    style={`object-position: ${systems[0].data.coverPosition === 'top' ? 'left top' : (systems[0].data.coverPosition ?? 'left top')};`}
                   />
                 ) : null}
               </div>
@@ -131,11 +132,8 @@ const skills = [
                 {systems[0].data.systemLine && (
                   <p class="mock-feature__system-line">{systems[0].data.systemLine}</p>
                 )}
-                <ul aria-label={`${systems[0].data.title} technologies`}>
-                  {systems[0].data.stack.slice(0, 4).map((item) => <li>{item}</li>)}
-                </ul>
                 <span class="mock-feature__view">
-                  Read case study <span aria-hidden="true">↗</span>
+                  Case study <span aria-hidden="true">↗</span>
                 </span>
               </div>
             </a>
@@ -195,62 +193,58 @@ const skills = [
       </div>
     </section>
 
-    <!-- ABOUT: compact trust layer for hiring managers -->
+    <!-- ABOUT + CAPABILITIES: one paper surface -->
     <section id="about" class="mock-section mock-about" aria-labelledby="about-title">
-      <div class="mock-shell mock-about__layout">
-        <figure class="mock-about__photo" data-reveal>
-          <div class="mock-about__frame">
-            <img
-              src="/images/headshot-studio-tight.png?v=12"
-              alt={`${site.name} portrait`}
-              width="819"
-              height="1024"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
-        </figure>
+      <div class="mock-shell">
+        <div class="mock-about__layout">
+          <figure class="mock-about__photo" data-reveal>
+            <div class="mock-about__frame">
+              <img
+                src="/images/headshot-studio-tight.png?v=12"
+                alt={`${site.name} portrait`}
+                width="819"
+                height="1024"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          </figure>
 
-        <div class="mock-about__copy" data-reveal data-reveal-delay="1">
-          <p class="mock-kicker">About</p>
-          <h2 id="about-title">I turn messy operational work into systems people can run.</h2>
-          <p>
-            Ambiguous process, scattered tools, context stuck in people’s heads — that’s usually where I start.
-          </p>
-          <p>
-            I map the real workflow, then build the capture, automation, and interfaces around it: product thinking, applied AI, and full-stack implementation in one pass.
-          </p>
-          <p>
-            I care less about whether it looks agentic and more about whether someone can complete the work reliably.
-          </p>
-          <div class="mock-about__meta">
-            <a href="/about">Full about page <span aria-hidden="true">→</span></a>
+          <div class="mock-about__copy" data-reveal data-reveal-delay="1">
+            <p class="mock-kicker">About</p>
+            <h2 id="about-title">I turn messy operational work into systems people can run.</h2>
+            <p>
+              Ambiguous process, scattered tools, context stuck in people’s heads — that’s usually where I start.
+            </p>
+            <p>
+              I map the real workflow, then build the capture, automation, and interfaces around it: product thinking, applied AI, and full-stack implementation in one pass.
+            </p>
+            <p>
+              I care less about whether it looks agentic and more about whether someone can complete the work reliably.
+            </p>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- SKILLS: made prominent for AI hiring managers -->
-    <section id="skills" class="mock-section mock-skills" aria-labelledby="skills-title">
-      <div class="mock-shell mock-skills__layout">
-        <header data-reveal>
-          <p class="mock-kicker">Capabilities</p>
-          <h2 id="skills-title">I build the system around the model.</h2>
-          <p>
-            The useful part of applied AI is rarely the prompt alone. It is the workflow, data, interface, integration, guardrails and feedback loop that make it dependable.
-          </p>
-        </header>
-        <div class="mock-skills__groups" data-reveal-stagger>
-          {skills.map((skill) => (
-            <div class="mock-skill-group" data-reveal>
-              <p class="mock-kicker">{skill.group}</p>
-              <ul>
-                {skill.items.map((item) => (
-                  <li>{item}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
+        <div id="skills" class="mock-about__capabilities" aria-labelledby="skills-title">
+          <header data-reveal>
+            <p class="mock-kicker">Capabilities</p>
+            <h2 id="skills-title">I build the system around the model.</h2>
+            <p>
+              The useful part of applied AI is rarely the prompt alone. It is the workflow, data, interface, integration, guardrails and feedback loop that make it dependable.
+            </p>
+          </header>
+          <div class="mock-skills__groups" data-reveal-stagger>
+            {skills.map((skill) => (
+              <div class="mock-skill-group" data-reveal>
+                <p class="mock-kicker">{skill.group}</p>
+                <ul>
+                  {skill.items.map((item) => (
+                    <li>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -294,9 +288,7 @@ const skills = [
             <a class="mock-button mock-button--light" href={`mailto:${site.email}`}>
               Email me <span aria-hidden="true">↗</span>
             </a>
-            <a class="mock-text-link mock-text-link--on-dark" href={site.github} target="_blank" rel="noopener noreferrer">
-              GitHub <span aria-hidden="true">↗</span>
-            </a>
+            <a class="mock-text-link mock-text-link--on-dark" href={`mailto:${site.email}`}>{site.email}</a>
           </div>
         </div>
       </div>
@@ -578,7 +570,7 @@ const skills = [
 
   .mock-section-head h2,
   .mock-about__copy h2,
-  .mock-skills h2,
+  .mock-about__capabilities h2,
   .mock-process__intro h2,
   .mock-contact h2 {
     margin: 0.85rem 0 0;
@@ -591,7 +583,7 @@ const skills = [
 
   .mock-section-head > p,
   .mock-about__copy > p:not(.mock-kicker),
-  .mock-skills header > p:not(.mock-kicker),
+  .mock-about__capabilities header > p:not(.mock-kicker),
   .mock-process__intro > p:last-child,
   .mock-contact__copy > p {
     margin: 0;
@@ -692,9 +684,9 @@ const skills = [
     flex-wrap: wrap;
     align-items: center;
     gap: 0.85rem 1.5rem;
-    margin-top: 2rem;
-    padding-top: 1.25rem;
-    border-top: 1px solid var(--line);
+    margin-top: 1.35rem;
+    padding-top: 0;
+    border-top: none;
     color: var(--muted);
     font-family: 'IBM Plex Mono', ui-monospace, monospace;
     font-size: 0.62rem;
@@ -718,6 +710,25 @@ const skills = [
 
   .mock-about__meta a:hover span {
     transform: translateX(3px);
+  }
+
+  .mock-about__capabilities {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(22rem, 1.1fr);
+    gap: clamp(2rem, 5vw, 4.5rem);
+    align-items: start;
+    margin-top: clamp(2.75rem, 5vw, 4rem);
+    padding-top: clamp(2.25rem, 4vw, 3.25rem);
+    border-top: 1px solid color-mix(in srgb, var(--line) 88%, transparent);
+  }
+
+  .mock-about__capabilities header > p:not(.mock-kicker) {
+    max-width: 32rem;
+    margin-top: 1.1rem;
+  }
+
+  .mock-about__capabilities h2 {
+    max-width: 16ch;
   }
 
   .mock-section-action {
@@ -762,14 +773,16 @@ const skills = [
     display: grid;
     grid-template-columns: minmax(0, 1.35fr) minmax(16rem, 0.75fr);
     gap: clamp(1.75rem, 4vw, 3.5rem);
-    align-items: stretch;
+    align-items: start;
   }
 
   .mock-feature__visual {
     position: relative;
     overflow: hidden;
-    min-height: clamp(22rem, 42vw, 34rem);
-    background: var(--deep);
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    min-height: 0;
+    background: #0a0a0a;
     border-radius: 0.4rem;
     box-shadow:
       inset 0 0 0 1px rgba(48, 47, 43, 0.08),
@@ -777,18 +790,21 @@ const skills = [
   }
 
   .mock-feature__visual img {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     display: block;
     object-fit: cover;
-    object-position: center top;
-    filter: saturate(0.96) contrast(1.02);
+    object-position: left top;
+    image-rendering: -webkit-optimize-contrast;
+    filter: contrast(1.04);
     transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1), filter 300ms ease;
   }
 
   .mock-feature:hover .mock-feature__visual img {
     transform: scale(1.03);
-    filter: saturate(0.98) contrast(1);
+    filter: contrast(1.05);
   }
 
   .mock-feature__copy {
@@ -832,20 +848,6 @@ const skills = [
     font-family: 'IBM Plex Mono', ui-monospace, monospace;
     font-size: 0.68rem;
     font-weight: 500;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-  }
-
-  .mock-feature__copy ul {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem 0.95rem;
-    margin: 1.25rem 0 0;
-    padding: 0;
-    list-style: none;
-    color: var(--muted);
-    font-family: 'IBM Plex Mono', ui-monospace, monospace;
-    font-size: 0.58rem;
     letter-spacing: 0.04em;
     text-transform: uppercase;
   }
@@ -945,50 +947,11 @@ const skills = [
     font-size: 0.76rem;
   }
 
-  /* Skills */
-  .mock-skills {
-    position: relative;
-    isolation: isolate;
-    overflow: hidden;
-    /* Bright paper after About's tan band — clear scroll contrast */
-    background:
-      linear-gradient(180deg, rgba(255, 252, 247, 0.85) 0%, transparent 32%),
-      var(--raised);
-  }
-
-  .mock-skills::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-    opacity: 0.045;
-    background-image: var(--grain);
-    background-size: 160px 160px;
-    mix-blend-mode: multiply;
-  }
-
-  .mock-skills > * {
-    position: relative;
-    z-index: 1;
-  }
-
-  .mock-skills__layout {
-    display: grid;
-    grid-template-columns: minmax(0, 0.9fr) minmax(22rem, 1.1fr);
-    gap: clamp(3rem, 8vw, 9rem);
-    align-items: start;
-  }
-
-  .mock-skills header > p {
-    max-width: 32rem;
-    margin-top: 1.35rem;
-  }
-
+  /* Capability columns (now nested under About) */
   .mock-skills__groups {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: clamp(2rem, 4vw, 3.25rem);
+    gap: clamp(1.5rem, 3vw, 2.75rem);
   }
 
   .mock-skill-group {
@@ -996,15 +959,16 @@ const skills = [
   }
 
   .mock-skill-group .mock-kicker {
-    margin: 0;
-    padding-bottom: 0.75rem;
-    border-bottom: 1px solid var(--line-strong);
+    margin: 0 0 0.15rem;
+    padding-bottom: 0;
+    border-bottom: none;
+    color: var(--ink);
   }
 
   .mock-skill-group ul {
     display: grid;
     gap: 0.7rem;
-    margin: 1.05rem 0 0;
+    margin: 0.85rem 0 0;
     padding: 0;
     list-style: none;
   }
@@ -1016,15 +980,14 @@ const skills = [
     line-height: 1.35;
   }
 
-  /* Process */
+  /* Process — raised cool band after the combined About surface */
   .mock-process {
     position: relative;
     isolation: isolate;
     /* overflow must stay visible so .mock-process__intro sticky works */
     background:
-      radial-gradient(ellipse 70% 55% at 12% 0%, rgba(255, 250, 242, 0.45) 0%, transparent 58%),
-      radial-gradient(ellipse 45% 40% at 100% 100%, rgba(40, 36, 30, 0.07) 0%, transparent 55%),
-      linear-gradient(165deg, #ebe4d8 0%, #e2dacd 52%, #d8d0c2 100%);
+      linear-gradient(180deg, rgba(255, 252, 247, 0.85) 0%, transparent 32%),
+      var(--raised);
   }
 
   .mock-process::after {
@@ -1033,9 +996,9 @@ const skills = [
     inset: 0;
     z-index: 0;
     pointer-events: none;
-    opacity: 0.075;
+    opacity: 0.045;
     background-image: var(--grain);
-    background-size: 150px 150px;
+    background-size: 160px 160px;
     mix-blend-mode: multiply;
   }
 
@@ -1167,7 +1130,7 @@ const skills = [
 
   @media (max-width: 980px) {
     .mock-skills__groups,
-    .mock-skills__layout,
+    .mock-about__capabilities,
     .mock-about__layout,
     .mock-process__layout,
     .mock-contact__inner,
@@ -1182,7 +1145,7 @@ const skills = [
     }
 
     .mock-feature__visual {
-      min-height: 18rem;
+      aspect-ratio: 16 / 10;
     }
 
     .mock-process__intro {

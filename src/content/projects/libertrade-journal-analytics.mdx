@@ -1,12 +1,15 @@
 ---
 title: Libertrade LOOP
-description: A trading performance operating system that combines readiness scoring, process journaling, broker trade import, weekly review, and an AI assistant over the trader’s own data.
+description: >-
+  A trading performance OS built around closing the loop. Readiness, planning,
+  execution review, and AI grounded in the trader’s own process data, not
+  another profit and loss diary.
 descriptionExtra: >-
   Close the loop between readiness, planning, execution, and review, with AI
   grounded in the trader’s own process data, not generic trading advice.
 date: 2026-05-01
 status: Live
-category: Trading process & journal system
+category: Trading performance system
 type: product
 stack: [Next.js, React, Supabase, Vercel, OpenAI, AI SDK, Chart.js]
 featured: true
@@ -35,9 +38,10 @@ caseOverview:
       value: Full live app · libertrade.app
     - label: Repo
       value: github.com/Libertrade01/Libertrade-LOOP
+      href: https://github.com/Libertrade01/Libertrade-LOOP
 audience: [employer, personal]
 coverImage: /images/projects/trading-desk/cover.png
-cardImage: /images/projects/trading-desk/cover.png
+cardImage: /images/projects/trading-desk/cover-alt-sharp.png
 coverFit: contain
 coverPosition: top
 coverFrame: browser
@@ -45,8 +49,10 @@ coverFrameLabel: libertrade.app
 showHeroCover: true
 systemLine: Check in → Plan → Trade → Close loop → Review
 liveUrl: https://libertrade.app
-liveLabel: Visit Libertrade LOOP
-liveCtaNote: Live product · Libertrade.app
+liveLabel: Visit libertrade.app
+liveCtaNote: Live product.
+demoUrl: https://libertrade.app/demo
+demoLabel: Try demo
 github: https://github.com/Libertrade01/Libertrade-LOOP
 ---
 
@@ -118,38 +124,6 @@ import ProjectCaseBrief from '../../components/case-study/ProjectCaseBrief.astro
     ],
     note: 'A profitable day with bad process is not treated as clean. A flat or down day with clean execution can still be a process win.',
   }}
-  walkthrough={{
-    title: 'Walkthrough',
-    lead: 'Follow the loop through the product surfaces.',
-    body: 'This is the product tour — check-in through planning, analytics, prop economics, and Loop Intelligence.',
-    shots: [
-      {
-        image: '/images/projects/trading-desk/check-in.png',
-        alt: 'Libertrade LOOP pre-market readiness check-in',
-        label: 'Check-in · readiness before risk',
-      },
-      {
-        image: '/images/projects/trading-desk/session-plan.png',
-        alt: 'Libertrade LOOP session plan with bias, levels, and risk rails',
-        label: 'Session plan · decisions before pressure',
-      },
-      {
-        image: '/images/projects/trading-desk/stats.png',
-        alt: 'Libertrade LOOP analytics dashboard with equity curve and trade stats',
-        label: 'Analytics · patterns across sessions',
-      },
-      {
-        image: '/images/projects/trading-desk/prop.png',
-        alt: 'Libertrade LOOP prop profit tracker with fees, resets, and payouts',
-        label: 'Prop Economics · fees, resets, payouts',
-      },
-      {
-        image: '/images/projects/trading-desk/loop-intel.png',
-        alt: 'Libertrade LOOP Intelligence assistant answering from trader data',
-        label: 'Loop Intelligence · grounded answers',
-      },
-    ],
-  }}
   build={{
     title: 'Implementation & challenges',
     lead: 'Turn subjective human state into structured, queryable process data.',
@@ -213,12 +187,43 @@ import ProjectCaseBrief from '../../components/case-study/ProjectCaseBrief.astro
       'Automatic pattern detection across behavioural flags',
     ],
     note: 'A profit and loss chart only tells you what happened. A loop tells you why. LOOP is not “AI tells you how to trade.” It helps you understand the process you actually followed.',
+    shot: {
+      src: '/images/projects/trading-desk/stats.png',
+      alt: 'Libertrade LOOP analytics dashboard with equity curve and trade stats',
+      caption: 'Analytics · patterns across sessions',
+      frame: 'browser',
+      frameLabel: 'libertrade.app',
+    },
   }}
   screenshot={{
-    src: '/images/projects/trading-desk/close-loop.png',
-    alt: 'Libertrade LOOP close-loop review with session import and process honesty',
-    caption: 'Featured surface · close the loop against the plan',
     frame: 'browser',
     frameLabel: 'libertrade.app',
+    shots: [
+      {
+        image: '/images/projects/trading-desk/check-in.png',
+        alt: 'Libertrade LOOP pre-market readiness check-in',
+        label: 'Check-in · readiness before risk',
+      },
+      {
+        image: '/images/projects/trading-desk/session-plan.png',
+        alt: 'Libertrade LOOP session plan with bias, levels, and risk rails',
+        label: 'Session plan · decisions before pressure',
+      },
+      {
+        image: '/images/projects/trading-desk/risk.png',
+        alt: 'Libertrade LOOP risk settings and process rails',
+        label: 'Risk · rails before exposure',
+      },
+      {
+        image: '/images/projects/trading-desk/close-loop.png',
+        alt: 'Libertrade LOOP close-loop review with session import and process honesty',
+        label: 'Close loop · execution against the plan',
+      },
+      {
+        image: '/images/projects/trading-desk/loop-intel.png',
+        alt: 'Libertrade LOOP Intelligence assistant answering from trader data',
+        label: 'Loop Intelligence · grounded answers',
+      },
+    ],
   }}
 />

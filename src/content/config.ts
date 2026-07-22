@@ -23,6 +23,8 @@ const projectSchema = z.object({
         z.object({
           label: z.string(),
           value: z.string(),
+          /** Optional external/internal link for the fact value (e.g. repo URL). */
+          href: z.string().url().optional(),
         }),
       ),
     })
@@ -48,6 +50,11 @@ const projectSchema = z.object({
   liveLabel: z.string().optional(),
   /** Secondary line under the live URL button on case study heroes. */
   liveCtaNote: z.string().optional(),
+  /** Optional secondary hero action (e.g. public product demo). */
+  demoUrl: z.string().url().optional(),
+  demoLabel: z.string().optional(),
+  /** Optional curated related case-study slugs (Related systems). */
+  related: z.array(z.string()).max(2).optional(),
   video: z.string().optional(),
   draft: z.boolean().default(false),
 });

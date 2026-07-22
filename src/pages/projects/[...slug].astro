@@ -41,7 +41,11 @@ const isCaseStudy = caseStudySlugs.includes(project.slug as (typeof caseStudySlu
           <Content />
         </div>
       </div>
-      <RelatedProjects projects={allProjects} currentSlug={project.slug} />
+      <RelatedProjects
+        projects={allProjects}
+        currentSlug={project.slug}
+        relatedSlugs={project.data.related}
+      />
     </article>
   </main>
 </Layout>

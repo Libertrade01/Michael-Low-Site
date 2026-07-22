@@ -14,7 +14,7 @@ export const site = {
     'Applied AI builder working across workflow design, product engineering and automation. I turn ambiguous, manual processes into systems people can operate reliably.',
   tagline: 'Messy input in. Clean operating system out.',
   url: 'https://michaeljlow.com',
-  email: 'hello@michaeljlow.com',
+  email: 'mike@michaeljlow.com',
   github: 'https://github.com/Libertrade01',
   linkedin: 'https://linkedin.com/in/michaellow',
   availability:
@@ -203,8 +203,7 @@ export const nav = [
   { label: 'Projects', href: '/projects' },
   { label: 'About', href: '/about' },
   { label: 'Work', href: '/work' },
-  { label: 'Build Log', href: '/build-log' },
-  { label: 'Contact', href: '/contact' },
+  { label: 'Contact', href: '/#contact' },
 ] as const;
 
 export const workflowPattern = {

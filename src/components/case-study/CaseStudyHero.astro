@@ -22,8 +22,16 @@ const {
   coverFrameLabel,
   showHeroCover,
   github,
+  demoUrl,
+  demoLabel = 'Try demo',
   caseOverview,
 } = project.data;
+
+const secondaryCta = demoUrl
+  ? { href: demoUrl, label: demoLabel, externalIcon: false }
+  : !liveUrl && github
+    ? { href: github, label: 'View repo', externalIcon: true }
+    : null;
 
 const coverRetina = coverImage?.replace(/\.(png|jpe?g|webp)$/i, '@2x.$1');
 const hasRetinaCover =
@@ -47,16 +55,19 @@ const hasRetinaCover =
 
               <div class="case-study-hero__actions">
                 {liveUrl && (
-                  <a class="case-study-hero__demo-cta" href={liveUrl} target="_blank" rel="noopener noreferrer">
+                  <a class="case-study-hero__btn case-study-hero__btn--primary" href={liveUrl} target="_blank" rel="noopener noreferrer">
                     <span>
                       {liveLabel} <span aria-hidden="true">&rarr;</span>
                     </span>
                     {liveCtaNote && <small>{liveCtaNote}</small>}
                   </a>
                 )}
-                {github && (
-                  <a class="case-study-hero__source-link" href={github} target="_blank" rel="noopener noreferrer">
-                    View source <span aria-hidden="true">↗</span>
+                {secondaryCta && (
+                  <a class="case-study-hero__btn case-study-hero__btn--secondary" href={secondaryCta.href} target="_blank" rel="noopener noreferrer">
+                    <span>
+                      {secondaryCta.label}{' '}
+                      <span aria-hidden="true">{secondaryCta.externalIcon ? '↗' : '→'}</span>
+                    </span>
                   </a>
                 )}
               </div>
@@ -66,7 +77,15 @@ const hasRetinaCover =
               {caseOverview.facts.map((fact) => (
                 <div>
                   <dt>{fact.label}</dt>
-                  <dd>{fact.value}</dd>
+                  <dd>
+                    {fact.href ? (
+                      <a href={fact.href} target="_blank" rel="noopener noreferrer">
+                        {fact.value}
+                      </a>
+                    ) : (
+                      fact.value
+                    )}
+                  </dd>
                 </div>
               ))}
             </dl>
@@ -78,16 +97,19 @@ const hasRetinaCover =
 
             <div class="case-study-hero__actions">
               {liveUrl && (
-                <a class="case-study-hero__demo-cta" href={liveUrl} target="_blank" rel="noopener noreferrer">
+                <a class="case-study-hero__btn case-study-hero__btn--primary" href={liveUrl} target="_blank" rel="noopener noreferrer">
                   <span>
                     {liveLabel} <span aria-hidden="true">&rarr;</span>
                   </span>
                   {liveCtaNote && <small>{liveCtaNote}</small>}
                 </a>
               )}
-              {github && (
-                <a class="case-study-hero__source-link" href={github} target="_blank" rel="noopener noreferrer">
-                  View source <span aria-hidden="true">↗</span>
+              {secondaryCta && (
+                <a class="case-study-hero__btn case-study-hero__btn--secondary" href={secondaryCta.href} target="_blank" rel="noopener noreferrer">
+                  <span>
+                    {secondaryCta.label}{' '}
+                    <span aria-hidden="true">{secondaryCta.externalIcon ? '↗' : '→'}</span>
+                  </span>
                 </a>
               )}
             </div>
@@ -265,42 +287,56 @@ const hasRetinaCover =
     margin: 0;
   }
 
+  .case-study-hero__facts dd a {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: color-mix(in srgb, var(--ml-ink) 28%, transparent);
+    text-underline-offset: 0.18em;
+    transition: color 160ms ease, text-decoration-color 160ms ease;
+  }
+
+  .case-study-hero__facts dd a:hover {
+    color: var(--ml-clay);
+    text-decoration-color: color-mix(in srgb, var(--ml-clay) 55%, transparent);
+  }
+
   .case-study-hero__actions {
-    align-items: center;
+    align-items: stretch;
     display: flex;
     flex-wrap: wrap;
     gap: 0.75rem;
     margin-top: 1.6rem;
   }
 
-  .case-study-hero__demo-cta {
+  .case-study-hero__btn {
     align-items: center;
-    background: var(--ml-ink);
+    background: transparent;
     border: 1px solid var(--ml-ink);
     border-radius: 0.35rem;
-    box-shadow: 0 10px 26px rgba(31, 31, 28, 0.12);
-    color: var(--ml-paper);
+    color: var(--ml-ink);
     display: inline-flex;
     flex-direction: column;
     font-family: var(--font-mono, ui-monospace, monospace);
     gap: 0.3rem;
+    justify-content: center;
     letter-spacing: 0.12em;
-    padding: 0.95rem 1.2rem;
+    min-height: 4.35rem;
+    padding: 0.95rem 1.25rem;
+    text-decoration: none;
     text-transform: uppercase;
     transition:
       background-color 180ms ease,
       border-color 180ms ease,
-      box-shadow 180ms ease,
+      color 180ms ease,
       transform 180ms ease;
   }
 
-  .case-study-hero__demo-cta:hover {
-    background: var(--ml-ink-soft);
-    border-color: var(--ml-ink-soft);
+  .case-study-hero__btn:hover {
+    background: color-mix(in srgb, var(--ml-ink) 6%, transparent);
     transform: translateY(-1px);
   }
 
-  .case-study-hero__demo-cta span {
+  .case-study-hero__btn span {
     align-items: center;
     display: inline-flex;
     font-size: 0.78rem;
@@ -308,22 +344,18 @@ const hasRetinaCover =
     gap: 0.45rem;
   }
 
-  .case-study-hero__demo-cta small {
-    color: rgba(255, 255, 255, 0.74);
+  .case-study-hero__btn small {
+    color: var(--ml-muted);
     font-size: 0.62rem;
     letter-spacing: 0.1em;
   }
 
-  .case-study-hero__source-link {
-    color: var(--ml-ink-soft);
-    font-family: var(--font-mono, ui-monospace, monospace);
-    font-size: 0.72rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+  .case-study-hero__btn--secondary {
+    border-color: color-mix(in srgb, var(--ml-ink) 42%, transparent);
   }
 
-  .case-study-hero__source-link:hover {
-    color: var(--ml-clay);
+  .case-study-hero__btn--secondary:hover {
+    border-color: var(--ml-ink);
   }
 
   .case-study-hero__artifact {
@@ -406,7 +438,7 @@ const hasRetinaCover =
       padding-bottom: 1.5rem;
     }
 
-    .case-study-hero__demo-cta {
+    .case-study-hero__btn {
       width: 100%;
     }
   }

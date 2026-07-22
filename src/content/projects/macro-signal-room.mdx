@@ -1,6 +1,9 @@
 ---
 title: Macro Signal Room
-description: An automated macro-intelligence dashboard. Hermes watches trusted podcasts and newsletters, summarizes new inputs, and synthesizes a living Room View with evidence and revision history.
+description: >-
+  A living Room View across trusted macro sources. Not a pile of links: a
+  current stance, next tests, and an audit trail of what the system believed
+  when the view changed.
 descriptionExtra: >-
   Not a pile of links. A current macro stance, next tests, regime label, causal
   drivers, source alignment, and an audit trail of what the system believed when
@@ -26,9 +29,7 @@ caseOverview:
     just a summarizer. It maintains a collective macro stance with evidence.
     Discovery and source credentials stay on the Hermes VPS. This app owns the
     ingest contract, durable archive, Room View persistence, and the V2 synthesis
-    worker that reads stored inputs and writes a validated living view. It spun
-    out of Briefing Studio and can share the same Supabase project as the earlier
-    briefing stack.
+    worker that reads stored inputs and writes a validated living view.
   facts:
     - label: Role
       value: Solo builder / product design, research structure, agent pipelines
@@ -36,8 +37,9 @@ caseOverview:
       value: Hermes Agent, Next.js, Vercel, Supabase, Python, scheduled jobs, transcript ingestion
     - label: Status
       value: Prototype agentic macro desk
-    - label: Core object
-      value: macro_briefing · slug macro-living
+    - label: Repo
+      value: github.com/Libertrade01/Macro-Signal-Room
+      href: https://github.com/Libertrade01/Macro-Signal-Room
 audience: [employer, personal]
 coverImage: /images/projects/macro-signal-room/cover.png
 cardImage: /images/projects/macro-signal-room/cover-card.png
@@ -46,7 +48,13 @@ coverPosition: top
 coverFrame: browser
 coverFrameLabel: Macro Signal Room
 systemLine: Watch → Summarize → Synthesize → Revise
+liveUrl: https://macro-intelligence-dash.vercel.app/macro
+liveLabel: View live site
+liveCtaNote: Live prototype
 github: https://github.com/Libertrade01/Macro-Signal-Room
+related:
+  - ai-daily-pulse
+  - sentinel-mental-game-agent
 ---
 
 import ProjectCaseBrief from '../../components/case-study/ProjectCaseBrief.astro';
@@ -80,7 +88,7 @@ import ProjectCaseBrief from '../../components/case-study/ProjectCaseBrief.astro
   solution={{
     title: 'Solution',
     lead: 'Agentic pipeline into a durable, structured Room View.',
-    body: 'Hermes monitors sources, summarizes new inputs into the app, then re-runs cross-source synthesis against the stored archive. The current Room View lives as a macro_briefing with slug macro-living; inputs persist as podcast_summary or newsletter_summary. The living view is stored as content_json with room_view, next_tests, regime, drivers, and source_alignment so the dashboard can render without guessing from prose. Synthesis starts from retrieved evidence in that archive, not a blank prompt.',
+    body: 'Hermes monitors sources, summarizes new inputs into the app, then re-runs cross-source synthesis against the stored archive. The current Room View lives as a macro_briefing; inputs persist as podcast_summary or newsletter_summary. The living view is stored as content_json with room_view, next_tests, regime, drivers, and source_alignment so the dashboard can render without guessing from prose. Synthesis starts from retrieved evidence in that archive, not a blank prompt.',
     pipeline: [
       'Watch trusted sources',
       'Fetch + summarize new input',
@@ -167,12 +175,5 @@ import ProjectCaseBrief from '../../components/case-study/ProjectCaseBrief.astro
       'A human approval queue for major regime changes',
     ],
     note: 'Agentic AI becomes more valuable when it is connected to durable state and evidence. A one-off summary is not enough. The system needs to know its prior view, compare new evidence against it, and decide whether a change is material.',
-  }}
-  screenshot={{
-    src: '/images/projects/macro-signal-room/cover.png',
-    alt: 'Macro Signal Room desk layout',
-    caption: 'Room View · inputs · revisions · evidence',
-    frame: 'browser',
-    frameLabel: 'Macro Signal Room',
   }}
 />

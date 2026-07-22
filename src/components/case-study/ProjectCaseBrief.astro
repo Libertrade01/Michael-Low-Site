@@ -1,5 +1,5 @@
 ---
-import SnapshotCarousel from './SnapshotCarousel.astro';
+import BrowserShotCarousel from './BrowserShotCarousel.astro';
 
 interface ColumnList {
   title: string;
@@ -17,12 +17,20 @@ interface Challenge {
   tradeoff?: string;
 }
 
-interface Screenshot {
-  src: string;
+interface Shot {
+  image: string;
   alt: string;
+  label?: string;
+}
+
+interface Screenshot {
+  src?: string;
+  alt?: string;
   caption?: string;
   frame?: 'browser' | 'window';
   frameLabel?: string;
+  /** When provided, replaces the static shot with a browser-framed carousel. */
+  shots?: Shot[];
 }
 
 interface BriefSection {
@@ -45,20 +53,8 @@ interface BriefSection {
   pullquote?: string;
   /** Results: if extended */
   next?: string[];
-}
-
-interface WalkthroughShot {
-  image?: string;
-  alt: string;
-  label?: string;
-  placeholder?: string;
-}
-
-interface Walkthrough {
-  title?: string;
-  lead: string;
-  body?: string;
-  shots: WalkthroughShot[];
+  /** Optional closing product screenshot for a section. */
+  shot?: Screenshot;
 }
 
 interface Props {
@@ -67,13 +63,9 @@ interface Props {
   build: BriefSection;
   results: BriefSection;
   screenshot?: Screenshot;
-  /** Optional mid-page product tour (carousel). Renumbers Build/Results when present. */
-  walkthrough?: Walkthrough;
 }
 
-const { problem, solution, build, results, screenshot, walkthrough } = Astro.props;
-const buildIndex = walkthrough ? '04' : '03';
-const resultsIndex = walkthrough ? '05' : '04';
+const { problem, solution, build, results, screenshot } = Astro.props;
 ---
 
 <div class="project-brief">
@@ -180,51 +172,35 @@ const resultsIndex = walkthrough ? '05' : '04';
     {solution.note && <p class="project-brief__note">{solution.note}</p>}
 
     {
-      screenshot && (
-        <figure
-          class={`project-brief__shot${screenshot.frame ? ` project-brief__shot--${screenshot.frame}` : ''}`}
-        >
-          {screenshot.frame && (
-            <div class="product-frame__bar" aria-hidden="true">
-              <span class="product-frame__dots"><i></i><i></i><i></i></span>
-              <span class="product-frame__label">{screenshot.frameLabel ?? screenshot.alt}</span>
-              <span></span>
-            </div>
-          )}
-          <img src={screenshot.src} alt={screenshot.alt} loading="lazy" decoding="async" />
-          {screenshot.caption && <figcaption>{screenshot.caption}</figcaption>}
-        </figure>
+      screenshot?.shots && screenshot.shots.length > 0 ? (
+        <BrowserShotCarousel
+          frameLabel={screenshot.frameLabel ?? 'libertrade.app'}
+          shots={screenshot.shots}
+        />
+      ) : (
+        screenshot?.src && (
+          <figure
+            class={`project-brief__shot${screenshot.frame ? ` project-brief__shot--${screenshot.frame}` : ''}`}
+          >
+            {screenshot.frame && (
+              <div class="product-frame__bar" aria-hidden="true">
+                <span class="product-frame__dots"><i></i><i></i><i></i></span>
+                <span class="product-frame__label">{screenshot.frameLabel ?? screenshot.alt}</span>
+                <span></span>
+              </div>
+            )}
+            <img src={screenshot.src} alt={screenshot.alt ?? ''} loading="lazy" decoding="async" />
+            {screenshot.caption && <figcaption>{screenshot.caption}</figcaption>}
+          </figure>
+        )
       )
     }
   </section>
 
-  {
-    walkthrough && (
-      <section
-        class="project-brief__section project-brief__section--walkthrough"
-        aria-labelledby="brief-walkthrough-title"
-      >
-        <header class="project-brief__head">
-          <p class="project-brief__index">
-            <span aria-hidden="true">03</span> {walkthrough.title ?? 'Walkthrough'}
-          </p>
-          <h2 id="brief-walkthrough-title">{walkthrough.lead}</h2>
-        </header>
-        {walkthrough.body && <p class="project-brief__body">{walkthrough.body}</p>}
-        <SnapshotCarousel
-          heading="Screens in the loop"
-          intro="Swipe through the product surfaces — check-in, plan, analytics, prop economics, and Loop Intelligence."
-          idPrefix="loop-walkthrough"
-          shots={walkthrough.shots}
-        />
-      </section>
-    )
-  }
-
   <!-- Build -->
   <section class="project-brief__section project-brief__section--build" aria-labelledby="brief-build-title">
     <header class="project-brief__head">
-      <p class="project-brief__index"><span aria-hidden="true">{buildIndex}</span> {build.title}</p>
+      <p class="project-brief__index"><span aria-hidden="true">03</span> {build.title}</p>
       <h2 id="brief-build-title">{build.lead}</h2>
     </header>
 
@@ -260,7 +236,7 @@ const resultsIndex = walkthrough ? '05' : '04';
   <!-- Results -->
   <section class="project-brief__section project-brief__section--results" aria-labelledby="brief-results-title">
     <header class="project-brief__head">
-      <p class="project-brief__index"><span aria-hidden="true">{resultsIndex}</span> {results.title}</p>
+      <p class="project-brief__index"><span aria-hidden="true">04</span> {results.title}</p>
       <h2 id="brief-results-title">{results.lead}</h2>
     </header>
 
@@ -290,6 +266,24 @@ const resultsIndex = walkthrough ? '05' : '04';
     }
 
     {results.note && <p class="project-brief__note">{results.note}</p>}
+
+    {
+      results.shot?.src && (
+        <figure
+          class={`project-brief__shot${results.shot.frame ? ` project-brief__shot--${results.shot.frame}` : ''}`}
+        >
+          {results.shot.frame && (
+            <div class="product-frame__bar" aria-hidden="true">
+              <span class="product-frame__dots"><i></i><i></i><i></i></span>
+              <span class="product-frame__label">{results.shot.frameLabel ?? results.shot.alt}</span>
+              <span></span>
+            </div>
+          )}
+          <img src={results.shot.src} alt={results.shot.alt ?? ''} loading="lazy" decoding="async" />
+          {results.shot.caption && <figcaption>{results.shot.caption}</figcaption>}
+        </figure>
+      )
+    }
   </section>
 </div>
 
@@ -302,12 +296,6 @@ const resultsIndex = walkthrough ? '05' : '04';
     min-width: 0;
     overflow-x: clip;
     width: min(100%, 72rem);
-  }
-
-  .project-brief__section--walkthrough {
-    max-width: 100%;
-    min-width: 0;
-    overflow: hidden;
   }
 
   .project-brief__head {

@@ -1,6 +1,9 @@
 ---
 title: AI Daily Pulse
-description: A scheduled agent system that gathers AI signal, synthesizes a fixed daily briefing, and publishes it into a reader you can finish in minutes.
+description: >-
+  A daily AI briefing with a fixed reading contract. Hermes gathers the signal
+  on a schedule; the app turns it into one short edition you can finish, not
+  another infinite feed.
 descriptionExtra: >-
   Hermes Agent runs on a cron, posts a validated briefing to the app API, and a
   Next.js reader surfaces a structured edition, not another infinite feed.
@@ -33,6 +36,7 @@ caseOverview:
       value: Live daily briefing product
     - label: Repo
       value: github.com/Libertrade01/AI-Daily-Pulse
+      href: https://github.com/Libertrade01/AI-Daily-Pulse
 audience: [employer, personal]
 coverImage: /images/projects/ai-briefing/cover.png
 cardImage: /images/projects/ai-briefing/cover-card.png
@@ -41,7 +45,13 @@ coverPosition: top
 coverFrame: browser
 coverFrameLabel: AI Daily Pulse
 systemLine: Hermes cron → synthesize → API → Supabase → reader
+liveUrl: https://briefing-studio-six.vercel.app/
+liveLabel: View live site
+liveCtaNote: Live product
 github: https://github.com/Libertrade01/AI-Daily-Pulse
+related:
+  - macro-signal-room
+  - sentinel-mental-game-agent
 ---
 
 import ProjectCaseBrief from '../../components/case-study/ProjectCaseBrief.astro';
@@ -163,12 +173,5 @@ import ProjectCaseBrief from '../../components/case-study/ProjectCaseBrief.astro
       'Stronger eval loop on synthesis quality over time',
       'Optional personalization without breaking the shared contract',
     ],
-  }}
-  screenshot={{
-    src: '/images/projects/ai-briefing/cover.png',
-    alt: 'AI Daily Pulse edition layout',
-    caption: 'Fixed edition frame · pulse · signal sections',
-    frame: 'browser',
-    frameLabel: 'AI Daily Pulse',
   }}
 />

@@ -4,10 +4,21 @@ import type { ProjectEntry } from '../utils/content';
 interface Props {
   projects: ProjectEntry[];
   currentSlug: string;
+  relatedSlugs?: string[];
 }
 
-const { projects, currentSlug } = Astro.props;
-const related = projects.filter((p) => p.slug !== currentSlug).slice(0, 2);
+const { projects, currentSlug, relatedSlugs = [] } = Astro.props;
+
+const bySlug = new Map(projects.map((project) => [project.slug, project]));
+const curated = relatedSlugs
+  .map((slug) => bySlug.get(slug))
+  .filter((project): project is ProjectEntry => Boolean(project && project.slug !== currentSlug))
+  .slice(0, 2);
+
+const related =
+  curated.length > 0
+    ? curated
+    : projects.filter((project) => project.slug !== currentSlug).slice(0, 2);
 ---
 
 {
@@ -18,25 +29,35 @@ const related = projects.filter((p) => p.slug !== currentSlug).slice(0, 2);
         <h2 id="related-systems-title">Related systems</h2>
       </header>
       <div class="related-systems__grid">
-        {related.map((project, index) => (
-          <article class="related-system">
-            <a href={`/projects/${project.slug}`} aria-label={`Read the ${project.data.title} case study`}>
-              <div class="related-system__meta">
-                <span>System {String(index + 1).padStart(2, '0')}</span>
-                <span>{project.data.status}</span>
-              </div>
-              <div class="related-system__copy">
-                <p>{project.data.category}</p>
-                <h3>{project.data.title}</h3>
-                <span>{project.data.description}</span>
-              </div>
-              <div class="related-system__foot">
-                <span>{project.data.stack.slice(0, 3).join(' · ')}</span>
-                <strong>View case study ↗</strong>
-              </div>
-            </a>
-          </article>
-        ))}
+        {related.map((project, index) => {
+          const media = project.data.cardImage ?? project.data.coverImage;
+          return (
+            <article class="related-system">
+              <a href={`/projects/${project.slug}`} aria-label={`Read the ${project.data.title} case study`}>
+                {media && (
+                  <div class="related-system__media" aria-hidden="true">
+                    <img src={media} alt="" loading="lazy" decoding="async" />
+                  </div>
+                )}
+                <div class="related-system__body">
+                  <div class="related-system__meta">
+                    <span>System {String(index + 1).padStart(2, '0')}</span>
+                    <span>{project.data.status}</span>
+                  </div>
+                  <div class="related-system__copy">
+                    <p>{project.data.category}</p>
+                    <h3>{project.data.title}</h3>
+                    <span>{project.data.description}</span>
+                  </div>
+                  <div class="related-system__foot">
+                    <span>{project.data.stack.slice(0, 3).join(' · ')}</span>
+                    <strong>View case study ↗</strong>
+                  </div>
+                </div>
+              </a>
+            </article>
+          );
+        })}
       </div>
     </section>
   )
@@ -82,6 +103,7 @@ const related = projects.filter((p) => p.slug !== currentSlug).slice(0, 2);
   .related-system {
     background: color-mix(in srgb, var(--ml-paper-raised) 82%, transparent);
     border: 1px solid var(--ml-line);
+    overflow: hidden;
     transition:
       border-color 220ms ease,
       box-shadow 220ms ease,
@@ -95,12 +117,38 @@ const related = projects.filter((p) => p.slug !== currentSlug).slice(0, 2);
   }
 
   .related-system a {
-    display: flex;
-    min-height: 100%;
-    flex-direction: column;
     color: inherit;
-    padding: clamp(1.25rem, 3vw, 2rem);
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
     text-decoration: none;
+  }
+
+  .related-system__media {
+    background: #0a0a0a;
+    border-bottom: 1px solid var(--ml-line);
+    height: clamp(8.5rem, 16vw, 10.5rem);
+    overflow: hidden;
+  }
+
+  .related-system__media img {
+    display: block;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    transition: transform 280ms ease;
+    width: 100%;
+  }
+
+  .related-system:hover .related-system__media img {
+    transform: scale(1.02);
+  }
+
+  .related-system__body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: clamp(1.25rem, 3vw, 2rem);
   }
 
   .related-system__meta,
@@ -114,7 +162,7 @@ const related = projects.filter((p) => p.slug !== currentSlug).slice(0, 2);
   }
 
   .related-system__copy {
-    margin-block: clamp(2.5rem, 5vw, 4.5rem);
+    margin-block: clamp(1.6rem, 3.5vw, 2.75rem);
   }
 
   .related-system__copy p {
