@@ -194,9 +194,6 @@ export const featuredProjectSlugs = [
   'sentinel-mental-game-agent',
   'macro-signal-room',
   'ai-daily-pulse',
-  'book-inmobiliaria',
-  'raiz-life-journal',
-  'trading-knowledge-wiki',
 ] as const;
 
 export const nav = [

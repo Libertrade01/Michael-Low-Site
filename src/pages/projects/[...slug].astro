@@ -4,7 +4,8 @@ import Layout from '../../components/Layout.astro';
 import CaseStudyHero from '../../components/case-study/CaseStudyHero.astro';
 import OutcomeList from '../../components/OutcomeList.astro';
 import RelatedProjects from '../../components/RelatedProjects.astro';
-import { getPublishedProjects } from '../../utils/content';
+import { getFeaturedProjects } from '../../utils/content';
+import { featuredProjectSlugs } from '../../config/site';
 
 export async function getStaticPaths() {
   const projects = await getCollection('projects');
@@ -18,17 +19,9 @@ export async function getStaticPaths() {
 
 const { project } = Astro.props;
 const { Content } = await render(project);
-const allProjects = await getPublishedProjects();
+const listedProjects = await getFeaturedProjects();
 const { title, description, outcomes } = project.data;
-const caseStudySlugs = [
-  'libertrade-journal-analytics',
-  'sentinel-mental-game-agent',
-  'macro-signal-room',
-  'ai-daily-pulse',
-  'book-inmobiliaria',
-  'trading-knowledge-wiki',
-] as const;
-const isCaseStudy = caseStudySlugs.includes(project.slug as (typeof caseStudySlugs)[number]);
+const isCaseStudy = featuredProjectSlugs.includes(project.slug as (typeof featuredProjectSlugs)[number]);
 ---
 
 <Layout title={`${title} — Michael Low`} description={description} ogImage={project.data.coverImage}>
@@ -42,7 +35,7 @@ const isCaseStudy = caseStudySlugs.includes(project.slug as (typeof caseStudySlu
         </div>
       </div>
       <RelatedProjects
-        projects={allProjects}
+        projects={listedProjects}
         currentSlug={project.slug}
         relatedSlugs={project.data.related}
       />

@@ -1,5 +1,6 @@
 import type { CollectionEntry } from 'astro:content';
 import { getCollection } from 'astro:content';
+import { featuredProjectSlugs } from '../config/site';
 
 export async function getPublishedProjects() {
   const projects = await getCollection('projects');
@@ -10,7 +11,9 @@ export async function getPublishedProjects() {
 
 export async function getFeaturedProjects() {
   const projects = await getPublishedProjects();
-  return projects.filter((p) => p.data.featured);
+  return featuredProjectSlugs
+    .map((slug) => projects.find((project) => project.slug === slug))
+    .filter((project): project is CollectionEntry<'projects'> => Boolean(project));
 }
 
 export async function getPublishedBuildLogs() {

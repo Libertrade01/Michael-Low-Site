@@ -2,9 +2,9 @@
 import Layout from '../../components/Layout.astro';
 import PageHeader from '../../components/PageHeader.astro';
 import EditorialProjectCard from '../../components/EditorialProjectCard.astro';
-import { getPublishedProjects } from '../../utils/content';
+import { getFeaturedProjects } from '../../utils/content';
 
-const projects = await getPublishedProjects();
+const projects = await getFeaturedProjects();
 ---
 
 <Layout title="Systems I’ve built — Michael Low" description="Products, operating systems, and AI workflows designed and built by Michael Low.">

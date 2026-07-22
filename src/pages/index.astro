@@ -3,16 +3,7 @@ import Layout from '../components/Layout.astro';
 import { site } from '../config/site';
 import { getFeaturedProjects } from '../utils/content';
 
-const featured = await getFeaturedProjects();
-const priority = [
-  'libertrade-journal-analytics',
-  'sentinel-mental-game-agent',
-  'macro-signal-room',
-  'ai-daily-pulse',
-];
-const systems = priority
-  .map((slug) => featured.find((project) => project.slug === slug))
-  .filter((project) => Boolean(project));
+const systems = await getFeaturedProjects();
 
 const process = [
   {
