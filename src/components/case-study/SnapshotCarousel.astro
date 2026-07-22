@@ -77,12 +77,18 @@ const hasMultipleShots = shots.length > 1;
     --case-study-paper: var(--ml-paper-raised);
     --case-study-line: var(--ml-line);
     --case-study-muted: var(--ml-muted);
+    box-sizing: border-box;
     margin: clamp(2.5rem, 5vw, 3.5rem) auto 0;
+    max-width: 100%;
+    min-width: 0;
+    overflow: hidden;
     width: min(100%, 72rem);
   }
 
   .case-study-snapshots__header {
     margin-bottom: clamp(1.4rem, 3vw, 2rem);
+    max-width: 100%;
+    padding-inline: 0.1rem;
   }
 
   .case-study-snapshots .case-study-snapshots__heading {
@@ -106,12 +112,16 @@ const hasMultipleShots = shots.length > 1;
 
   .case-study-snapshots__track {
     display: flex;
-    gap: clamp(1rem, 2.4vw, 1.6rem);
+    gap: clamp(0.85rem, 2vw, 1.25rem);
+    max-width: 100%;
+    min-width: 0;
     overflow-x: auto;
+    overscroll-behavior-x: contain;
     padding: 0 0 0.85rem;
     scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
     scrollbar-color: var(--ml-line-strong) transparent;
+    -webkit-overflow-scrolling: touch;
   }
 
   .case-study-snapshots__track:focus-visible {
@@ -120,16 +130,22 @@ const hasMultipleShots = shots.length > 1;
   }
 
   .case-study-snapshots__slide {
-    flex: 0 0 min(88vw, 58rem);
+    box-sizing: border-box;
+    flex: 0 0 100%;
     margin: 0;
-    scroll-margin-inline: 1rem;
-    scroll-snap-align: center;
+    max-width: 100%;
+    min-width: 0;
+    scroll-margin-inline: 0;
+    scroll-snap-align: start;
+    width: 100%;
   }
 
   .case-study-snapshots__image-frame {
     background: var(--case-study-sand);
     border: 1px solid var(--case-study-line);
     border-radius: 0.5rem;
+    box-sizing: border-box;
+    max-width: 100%;
     overflow: hidden;
     padding: clamp(0.5rem, 1.4vw, 0.8rem);
   }
@@ -139,6 +155,7 @@ const hasMultipleShots = shots.length > 1;
     border-radius: 0.35rem;
     display: block;
     height: auto;
+    max-width: 100%;
     width: 100%;
   }
 
@@ -156,11 +173,13 @@ const hasMultipleShots = shots.length > 1;
       );
     border: 1px dashed var(--case-study-line);
     border-radius: 0.35rem;
+    box-sizing: border-box;
     color: var(--case-study-ink);
     display: flex;
     flex-direction: column;
     gap: 0.55rem;
     justify-content: center;
+    max-width: 100%;
     padding: clamp(1.4rem, 4vw, 2.4rem);
   }
 
@@ -211,6 +230,7 @@ const hasMultipleShots = shots.length > 1;
     gap: 0.55rem;
     justify-content: center;
     margin-top: 0.45rem;
+    max-width: 100%;
   }
 
   .case-study-snapshots__nav a {
@@ -234,17 +254,6 @@ const hasMultipleShots = shots.length > 1;
     background: var(--case-study-navy);
     border-color: var(--case-study-navy);
     color: #f7f6f1;
-  }
-
-  @media (max-width: 720px) {
-    .case-study-snapshots {
-      width: 100%;
-    }
-
-    .case-study-snapshots__slide {
-      flex-basis: min(86vw, 58rem);
-      scroll-snap-align: start;
-    }
   }
 </style>
 

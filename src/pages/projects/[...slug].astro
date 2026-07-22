@@ -50,6 +50,8 @@ const isCaseStudy = caseStudySlugs.includes(project.slug as (typeof caseStudySlu
   .project-case-study {
     background: var(--ml-paper);
     color: var(--ml-ink);
+    max-width: 100%;
+    overflow-x: clip;
   }
 
   .project-case-study__article {
@@ -57,12 +59,17 @@ const isCaseStudy = caseStudySlugs.includes(project.slug as (typeof caseStudySlu
   }
 
   .project-case-study__body {
-    width: var(--ml-shell);
     margin-inline: auto;
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: clip;
+    width: var(--ml-shell);
   }
 
   .project-case-study__content {
     color: var(--ml-ink-soft);
+    max-width: 100%;
+    min-width: 0;
   }
 
   .project-case-study__content :global(> h2),

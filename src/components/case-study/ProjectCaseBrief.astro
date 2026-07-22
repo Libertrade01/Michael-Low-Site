@@ -297,8 +297,17 @@ const resultsIndex = walkthrough ? '05' : '04';
   .project-brief {
     display: grid;
     gap: clamp(3.75rem, 8vw, 6.5rem);
-    width: min(100%, 72rem);
     margin-inline: auto;
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: clip;
+    width: min(100%, 72rem);
+  }
+
+  .project-brief__section--walkthrough {
+    max-width: 100%;
+    min-width: 0;
+    overflow: hidden;
   }
 
   .project-brief__head {
