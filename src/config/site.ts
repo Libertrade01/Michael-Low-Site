@@ -15,8 +15,8 @@ export const site = {
   tagline: 'Messy input in. Clean operating system out.',
   url: 'https://michaeljlow.com',
   email: 'mike@michaeljlow.com',
-  github: 'https://github.com/Libertrade01',
-  linkedin: 'https://linkedin.com/in/michaellow',
+  github: 'https://github.com/MichaelJLow',
+  linkedin: 'https://www.linkedin.com/in/michael-j-low/',
   availability:
     'Available for selected AI workflow projects, implementation support, and embedded remote roles with small teams.',
   headshot: '/images/headshot-portfolio-tight.png',
